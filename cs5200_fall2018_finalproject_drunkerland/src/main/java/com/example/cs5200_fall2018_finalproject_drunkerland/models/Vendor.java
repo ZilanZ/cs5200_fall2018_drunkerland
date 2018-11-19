@@ -22,11 +22,19 @@ public class Vendor extends User {
 		this.qualified = qualified;
 	}
 	private Boolean qualified;
+	@OneToMany
+	private List<Stock> stocks;
 	public Boolean getQualified() {
 		return qualified;
 	}
 	public void setQualified(Boolean qualified) {
 		this.qualified = qualified;
+	}
+	public List<Stock> getStocks() {
+		return stocks;
+	}
+	public void setStocks(List<Stock> stocks) {
+		this.stocks = stocks;
 	}
 	
 }

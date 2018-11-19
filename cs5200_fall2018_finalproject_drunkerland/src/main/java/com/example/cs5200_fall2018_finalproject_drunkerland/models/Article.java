@@ -29,7 +29,7 @@ public class Article {
 	private int views;
 	@ManyToOne
 	private Reviewer reviewed;
-	@OneToMany(mappedBy="articleRelation")
+	@OneToMany(mappedBy="articleRelationship")
 	private List<WineReviewerRelationship> wineReviewerRelationships;
 	public String getTitle() {
 		return title;

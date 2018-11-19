@@ -3,12 +3,13 @@ package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 import java.sql.Date;
 import java.util.*;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
+@Entity
 public class Supplier extends User{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,10 +34,10 @@ public class Supplier extends User{
 	private String graspType;
 	private String history;
 	private Boolean qualified;
-	@OneToMany(mappedBy="supplied")
+	@OneToMany(mappedBy="supplier")
 	private List<Wine> wines;
-	@OneToMany(mappedBy="sponsered")
-	private List<Sponser> sponsers;
+	@OneToMany(mappedBy="supplier")
+	private List<Sponsership> sponsers;
 	
 	public String getLocation() {
 		return location;
@@ -69,10 +70,10 @@ public class Supplier extends User{
 	public void setWines(List<Wine> wines) {
 		this.wines = wines;
 	}
-	public List<Sponser> getSponsers() {
+	public List<Sponsership> getSponsers() {
 		return sponsers;
 	}
-	public void setSponsers(List<Sponser> sponsers) {
+	public void setSponsers(List<Sponsership> sponsers) {
 		this.sponsers = sponsers;
 	}
 	public void addWine(Wine wine) {
@@ -81,10 +82,10 @@ public class Supplier extends User{
 			wine.setSupplier(this);;
 		}
 	}
-	public void addSponser(Sponser sponser) {
+	public void addSponser(Sponsership sponser) {
 		this.sponsers.add(sponser);
-		if (sponser.getSponsered()!=this) {
-			sponser.setSponsered(this);
+		if (sponser.getSupplier()!=this) {
+			sponser.setSupplier(this);
 		}
 	}
 	

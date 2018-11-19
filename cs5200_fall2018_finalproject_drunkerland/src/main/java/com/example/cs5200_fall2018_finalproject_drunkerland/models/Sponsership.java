@@ -9,19 +9,21 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Sponser {
+public class Sponsership {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@ManyToOne
-	private Supplier sponsered;
+	private Supplier supplier;
 	@ManyToOne
 	private WineReviewerRelationship sponserRelationship;
-	public Supplier getSponsered() {
-		return sponsered;
+
+
+	public Supplier getSupplier() {
+		return supplier;
 	}
-	public void setSponsered(Supplier sponsered) {
-		this.sponsered = sponsered;
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
 	public WineReviewerRelationship getSponserRelationship() {
 		return sponserRelationship;

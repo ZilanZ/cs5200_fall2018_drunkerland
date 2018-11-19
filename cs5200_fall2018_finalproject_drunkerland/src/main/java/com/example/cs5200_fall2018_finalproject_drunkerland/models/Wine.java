@@ -36,8 +36,10 @@ public class Wine {
 	private Supplier supplier;
 	@OneToMany(mappedBy="wineRelationship")
 	private List<WineReviewerRelationship> wineReviewerRelationship;
-	@OneToMany(mappedBy="store")
+	@OneToMany(mappedBy="wine")
 	private List<Stock> stocks;
+	@OneToMany(mappedBy="wine")
+	private List<Mark> marks;
 	public String getName() {
 		return name;
 	}
@@ -104,12 +106,7 @@ public class Wine {
 	public void setWineReviewerRelationship(List<WineReviewerRelationship> wineReviewerRelationship) {
 		this.wineReviewerRelationship = wineReviewerRelationship;
 	}
-	public List<Stock> getStocks() {
-		return stocks;
-	}
-	public void setStocks(List<Stock> stocks) {
-		this.stocks = stocks;
-	}
+
 	
 	public void addSupplier(Supplier supplier) {
 		this.supplier = supplier;
@@ -123,5 +120,17 @@ public class Wine {
 		if(relationship.getWineRelationship()!=this) {
 			relationship.setWineRelationship(this);
 		}
+	}
+	public List<Stock> getStocks() {
+		return stocks;
+	}
+	public void setStocks(List<Stock> stocks) {
+		this.stocks = stocks;
+	}
+	public List<Mark> getMarks() {
+		return marks;
+	}
+	public void setMarks(List<Mark> marks) {
+		this.marks = marks;
 	}
 }

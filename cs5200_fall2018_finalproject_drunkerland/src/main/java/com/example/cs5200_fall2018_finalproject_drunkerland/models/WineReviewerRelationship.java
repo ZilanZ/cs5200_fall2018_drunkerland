@@ -17,7 +17,7 @@ public class WineReviewerRelationship {
 	@ManyToOne
 	private Article articleRelationship;
 	@OneToMany(mappedBy="sponserRelationship")
-	private List<Sponser> sponsers;
+	private List<Sponsership> sponsers;
 	@ManyToOne
 	private Wine wineRelationship;
 	public Article getArticleRelation() {
@@ -33,10 +33,10 @@ public class WineReviewerRelationship {
 	public void setArticleRelationship(Article articleRelationship) {
 		this.articleRelationship = articleRelationship;
 	}
-	public List<Sponser> getSponsers() {
+	public List<Sponsership> getSponsers() {
 		return sponsers;
 	}
-	public void setSponsers(List<Sponser> sponsers) {
+	public void setSponsers(List<Sponsership> sponsers) {
 		this.sponsers = sponsers;
 	}
 	public Wine getWineRelationship() {
@@ -51,7 +51,7 @@ public class WineReviewerRelationship {
 			article.getWineReviewerRelationships().add(this);
 		}
 	}
-	public void addSponserRelation(Sponser sponser) {
+	public void addSponserRelation(Sponsership sponser) {
 		this.getSponsers().add(sponser) ;
 		if(sponser.getSponserRelationship()!=this) {
 			sponser.setSponserRelationship(this);
