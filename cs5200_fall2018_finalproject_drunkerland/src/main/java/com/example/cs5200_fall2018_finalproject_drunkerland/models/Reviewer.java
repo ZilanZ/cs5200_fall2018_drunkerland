@@ -27,7 +27,7 @@ public class Reviewer extends User {
 	@OneToMany(mappedBy="reviewed")
 	private List<Article> articles;
 	@OneToMany
-	private List<Mark> marks;
+//	private List<Mark> marks;
 	public String getLevel() {
 		return level;
 	}
@@ -40,12 +40,12 @@ public class Reviewer extends User {
 	public void setArticals(List<Article> articles) {
 		this.articles = articles;
 	}
-	public List<Mark> getMarks() {
-		return marks;
-	}
-	public void setMarks(List<Mark> marks) {
-		this.marks = marks;
-	}
+//	public List<Mark> getMarks() {
+//		return marks;
+//	}
+//	public void setMarks(List<Mark> marks) {
+//		this.marks = marks;
+//	}
 	public void addArticle(Article article) {
 		this.articles.add(article);
 		if (article.getReviewed()!=this) {
