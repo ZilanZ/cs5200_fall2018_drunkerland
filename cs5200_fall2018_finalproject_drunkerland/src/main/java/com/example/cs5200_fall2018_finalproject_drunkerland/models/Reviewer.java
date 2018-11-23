@@ -48,8 +48,8 @@ public class Reviewer extends User {
 //	}
 	public void addArticle(Article article) {
 		this.articles.add(article);
-		if (article.getReviewed()!=this) {
-			article.setReviewed(this);
+		if (article.getReviewer()!=this) {
+			article.setReviewer(this);
 		}
 	}
 }

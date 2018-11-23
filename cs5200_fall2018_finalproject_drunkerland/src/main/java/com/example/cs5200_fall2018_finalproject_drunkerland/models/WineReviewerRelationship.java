@@ -23,15 +23,9 @@ public class WineReviewerRelationship {
 	public Article getArticleRelation() {
 		return articleRelationship;
 	}
-	public void setArticleRelation(Article articleRelation) {
-		this.articleRelationship = articleRelation;
-	}
 
 	public Article getArticleRelationship() {
 		return articleRelationship;
-	}
-	public void setArticleRelationship(Article articleRelationship) {
-		this.articleRelationship = articleRelationship;
 	}
 	public List<Sponsership> getSponsers() {
 		return sponsers;
