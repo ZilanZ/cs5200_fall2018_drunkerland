@@ -97,9 +97,7 @@ public class Wine {
 	public Supplier getSupplier() {
 		return supplier;
 	}
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
-	}
+
 	public List<WineReviewerRelationship> getWineReviewerRelationship() {
 		return wineReviewerRelationship;
 	}
