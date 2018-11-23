@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Customer extends User{
+public class Consumer extends User{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -19,13 +19,13 @@ public class Customer extends User{
 //	private List<Order> orders;
 //	@OneToMany
 //	private List<Follow> follows;
-	public Customer(String username, String password, String lastname, String firstname, String gender, String phone,
-			String email, Date dob, String taste) {
+	public Consumer(String username, String password, String lastname, String firstname, String gender, String phone,
+                    String email, Date dob, String taste) {
 		super(username, password, lastname, firstname, gender, phone, email, dob);
 		this.taste = taste;
 	}
 
-	public Customer(String username, String password, String lastname, String firstname, String taste) {
+	public Consumer(String username, String password, String lastname, String firstname, String taste) {
 		super(username, password, lastname, firstname);
 		this.taste = taste;
 	}
