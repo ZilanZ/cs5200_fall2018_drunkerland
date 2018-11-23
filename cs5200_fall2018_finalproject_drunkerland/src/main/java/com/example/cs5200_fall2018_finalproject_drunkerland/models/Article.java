@@ -28,7 +28,7 @@ public class Article {
 	private Date updated;
 	private int views;
 	@ManyToOne
-	private Reviewer reviewed;
+	private Reviewer reviewer;
 	@OneToMany(mappedBy="articleRelationship")
 	private List<WineReviewerRelationship> wineReviewerRelationships;
 	public String getTitle() {
@@ -55,11 +55,8 @@ public class Article {
 	public void setViews(int views) {
 		this.views = views;
 	}
-	public Reviewer getReviewed() {
-		return reviewed;
-	}
-	public void setReviewed(Reviewer reviewed) {
-		this.reviewed = reviewed;
+	public Reviewer getReviewer() {
+		return reviewer;
 	}
 	public List<WineReviewerRelationship> getWineReviewerRelationships() {
 		return wineReviewerRelationships;
@@ -73,7 +70,7 @@ public class Article {
 			reviewer.getArticals().add(this);
 		}
 	}
-	public void setRelationships(WineReviewerRelationship relationship) {
+	public void addRelationship(WineReviewerRelationship relationship) {
 		this.wineReviewerRelationships.add(relationship);
 		if(relationship.getArticleRelation()!=this) {
 			relationship.setArticleRelation(this);

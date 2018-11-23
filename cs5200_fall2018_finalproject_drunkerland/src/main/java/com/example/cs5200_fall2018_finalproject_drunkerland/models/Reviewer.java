@@ -24,7 +24,7 @@ public class Reviewer extends User {
 		this.level = level;
 	}
 	private String level;
-	@OneToMany(mappedBy="reviewed")
+	@OneToMany(mappedBy="reviewer")
 	private List<Article> articles;
 	@OneToMany
 //	private List<Mark> marks;

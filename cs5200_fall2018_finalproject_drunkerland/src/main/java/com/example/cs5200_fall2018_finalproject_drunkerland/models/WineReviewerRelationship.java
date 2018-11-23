@@ -45,7 +45,7 @@ public class WineReviewerRelationship {
 	public void setWineRelationship(Wine wineRelationship) {
 		this.wineRelationship = wineRelationship;
 	}
-	public void addArticleRelation(Article article) {
+	public void setArticleRelation(Article article) {
 		this.articleRelationship = article;
 		if(!article.getWineReviewerRelationships().contains(this)) {
 			article.getWineReviewerRelationships().add(this);
@@ -57,7 +57,7 @@ public class WineReviewerRelationship {
 			sponser.setSponserRelationship(this);
 		}
 	}
-	public void addWine(Wine wine){
+	public void setWine(Wine wine){
 		this.setWineRelationship(wine);
 		if(!wine.getWineReviewerRelationship().contains(this)) {
 			wine.getWineReviewerRelationship().add(this);

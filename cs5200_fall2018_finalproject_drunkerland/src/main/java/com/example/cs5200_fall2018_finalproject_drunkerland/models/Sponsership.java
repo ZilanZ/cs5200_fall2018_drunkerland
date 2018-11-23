@@ -18,20 +18,24 @@ public class Sponsership {
 	@ManyToOne
 	private WineReviewerRelationship sponserRelationship;
 
-
 	public Supplier getSupplier() {
 		return supplier;
 	}
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
+		if (!supplier.getSponsers().contains(this)) {
+		    supplier.getSponsers().add(this);
+        }
 	}
 	public WineReviewerRelationship getSponserRelationship() {
 		return sponserRelationship;
 	}
 	public void setSponserRelationship(WineReviewerRelationship sponserRelationship) {
 		this.sponserRelationship = sponserRelationship;
+		if (!sponserRelationship.getSponsers().contains(this)){
+            sponserRelationship.getSponsers().add(this);
+        }
 	}
 
-	
 
 }

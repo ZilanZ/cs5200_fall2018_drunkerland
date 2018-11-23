@@ -108,7 +108,7 @@ public class Wine {
 	}
 
 	
-	public void addSupplier(Supplier supplier) {
+	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 		if(!supplier.getWines().contains(this)) {
 			supplier.getWines().add(this);
