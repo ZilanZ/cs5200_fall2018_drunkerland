@@ -65,7 +65,7 @@ public class Article {
 		this.wineReviewerRelationships = wineReviewerRelationships;
 	}
 	public void setReviewer(Reviewer reviewer) {
-		this.reviewed = reviewer;
+		this.reviewer = reviewer;
 		if(!reviewer.getArticals().contains(this)) {
 			reviewer.getArticals().add(this);
 		}
