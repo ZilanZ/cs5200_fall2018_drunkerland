@@ -3,11 +3,8 @@ package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
+import javax.persistence.*;
 
 @Entity
 public class Reviewer extends User {
@@ -27,7 +24,7 @@ public class Reviewer extends User {
 	@OneToMany(mappedBy="reviewer")
 	private List<Article> articles;
 	@OneToMany
-//	private List<Mark> marks;
+	private List<Mark> marks;
 	public String getLevel() {
 		return level;
 	}
@@ -40,16 +37,42 @@ public class Reviewer extends User {
 	public void setArticals(List<Article> articles) {
 		this.articles = articles;
 	}
-//	public List<Mark> getMarks() {
-//		return marks;
-//	}
-//	public void setMarks(List<Mark> marks) {
-//		this.marks = marks;
-//	}
+	public List<Mark> getMarks() {
+		return marks;
+	}
+
+	@OneToMany(mappedBy="reviewer", fetch= FetchType.EAGER)
+	private List<Follow> follows;
+
+	public void addFollow(Follow follow)
+	{
+		this.follows.add(follow);
+		if(follow.getReviewer()!=this)
+			follow.setReviewer(this);
+	}
+
+	public void removeFollow(Follow follow)
+	{
+		this.follows.remove(follow);
+	}
+
+	public List<Follow> getFollows() {
+		return follows;
+	}
+	public void setllows(List<Follow> follows) {
+		this.follows = follows;
+	}
+	public void setMarks(List<Mark> marks) {
+		this.marks = marks;
+	}
 	public void addArticle(Article article) {
 		this.articles.add(article);
 		if (article.getReviewer()!=this) {
 			article.setReviewer(this);
 		}
 	}
+	public void removeArticle(Article article) {
+		this.articles.remove(article);
+	}
+
 }

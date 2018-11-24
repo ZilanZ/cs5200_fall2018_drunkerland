@@ -15,10 +15,10 @@ public class Consumer extends User{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String taste;
-//	@OneToMany
-//	private List<Order> orders;
-//	@OneToMany
-//	private List<Follow> follows;
+	@OneToMany(mappedBy="consumer")
+	private List<Order> orders;
+	@OneToMany(mappedBy="consumer")
+	private List<Follow> follows;
 
 
 	public Consumer(String username, String password, String lastname, String firstname, String gender, String phone,
@@ -41,21 +41,21 @@ public class Consumer extends User{
 		this.taste = taste;
 	}
 
-//	public List<Order> getOrders() {
-//		return orders;
-//	}
-//
-//	public void setOrders(List<Order> orders) {
-//		this.orders = orders;
-//	}
-//
-//	public List<Follow> getFollows() {
-//		return follows;
-//	}
-//
-//	public void setFollows(List<Follow> follows) {
-//		this.follows = follows;
-//	}
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
+	public List<Follow> getFollows() {
+		return follows;
+	}
+
+	public void setFollows(List<Follow> follows) {
+		this.follows = follows;
+	}
 	
 
 }

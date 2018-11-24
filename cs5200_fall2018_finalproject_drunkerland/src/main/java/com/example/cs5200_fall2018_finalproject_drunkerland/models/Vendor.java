@@ -1,11 +1,13 @@
 package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Vendor extends User {
@@ -22,19 +24,19 @@ public class Vendor extends User {
 		this.qualified = qualified;
 	}
 	private Boolean qualified;
-//	@OneToMany
-//	private List<Stock> stocks;
+	@OneToMany
+	private List<Stock> stocks;
 	public Boolean getQualified() {
 		return qualified;
 	}
 	public void setQualified(Boolean qualified) {
 		this.qualified = qualified;
 	}
-//	public List<Stock> getStocks() {
-//		return stocks;
-//	}
-//	public void setStocks(List<Stock> stocks) {
-//		this.stocks = stocks;
-//	}
+	public List<Stock> getStocks() {
+		return stocks;
+	}
+	public void setStocks(List<Stock> stocks) {
+		this.stocks = stocks;
+	}
 	
 }
