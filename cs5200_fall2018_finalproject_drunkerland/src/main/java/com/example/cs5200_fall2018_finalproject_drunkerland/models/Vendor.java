@@ -3,11 +3,7 @@ package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Vendor extends User {
@@ -23,8 +19,9 @@ public class Vendor extends User {
 		super(username, password, lastname, firstname, gender, phone, email, dob);
 		this.qualified = qualified;
 	}
+	@Column(name = "vendor_qualified")
 	private Boolean qualified;
-	@OneToMany
+	@OneToMany(mappedBy = "vendor")
 	private List<Stock> stocks;
 	public Boolean getQualified() {
 		return qualified;
@@ -38,5 +35,14 @@ public class Vendor extends User {
 	public void setStocks(List<Stock> stocks) {
 		this.stocks = stocks;
 	}
-	
+
+	public void addStock(Stock stock){
+		this.stocks.add(stock);
+		if (stock.getVendor()!=this){
+			stock.setVendor(this);
+		}
+	}
+	public void removeStock(Stock stock){
+		this.stocks.remove(stock);
+	}
 }

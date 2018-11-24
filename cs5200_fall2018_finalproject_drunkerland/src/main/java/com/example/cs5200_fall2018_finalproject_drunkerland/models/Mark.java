@@ -8,7 +8,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="MARK")
 public class Mark {
 	
 	@Id
@@ -18,7 +17,7 @@ public class Mark {
 	private int points;
 	
 	@ManyToOne()
-	private Reviewer reviewed;
+	private Reviewer reviewer;
 	
 	@ManyToOne()
 	private Wine wine;
@@ -34,14 +33,14 @@ public class Mark {
 		this.id = id;
 	}
 
-	public Reviewer getReviewed() {
-		return reviewed;
+	public Reviewer getReviewer() {
+		return reviewer;
 	}
 
-	public void setReviewed(Reviewer reviewed) {
-		this.reviewed = reviewed;
-		if(!reviewed.getMarks().contains(this))
-			reviewed.getMarks().add(this);
+	public void setReviewer(Reviewer reviewer) {
+		this.reviewer = reviewer;
+		if(!reviewer.getMarks().contains(this))
+			reviewer.getMarks().add(this);
 	}
 
 	public int getPoints() {
@@ -69,11 +68,11 @@ public class Mark {
 		super();
 	}
 
-	public Mark(int id, int points, Reviewer reviewed, Wine wine) {
+	public Mark(int id, int points, Reviewer reviewer, Wine wine) {
 		super();
 		this.id = id;
 		this.points = points;
-		this.reviewed = reviewed;
+		this.reviewer = reviewer;
 		this.wine = wine;
 	}
 	

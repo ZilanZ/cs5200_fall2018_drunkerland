@@ -23,7 +23,7 @@ public class Reviewer extends User {
 	private String level;
 	@OneToMany(mappedBy="reviewer")
 	private List<Article> articles;
-	@OneToMany
+	@OneToMany(mappedBy="reviewer")
 	private List<Mark> marks;
 	public String getLevel() {
 		return level;
@@ -31,7 +31,7 @@ public class Reviewer extends User {
 	public void setLevel(String level) {
 		this.level = level;
 	}
-	public List<Article> getArticals() {
+	public List<Article> getArticles() {
 		return articles;
 	}
 	public void setArticals(List<Article> articles) {
@@ -75,4 +75,14 @@ public class Reviewer extends User {
 		this.articles.remove(article);
 	}
 
+	public void addMark(Mark mark){
+		this.marks.add(mark);
+		if(mark.getReviewer()!=this) {
+			mark.setReviewer(this);
+		}
+	}
+
+	public void removeMark(Mark mark) {
+		this.marks.remove(mark);
+	}
 }

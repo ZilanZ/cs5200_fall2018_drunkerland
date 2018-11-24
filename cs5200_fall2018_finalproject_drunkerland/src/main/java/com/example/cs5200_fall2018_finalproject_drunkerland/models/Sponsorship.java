@@ -1,7 +1,5 @@
 package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,14 +7,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Sponsership {
+public class Sponsorship {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@ManyToOne
 	private Supplier supplier;
 	@ManyToOne
-	private WineReviewerRelationship sponserRelationship;
+	private WineReviewerRelationship sponsorRelationship;
 
 	public Supplier getSupplier() {
 		return supplier;
@@ -27,13 +25,13 @@ public class Sponsership {
 		    supplier.getSponsers().add(this);
         }
 	}
-	public WineReviewerRelationship getSponserRelationship() {
-		return sponserRelationship;
+	public WineReviewerRelationship getSponsorRelationship() {
+		return sponsorRelationship;
 	}
-	public void setSponserRelationship(WineReviewerRelationship sponserRelationship) {
-		this.sponserRelationship = sponserRelationship;
-		if (!sponserRelationship.getSponsers().contains(this)){
-            sponserRelationship.getSponsers().add(this);
+	public void setSponsorRelationship(WineReviewerRelationship sponsorRelationship) {
+		this.sponsorRelationship = sponsorRelationship;
+		if (!sponsorRelationship.getSponsorships().contains(this)){
+            sponsorRelationship.getSponsorships().add(this);
         }
 	}
 

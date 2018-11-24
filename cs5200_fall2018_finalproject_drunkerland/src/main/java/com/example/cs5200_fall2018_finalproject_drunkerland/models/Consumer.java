@@ -1,5 +1,7 @@
 package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 
+import org.aspectj.weaver.ast.Or;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -57,5 +59,25 @@ public class Consumer extends User{
 		this.follows = follows;
 	}
 	
+	public void addOrder(Order order) {
+		orders.add(order);
+		if (order.getConsumer()!=this){
+			order.setConsumer(this);
+		}
+	}
 
+	public void addFollow(Follow follow) {
+		follows.add(follow);
+		if (follow.getConsumer()!=this){
+			follow.setConsumer(this);
+		}
+	}
+
+	public  void removeOrder(Order order) {
+		this.orders.remove(order);
+	}
+
+	public void removeFollow(Follow follow) {
+		this.follows.remove(follow);
+	}
 }
