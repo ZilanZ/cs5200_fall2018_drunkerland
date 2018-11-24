@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="ORDERS")
@@ -19,8 +19,16 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
-	private String status;
+
+	public enum OrderStatus{
+		basket,
+		pending,
+		paid,
+		canceled,
+		refunded
+	}
+	@Enumerated(EnumType.STRING)
+	private OrderStatus status;
 	
 	private String destination;
 	
@@ -54,11 +62,11 @@ public class Order {
 		this.id = id;
 	}
 
-	public String getStatus() {
+	public OrderStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(OrderStatus status) {
 		this.status = status;
 	}
 
@@ -110,7 +118,7 @@ public class Order {
 		super();
 	}
 
-	public Order(int id, String status, String destination, float totalPrice, Date created, Consumer consumer,
+	public Order(int id, OrderStatus status, String destination, float totalPrice, Date created, Consumer consumer,
 			List<Item> items) {
 		super();
 		this.id = id;

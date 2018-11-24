@@ -11,24 +11,30 @@ public class Reviewer extends User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	public Reviewer(String username, String password, String lastname, String firstname, String level) {
+	public Reviewer(String username, String password, String lastname, String firstname, ReviewerLevel level) {
 		super(username, password, lastname, firstname);
 		this.level = level;
 	}
 	public Reviewer(String username, String password, String lastname, String firstname, String gender, String phone,
-			String email, Date dob, String level) {
+			String email, Date dob, ReviewerLevel level) {
 		super(username, password, lastname, firstname, gender, phone, email, dob);
 		this.level = level;
 	}
-	private String level;
+	public enum ReviewerLevel{
+		beginner,
+		intermediate,
+		senior
+	}
+	@Enumerated(EnumType.STRING)
+	private ReviewerLevel level;
 	@OneToMany(mappedBy="reviewer")
 	private List<Article> articles;
 	@OneToMany(mappedBy="reviewer")
 	private List<Mark> marks;
-	public String getLevel() {
+	public ReviewerLevel getLevel() {
 		return level;
 	}
-	public void setLevel(String level) {
+	public void setLevel(ReviewerLevel level) {
 		this.level = level;
 	}
 	public List<Article> getArticles() {

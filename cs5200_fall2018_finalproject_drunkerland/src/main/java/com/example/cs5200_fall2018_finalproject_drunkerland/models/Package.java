@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="PACKAGE")
@@ -14,10 +14,17 @@ public class Package {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
+
+	public enum PackageStatus{
+		shipped,
+		intransit,
+		delivered,
+		returned
+	}
 	private String trackingNumber;
-	
-	private String status;
+
+	@Enumerated(EnumType.STRING)
+	private PackageStatus status;
 	
 	@ManyToOne()
 	private Item item;
@@ -38,11 +45,11 @@ public class Package {
 		this.trackingNumber = trackingNumber;
 	}
 
-	public String getStatus() {
+	public PackageStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(PackageStatus status) {
 		this.status = status;
 	}
 
@@ -64,7 +71,7 @@ public class Package {
 		super();
 	}
 
-	public Package(int id, String trackingNumber, String status, Item item) {
+	public Package(int id, String trackingNumber, PackageStatus status, Item item) {
 		super();
 		this.id = id;
 		this.trackingNumber = trackingNumber;
