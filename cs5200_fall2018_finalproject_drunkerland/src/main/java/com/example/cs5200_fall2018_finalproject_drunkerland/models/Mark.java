@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
+@Table(name="MARK")
 public class Mark {
 	
 	@Id

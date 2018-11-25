@@ -1,7 +1,5 @@
 package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 
-import org.aspectj.weaver.ast.Or;
-
 import java.sql.Date;
 import java.util.List;
 

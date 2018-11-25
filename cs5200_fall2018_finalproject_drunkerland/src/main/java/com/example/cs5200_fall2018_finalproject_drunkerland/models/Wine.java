@@ -155,7 +155,7 @@ public class Wine {
 		}
 	}
 	public void removeMark(Mark mark){
-		this.marks.remove(this);
+		this.marks.remove(mark);
 	}
 }
 
