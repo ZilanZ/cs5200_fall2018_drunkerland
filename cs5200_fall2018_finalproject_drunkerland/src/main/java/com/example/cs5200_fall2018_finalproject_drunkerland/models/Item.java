@@ -1,5 +1,6 @@
 package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -105,6 +106,7 @@ public class Item {
 		this.stock = stock;
 		this.order = order;
 		this.itemsInPackage = itemsInPackage;
+		itemsInPackage =new ArrayList<>();
 	}
 	
 	

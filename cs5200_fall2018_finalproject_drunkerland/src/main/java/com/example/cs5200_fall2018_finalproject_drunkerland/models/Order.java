@@ -1,6 +1,7 @@
 package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -128,6 +129,7 @@ public class Order {
 		this.created = created;
 		this.consumer = consumer;
 		this.items = items;
+		items = new ArrayList<>();
 	}
 	
 	
