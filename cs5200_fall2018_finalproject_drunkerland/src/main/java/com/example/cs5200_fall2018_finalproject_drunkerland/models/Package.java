@@ -16,10 +16,10 @@ public class Package {
 	private int id;
 
 	public enum PackageStatus{
-		shipped,
-		intransit,
-		delivered,
-		returned
+		SHIPPED,
+		INTRANSIT,
+		DELIVERED,
+		RETURNED
 	}
 	private String trackingNumber;
 
@@ -28,6 +28,11 @@ public class Package {
 	
 	@ManyToOne()
 	private Item item;
+
+	public Package(String trackingNumber, PackageStatus status) {
+		this.trackingNumber = trackingNumber;
+		this.status = status;
+	}
 
 	public int getId() {
 		return id;
@@ -63,24 +68,5 @@ public class Package {
 			item.getItemsInPackage().add(this);
 			
 	}
-
-	
-	
-	//constructor
-	public Package() {
-		super();
-	}
-
-	public Package(int id, String trackingNumber, PackageStatus status, Item item) {
-		super();
-		this.id = id;
-		this.trackingNumber = trackingNumber;
-		this.status = status;
-		this.item = item;
-	}
-	
-	
-	
-	
 
 }

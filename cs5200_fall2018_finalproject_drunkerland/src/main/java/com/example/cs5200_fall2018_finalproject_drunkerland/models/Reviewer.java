@@ -21,9 +21,9 @@ public class Reviewer extends User {
 		this.level = level;
 	}
 	public enum ReviewerLevel{
-		beginner,
-		intermediate,
-		senior
+		BEGINNER,
+		INTERMEDIATE,
+		SENIOR
 	}
 	@Enumerated(EnumType.STRING)
 	private ReviewerLevel level;

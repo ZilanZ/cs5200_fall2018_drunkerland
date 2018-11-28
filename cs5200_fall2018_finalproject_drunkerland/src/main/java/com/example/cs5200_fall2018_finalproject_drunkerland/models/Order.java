@@ -22,11 +22,11 @@ public class Order {
 	private int id;
 
 	public enum OrderStatus{
-		basket,
-		pending,
-		paid,
-		canceled,
-		refunded
+		BASKET,
+		PENDING,
+		PAID,
+		CANCELED,
+		REFUNDED
 	}
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
