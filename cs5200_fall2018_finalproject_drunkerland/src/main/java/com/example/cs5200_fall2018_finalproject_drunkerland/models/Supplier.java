@@ -3,11 +3,7 @@ package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 import java.sql.Date;
 import java.util.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Supplier extends User{
@@ -33,11 +29,12 @@ public class Supplier extends User{
 	private String location;
 	private String graspType;
 	private String history;
+	@Column(name = "supplier_qualified")
 	private Boolean qualified;
 	@OneToMany(mappedBy="supplier")
 	private List<Wine> wines;
 	@OneToMany(mappedBy="supplier")
-	private List<Sponsership> sponsers;
+	private List<Sponsorship> sponsers;
 	
 	public String getLocation() {
 		return location;
@@ -70,10 +67,10 @@ public class Supplier extends User{
 	public void setWines(List<Wine> wines) {
 		this.wines = wines;
 	}
-	public List<Sponsership> getSponsers() {
+	public List<Sponsorship> getSponsers() {
 		return sponsers;
 	}
-	public void setSponsers(List<Sponsership> sponsers) {
+	public void setSponsers(List<Sponsorship> sponsers) {
 		this.sponsers = sponsers;
 	}
 	public void addWine(Wine wine) {
@@ -82,7 +79,7 @@ public class Supplier extends User{
 			wine.setSupplier(this);;
 		}
 	}
-	public void addSponser(Sponsership sponser) {
+	public void addSponser(Sponsorship sponser) {
 		this.sponsers.add(sponser);
 		if (sponser.getSupplier()!=this) {
 			sponser.setSupplier(this);

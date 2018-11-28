@@ -1,6 +1,7 @@
 package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -37,6 +38,38 @@ public class User {
 	private String phone;
 	private String email;
 	private Date dob;
+
+	@OneToMany(mappedBy = "user")
+	private List<Address> addresses;
+
+	public void addAddress(Address address)
+	{
+		this.addresses.add(address);
+		if(address.getUser()!=this)
+			address.setUser(this);
+	}
+
+	public void removeAddress(Address address)
+	{
+		this.addresses.remove(address);
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public List<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getUsername() {
 		return username;
 	}

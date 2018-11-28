@@ -66,8 +66,8 @@ public class Article {
 	}
 	public void setReviewer(Reviewer reviewer) {
 		this.reviewer = reviewer;
-		if(!reviewer.getArticals().contains(this)) {
-			reviewer.getArticals().add(this);
+		if(!reviewer.getArticles().contains(this)) {
+			reviewer.getArticles().add(this);
 		}
 	}
 	public void addRelationship(WineReviewerRelationship relationship) {
@@ -75,5 +75,8 @@ public class Article {
 		if(relationship.getArticleRelation()!=this) {
 			relationship.setArticleRelation(this);
 		}
+	}
+	public  void  removeRelationship(WineReviewerRelationship relationship){
+		this.wineReviewerRelationships.remove(relationship);
 	}
 }

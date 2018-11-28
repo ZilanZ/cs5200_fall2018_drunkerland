@@ -35,11 +35,11 @@ public class Wine {
 	@ManyToOne
 	private Supplier supplier;
 	@OneToMany(mappedBy="wineRelationship")
-	private List<WineReviewerRelationship> wineReviewerRelationship;
-//	@OneToMany(mappedBy="wine")
-//	private List<Stock> stocks;
-//	@OneToMany(mappedBy="wine")
-//	private List<Mark> marks;
+	private List<WineReviewerRelationship> wineReviewerRelationships;
+	@OneToMany(mappedBy="wine")
+	private List<Stock> stocks;
+	@OneToMany(mappedBy="wine")
+	private List<Mark> marks;
 	public String getName() {
 		return name;
 	}
@@ -97,11 +97,12 @@ public class Wine {
 	public Supplier getSupplier() {
 		return supplier;
 	}
+
 	public List<WineReviewerRelationship> getWineReviewerRelationship() {
-		return wineReviewerRelationship;
+		return wineReviewerRelationships;
 	}
-	public void setWineReviewerRelationship(List<WineReviewerRelationship> wineReviewerRelationship) {
-		this.wineReviewerRelationship = wineReviewerRelationship;
+	public void setWineReviewerRelationship(List<WineReviewerRelationship> wineReviewerRelationships) {
+		this.wineReviewerRelationships = wineReviewerRelationships;
 	}
 
 	
@@ -118,16 +119,43 @@ public class Wine {
 			relationship.setWineRelationship(this);
 		}
 	}
-//	public List<Stock> getStocks() {
-//		return stocks;
-//	}
-//	public void setStocks(List<Stock> stocks) {
-//		this.stocks = stocks;
-//	}
-//	public List<Mark> getMarks() {
-//		return marks;
-//	}
-//	public void setMarks(List<Mark> marks) {
-//		this.marks = marks;
-//	}
+
+	public  void removeRelationship(WineReviewerRelationship relationship){
+		this.wineReviewerRelationships.remove(relationship);
+	}
+
+	public List<Stock> getStocks() {
+		return stocks;
+	}
+	public void setStocks(List<Stock> stocks) {
+		this.stocks = stocks;
+	}
+	public List<Mark> getMarks() {
+		return marks;
+	}
+	public void setMarks(List<Mark> marks) {
+		this.marks = marks;
+	}
+
+	public void addStock(Stock stock){
+		this.stocks.add(stock);
+		if (stock.getWine()!=this){
+			stock.setWine(this);
+		}
+	}
+
+	public void removeStock(Stock stock) {
+		this.stocks.remove(stock);
+	}
+
+	public void addMark(Mark mark){
+		this.marks.add(mark);
+		if (mark.getWine()!=this){
+			mark.setWine(this);
+		}
+	}
+	public void removeMark(Mark mark){
+		this.marks.remove(mark);
+	}
 }
+
