@@ -16,7 +16,7 @@ public class Address {
     private String city;
     private String state;
     private String country;
-    private boolean primaryAdd;
+    private Boolean primaryAdd;
 
     @ManyToOne()
     private User user;
@@ -77,12 +77,12 @@ public class Address {
         this.country = country;
     }
 
-
-    public boolean isPrimaryAdd() {
+    
+	public Boolean getPrimaryAdd() {
 		return primaryAdd;
 	}
 
-	public void setPrimaryAdd(boolean primaryAdd) {
+	public void setPrimaryAdd(Boolean primaryAdd) {
 		this.primaryAdd = primaryAdd;
 	}
 
@@ -99,7 +99,7 @@ public class Address {
     //constructor
 
     public Address(String street1, String street2, String zipcode, String city,
-                   String state, String country, boolean primaryAdd, User user) {
+                   String state, String country, Boolean primaryAdd, User user) {
         this.street1 = street1;
         this.street2 = street2;
         this.zipcode = zipcode;
@@ -108,9 +108,10 @@ public class Address {
         this.country = country;
         this.primaryAdd = primaryAdd;
         this.user = user;
+       
     }
 
     public Address() {
-        super();
+
     }
 }

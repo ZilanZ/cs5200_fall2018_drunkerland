@@ -66,7 +66,7 @@ public class Mark {
 	
 	//constructor
 	public Mark() {
-		super();
+
 	}
 
 	public Mark(int id, int points, Reviewer reviewer, Wine wine) {
