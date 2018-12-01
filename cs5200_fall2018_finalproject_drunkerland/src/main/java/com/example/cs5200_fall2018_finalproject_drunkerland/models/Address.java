@@ -15,7 +15,7 @@ public class Address {
     private String city;
     private String state;
     private String country;
-    private boolean primaryAdd;
+    private Boolean primaryAdd;
 
     @ManyToOne()
     private User user;
@@ -32,7 +32,10 @@ public class Address {
         this.primaryAdd = primaryAdd;
     }
 
-    public Address(String street1, String street2, String zipcode, String city, String state, String country, boolean primaryAdd) {
+    public Address(String street1, String street2, String zipcode,
+                   String city, String state, String country,
+                   Boolean primaryAdd)
+    {
         this.street1 = street1;
         this.street2 = street2;
         this.zipcode = zipcode;
