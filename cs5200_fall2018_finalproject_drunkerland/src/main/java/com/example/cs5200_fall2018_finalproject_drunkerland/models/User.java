@@ -1,12 +1,12 @@
 package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -22,7 +22,10 @@ public class User {
 	private Date dob;
 
 	@OneToMany(mappedBy = "user")
-	private List<Address> addresses;
+	private List<Address> addresses = new ArrayList<>();
+
+	public User() {
+	}
 
 	public User(String username, String password, String firstName, String lastName) {
 		this.username = username;

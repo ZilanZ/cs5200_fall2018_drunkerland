@@ -3,7 +3,6 @@ package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="ADDRESS")
 public class Address {
 
     @Id
@@ -16,10 +15,32 @@ public class Address {
     private String city;
     private String state;
     private String country;
-    private Boolean primaryAdd;
+    private boolean primaryAdd;
 
     @ManyToOne()
     private User user;
+
+    public Address() {
+    }
+
+    public Address(String street1, String zipcode, String city, String state, String country, boolean primaryAdd) {
+        this.street1 = street1;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.primaryAdd = primaryAdd;
+    }
+
+    public Address(String street1, String street2, String zipcode, String city, String state, String country, boolean primaryAdd) {
+        this.street1 = street1;
+        this.street2 = street2;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.primaryAdd = primaryAdd;
+    }
 
     public int getId() {
         return id;
@@ -77,41 +98,22 @@ public class Address {
         this.country = country;
     }
 
-    
-	public Boolean getPrimaryAdd() {
-		return primaryAdd;
-	}
 
-	public void setPrimaryAdd(Boolean primaryAdd) {
-		this.primaryAdd = primaryAdd;
-	}
+    public boolean isPrimaryAdd() {
+        return primaryAdd;
+    }
 
-	public User getUser() {
+    public void setPrimaryAdd(boolean primaryAdd) {
+        this.primaryAdd = primaryAdd;
+    }
+
+    public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-        if(!user.getAddresses().contains(this))
+        if (!user.getAddresses().contains(this))
             user.getAddresses().add(this);
-    }
-
-    //constructor
-
-    public Address(String street1, String street2, String zipcode, String city,
-                   String state, String country, Boolean primaryAdd, User user) {
-        this.street1 = street1;
-        this.street2 = street2;
-        this.zipcode = zipcode;
-        this.city = city;
-        this.state = state;
-        this.country = country;
-        this.primaryAdd = primaryAdd;
-        this.user = user;
-       
-    }
-
-    public Address() {
-
     }
 }
