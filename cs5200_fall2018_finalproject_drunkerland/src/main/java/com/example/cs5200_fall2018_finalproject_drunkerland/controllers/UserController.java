@@ -25,5 +25,18 @@ public class UserController {
         return (List<User>) userRepository.findAll();
     }
 
+    @RequestMapping(value = "/findById/{id}", method = RequestMethod.GET)
+    public User findUserById(@PathVariable("id") int id) {
+        return userRepository.findById(id).get();
+    }
+
+    @RequestMapping(value = "/findByName/{lastName}{firstName}", method = RequestMethod.GET)
+    public User findUserByName( @PathVariable("lastName") String lastName, @PathVariable("firstName") String firstName) {
+        return userRepository.findUserByName(lastName, firstName);
+    }
+
+    public User findUserByCredential( String username,  String password) {
+        return userRepository.findUserByCredential(username, password);
+    }
 
 }
