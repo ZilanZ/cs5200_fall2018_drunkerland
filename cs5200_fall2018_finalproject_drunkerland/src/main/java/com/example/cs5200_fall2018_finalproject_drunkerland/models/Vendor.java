@@ -10,19 +10,19 @@ public class Vendor extends User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@Column(name = "vendor_qualified")
+	private Boolean qualified;
+	@OneToMany(mappedBy = "vendor")
+	private List<Stock> stocks;
 	public Vendor(String username, String password, String lastname, String firstname, Boolean qualified) {
 		super(username, password, lastname, firstname);
 		this.qualified = qualified;
 	}
 	public Vendor(String username, String password, String lastname, String firstname, String gender, String phone,
-			String email, Date dob, Boolean qualified) {
+				  String email, Date dob, Boolean qualified) {
 		super(username, password, lastname, firstname, gender, phone, email, dob);
 		this.qualified = qualified;
 	}
-	@Column(name = "vendor_qualified")
-	private Boolean qualified;
-	@OneToMany(mappedBy = "vendor")
-	private List<Stock> stocks;
 	public Boolean getQualified() {
 		return qualified;
 	}
