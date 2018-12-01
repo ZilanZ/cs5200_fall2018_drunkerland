@@ -23,7 +23,8 @@ public class Address {
     public Address() {
     }
 
-    public Address(String street1, String zipcode, String city, String state, String country, boolean primaryAdd) {
+    public Address(String street1, String zipcode, String city, String state, 
+    		String country, Boolean primaryAdd) {
         this.street1 = street1;
         this.zipcode = zipcode;
         this.city = city;
@@ -102,11 +103,11 @@ public class Address {
     }
 
 
-    public boolean isPrimaryAdd() {
+    public Boolean isPrimaryAdd() {
         return primaryAdd;
     }
 
-    public void setPrimaryAdd(boolean primaryAdd) {
+    public void setPrimaryAdd(Boolean primaryAdd) {
         this.primaryAdd = primaryAdd;
     }
 
