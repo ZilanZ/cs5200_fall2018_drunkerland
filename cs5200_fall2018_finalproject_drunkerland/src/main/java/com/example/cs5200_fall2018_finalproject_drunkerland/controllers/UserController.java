@@ -31,23 +31,25 @@ public class UserController {
         return userRepository.findById(id).orElse(null);
     }
 
-
-    @RequestMapping(value = "/findByName/{lastName}{firstName}", method = RequestMethod.GET)
-    public User findUserByName( @PathVariable("lastName") String lastName, @PathVariable("firstName") String firstName) {
-        return userRepository.findUserByName(lastName, firstName);
+    @RequestMapping(value = "/findByName", method = RequestMethod.POST)
+    @ResponseBody
+    public List<User> findUserByName(@RequestBody User user) {
+        return userRepository.findUserByName(user.getFirstName(), user.getLastName());
     }
 
-
-    public User findUserByCredential( String username,  String password) {          // do we need map here?
-        return userRepository.findUserByCredential(username, password);
+    @RequestMapping(value = "/findByCredential", method = RequestMethod.POST)
+    @ResponseBody
+    public User findUserByCredential(@RequestBody User user) {
+        return userRepository.findUserByCredential(user.getUsername(), user.getPassword());
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public  void deleteUserById(@PathVariable("id") int id) {
+    @RequestMapping(value = "/deleteById/{id}", method = RequestMethod.DELETE)
+    public void deleteUserById(@PathVariable("id") int id) {
         userRepository.deleteById(id);
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    @ResponseBody
     public User updateUserById(@PathVariable("id") int id, @RequestBody User newUser) {
         User user = findUserById(id);
         user.set(newUser);
