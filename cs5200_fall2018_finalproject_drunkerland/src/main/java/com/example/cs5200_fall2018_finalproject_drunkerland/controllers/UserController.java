@@ -30,4 +30,17 @@ public class UserController {
     public User findUserById(@PathVariable int id) {
         return userRepository.findById(id).orElse(null);
     }
+
+
+    @RequestMapping(value = "/findByName/{lastName}{firstName}", method = RequestMethod.GET)
+    public User findUserByName( @PathVariable("lastName") String lastName, @PathVariable("firstName") String firstName) {
+        return userRepository.findUserByName(lastName, firstName);
+    }
+
+
+    public User findUserByCredential( String username,  String password) {          // do we need map here?
+        return userRepository.findUserByCredential(username, password);
+    }
+
+
 }
