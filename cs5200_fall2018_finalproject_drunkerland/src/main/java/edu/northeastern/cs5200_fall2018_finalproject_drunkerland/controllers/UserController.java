@@ -55,7 +55,7 @@ public class UserController {
      * @param name
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/name", method = RequestMethod.GET)
     public List<User> findUserByName(@RequestParam("name") String name) {
         String[] names = name.split(" ");
         return userRepository.findUserByName(names[0], names[1]);
