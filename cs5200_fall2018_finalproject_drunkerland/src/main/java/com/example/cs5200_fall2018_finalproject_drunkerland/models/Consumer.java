@@ -20,8 +20,11 @@ public class Consumer extends User{
 	@OneToMany(mappedBy="consumer")
 	private List<Follow> follows;
 
+	public Consumer() {
+	}
+
 	public Consumer(String username, String password, String lastname, String firstname, String gender, String phone,
-                    String email, Date dob, String taste) {
+					String email, Date dob, String taste) {
 		super(username, password, lastname, firstname, gender, phone, email, dob);
 		this.taste = taste;
 	}

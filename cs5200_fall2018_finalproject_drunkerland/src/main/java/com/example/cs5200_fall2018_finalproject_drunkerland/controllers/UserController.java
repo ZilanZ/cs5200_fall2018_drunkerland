@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @PathVariable passing by URL eg. /{id}
+ * @RequestParam passing by URL eg. ?key1=value1&key2=value2
+ * @RequestBody passing by body [type: (default) json]
+ *
+ * we use @RestController here, @ResponseBody is not required. default: Json
+ */
 @RestController
 @RequestMapping("api/user")
 public class UserController {
@@ -15,7 +22,6 @@ public class UserController {
     UserRepository userRepository;
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    @ResponseBody
     public User createUser(@RequestBody User user) {
         return userRepository.save(user);
     }
@@ -25,20 +31,17 @@ public class UserController {
         return (List<User>) userRepository.findAll();
     }
 
-
     @RequestMapping(value = "/findById/{id}", method = RequestMethod.GET)
     public User findUserById(@PathVariable int id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    @RequestMapping(value = "/findByName", method = RequestMethod.POST)
-    @ResponseBody
-    public List<User> findUserByName(@RequestBody User user) {
-        return userRepository.findUserByName(user.getFirstName(), user.getLastName());
+    @RequestMapping(value = "/findByName", method = RequestMethod.GET)
+    public List<User> findUserByName(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
+        return userRepository.findUserByName(firstName, lastName);
     }
 
     @RequestMapping(value = "/findByCredential", method = RequestMethod.POST)
-    @ResponseBody
     public User findUserByCredential(@RequestBody User user) {
         return userRepository.findUserByCredential(user.getUsername(), user.getPassword());
     }
