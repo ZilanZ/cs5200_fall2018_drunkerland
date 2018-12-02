@@ -59,7 +59,7 @@ public class Follow {
 	}
 
 	public Follow(int id, Consumer consumer, Reviewer reviewer) {
-		super();
+		
 		this.id = id;
 		this.consumer = consumer;
 		this.reviewer = reviewer;

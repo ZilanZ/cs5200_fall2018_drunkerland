@@ -119,14 +119,38 @@ public class Order {
 
 	}
 
-	public Order(int id, OrderStatus status, String destination, float totalPrice, Date created, Consumer consumer,
+	public Order(int id, OrderStatus status, String destination, float totalPrice, Date created, 
+			Consumer consumer,
 			List<Item> items) {
-		super();
+		
 		this.id = id;
 		this.status = status;
 		this.destination = destination;
 		this.totalPrice = totalPrice;
 		this.created = created;
+		this.consumer = consumer;
+		this.items = items;
+		items = new ArrayList<>();
+	}
+	
+	public Order(OrderStatus status, String destination, float totalPrice, Date created, 
+			Consumer consumer, List<Item> items) 
+	{
+		this.status = status;
+		this.destination = destination;
+		this.totalPrice = totalPrice;
+		this.created = created;
+		this.consumer = consumer;
+		this.items = items;
+		items = new ArrayList<>();
+	}
+	
+	
+	//constructor for shopping cart
+	public Order(OrderStatus status, float totalPrice, Consumer consumer, List<Item> items) 
+	{
+		this.status = status;
+		this.totalPrice = totalPrice;
 		this.consumer = consumer;
 		this.items = items;
 		items = new ArrayList<>();

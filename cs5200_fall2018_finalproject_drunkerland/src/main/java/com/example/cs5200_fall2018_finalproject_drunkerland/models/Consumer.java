@@ -30,6 +30,11 @@ public class Consumer extends User{
 		super(username, password, lastname, firstname);
 		this.taste = taste;
 	}
+	
+	public Consumer(String username, String password, String lastname, String firstname) {
+		super(username, password, lastname, firstname);
+		
+	}
 
 
 	public String getTaste() {
