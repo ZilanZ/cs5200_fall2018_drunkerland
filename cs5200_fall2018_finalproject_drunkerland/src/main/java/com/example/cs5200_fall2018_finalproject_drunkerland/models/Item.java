@@ -100,7 +100,7 @@ public class Item {
 	}
 
 	public Item(int id, int quantity, Stock stock, Order order, List<Package> itemsInPackage) {
-		super();
+		
 		this.id = id;
 		this.quantity = quantity;
 		this.stock = stock;
@@ -109,7 +109,11 @@ public class Item {
 		itemsInPackage =new ArrayList<>();
 	}
 	
-	
+public Item(int quantity) {
+		
+		this.quantity = quantity;
+
+	}
 	
 
 }

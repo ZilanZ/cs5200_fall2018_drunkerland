@@ -130,7 +130,7 @@ public class Stock {
 
 	public Stock(int id, int amount, float purchasingPrice, float sellingPrice, boolean available, Vendor vendor,
 			Wine wine, List<Item> itemsInStock) {
-		super();
+		
 		this.id = id;
 		this.amount = amount;
 		this.purchasingPrice = purchasingPrice;

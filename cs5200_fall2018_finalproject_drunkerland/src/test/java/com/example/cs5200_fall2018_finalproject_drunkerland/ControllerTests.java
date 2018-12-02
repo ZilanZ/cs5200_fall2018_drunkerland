@@ -9,7 +9,7 @@ public class ControllerTests extends DemoApplicationTests {
 
     @Autowired
     UserController userController;
-
+    
     @Test
     public void testCreateUser() {
         User alice = new User("alice", "password", "Alice", "Wonderland");

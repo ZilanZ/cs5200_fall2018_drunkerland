@@ -38,7 +38,7 @@ public class Package {
 	//
 	
 	public Package(int id, String trackingNumber, PackageStatus status, Item item) {
-		super();
+		
 		this.id = id;
 		this.trackingNumber = trackingNumber;
 		this.status = status;

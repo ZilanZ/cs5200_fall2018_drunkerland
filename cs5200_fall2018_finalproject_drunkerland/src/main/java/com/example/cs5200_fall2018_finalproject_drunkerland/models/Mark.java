@@ -70,7 +70,7 @@ public class Mark {
 	}
 
 	public Mark(int id, int points, Reviewer reviewer, Wine wine) {
-		super();
+		
 		this.id = id;
 		this.points = points;
 		this.reviewer = reviewer;
