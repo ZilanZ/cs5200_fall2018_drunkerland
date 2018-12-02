@@ -1,5 +1,6 @@
 package com.example.cs5200_fall2018_finalproject_drunkerland.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -123,7 +124,7 @@ public class Stock {
 	
 	//constructor
 	public Stock() {
-		super();
+
 	}
 
 
@@ -138,6 +139,7 @@ public class Stock {
 		this.vendor = vendor;
 		this.wine = wine;
 		this.itemsInStock = itemsInStock;
+		itemsInStock = new ArrayList<>();
 	}
 	
 	

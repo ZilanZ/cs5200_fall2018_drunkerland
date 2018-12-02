@@ -116,7 +116,7 @@ public class Order {
 	
 	//constructor
 	public Order() {
-		super();
+
 	}
 
 	public Order(int id, OrderStatus status, String destination, float totalPrice, Date created, Consumer consumer,

@@ -33,6 +33,25 @@ public class Package {
 		this.trackingNumber = trackingNumber;
 		this.status = status;
 	}
+	
+	
+	//
+	
+	public Package(int id, String trackingNumber, PackageStatus status, Item item) {
+		super();
+		this.id = id;
+		this.trackingNumber = trackingNumber;
+		this.status = status;
+		this.item = item;
+	}
+
+	
+	public Package() {
+
+	}
+
+
+	//
 
 	public int getId() {
 		return id;
@@ -68,5 +87,6 @@ public class Package {
 			item.getItemsInPackage().add(this);
 			
 	}
+
 
 }

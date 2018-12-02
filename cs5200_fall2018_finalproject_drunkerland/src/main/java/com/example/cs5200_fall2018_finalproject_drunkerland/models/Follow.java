@@ -55,7 +55,7 @@ public class Follow {
 	
 	//constructor
 	public Follow() {
-		super();
+
 	}
 
 	public Follow(int id, Consumer consumer, Reviewer reviewer) {

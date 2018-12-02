@@ -96,7 +96,7 @@ public class Item {
 	
 	//constructor
 	public Item() {
-		super();
+
 	}
 
 	public Item(int id, int quantity, Stock stock, Order order, List<Package> itemsInPackage) {
