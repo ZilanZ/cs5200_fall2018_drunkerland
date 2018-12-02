@@ -10,24 +10,8 @@ public class Supplier extends User{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	public Supplier(String username, String password, String lastname, String firstname, String location,
-			String graspType, String history, Boolean qualified) {
-		super(username, password, lastname, firstname);
-		this.location = location;
-		this.graspType = graspType;
-		this.history = history;
-		this.qualified = qualified;
-	}
-	public Supplier(String username, String password, String lastname, String firstname, String gender, String phone,
-			String email, Date dob, String location, String graspType, String history, Boolean qualified) {
-		super(username, password, lastname, firstname, gender, phone, email, dob);
-		this.location = location;
-		this.graspType = graspType;
-		this.history = history;
-		this.qualified = qualified;
-	}
 	private String location;
-	private String graspType;
+	private String grapeType;
 	private String history;
 	@Column(name = "supplier_qualified")
 	private Boolean qualified;
@@ -35,7 +19,22 @@ public class Supplier extends User{
 	private List<Wine> wines;
 	@OneToMany(mappedBy="supplier")
 	private List<Sponsorship> sponsers;
-	
+	public Supplier(String username, String password, String lastname, String firstname, String location,
+					String graspType, String history, Boolean qualified) {
+		super(username, password, lastname, firstname);
+		this.location = location;
+		this.grapeType = graspType;
+		this.history = history;
+		this.qualified = qualified;
+	}
+	public Supplier(String username, String password, String lastname, String firstname, String gender, String phone,
+					String email, Date dob, String location, String graspType, String history, Boolean qualified) {
+		super(username, password, lastname, firstname, gender, phone, email, dob);
+		this.location = location;
+		this.grapeType = graspType;
+		this.history = history;
+		this.qualified = qualified;
+	}
 	public String getLocation() {
 		return location;
 	}
@@ -43,10 +42,10 @@ public class Supplier extends User{
 		this.location = location;
 	}
 	public String getGraspType() {
-		return graspType;
+		return grapeType;
 	}
 	public void setGraspType(String graspType) {
-		this.graspType = graspType;
+		this.grapeType = graspType;
 	}
 	public String getHistory() {
 		return history;

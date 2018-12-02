@@ -10,19 +10,6 @@ public class Wine {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	public Wine(String name, String appellation, String color, String region, String country, String vintage, Date date,
-			Boolean primeurs, float score) {
-		super();
-		this.name = name;
-		this.appellation = appellation;
-		this.color = color;
-		this.region = region;
-		this.country = country;
-		this.vintage = vintage;
-		this.date = date;
-		this.primeurs = primeurs;
-		this.score = score;
-	}
 	private String name;
 	private String appellation;
 	private String color;
@@ -40,6 +27,19 @@ public class Wine {
 	private List<Stock> stocks;
 	@OneToMany(mappedBy="wine")
 	private List<Mark> marks;
+	public Wine(String name, String appellation, String color, String region, String country, String vintage, Date date,
+				Boolean primeurs, float score) {
+		super();
+		this.name = name;
+		this.appellation = appellation;
+		this.color = color;
+		this.region = region;
+		this.country = country;
+		this.vintage = vintage;
+		this.date = date;
+		this.primeurs = primeurs;
+		this.score = score;
+	}
 	public String getName() {
 		return name;
 	}

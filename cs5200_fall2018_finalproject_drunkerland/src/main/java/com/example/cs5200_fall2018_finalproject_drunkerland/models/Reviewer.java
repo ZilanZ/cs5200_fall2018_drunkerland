@@ -11,15 +11,6 @@ public class Reviewer extends User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	public Reviewer(String username, String password, String lastname, String firstname, ReviewerLevel level) {
-		super(username, password, lastname, firstname);
-		this.level = level;
-	}
-	public Reviewer(String username, String password, String lastname, String firstname, String gender, String phone,
-			String email, Date dob, ReviewerLevel level) {
-		super(username, password, lastname, firstname, gender, phone, email, dob);
-		this.level = level;
-	}
 	public enum ReviewerLevel{
 		BEGINNER,
 		INTERMEDIATE,
@@ -47,6 +38,15 @@ public class Reviewer extends User {
 		return marks;
 	}
 
+	public Reviewer(String username, String password, String lastname, String firstname, ReviewerLevel level) {
+		super(username, password, lastname, firstname);
+		this.level = level;
+	}
+	public Reviewer(String username, String password, String lastname, String firstname, String gender, String phone,
+					String email, Date dob, ReviewerLevel level) {
+		super(username, password, lastname, firstname, gender, phone, email, dob);
+		this.level = level;
+	}
 	@OneToMany(mappedBy="reviewer", fetch= FetchType.EAGER)
 	private List<Follow> follows;
 

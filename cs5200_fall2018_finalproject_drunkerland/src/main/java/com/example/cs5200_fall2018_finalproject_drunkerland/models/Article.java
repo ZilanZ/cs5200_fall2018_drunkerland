@@ -16,13 +16,6 @@ public class Article {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	public Article(String title, Date created, Date updated, int views) {
-		super();
-		this.title = title;
-		this.created = created;
-		this.updated = updated;
-		this.views = views;
-	}
 	private String title;
 	private Date created;
 	private Date updated;
@@ -31,6 +24,13 @@ public class Article {
 	private Reviewer reviewer;
 	@OneToMany(mappedBy="articleRelationship")
 	private List<WineReviewerRelationship> wineReviewerRelationships;
+	public Article(String title, Date created, Date updated, int views) {
+		super();
+		this.title = title;
+		this.created = created;
+		this.updated = updated;
+		this.views = views;
+	}
 	public String getTitle() {
 		return title;
 	}
