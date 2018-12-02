@@ -15,44 +15,78 @@ import java.util.List;
  * we use @RestController here, @ResponseBody is not required. default: Json
  */
 @RestController
-@RequestMapping("api/user")
+@RequestMapping("rest/api/users")
 public class UserController {
 
     @Autowired
     UserRepository userRepository;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    /**
+     * create user
+     * @param user
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST)
     public User createUser(@RequestBody User user) {
         return userRepository.save(user);
     }
 
-    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
+    /**
+     * retrieve all users
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET)
     public List<User> findAllUsers() {
         return (List<User>) userRepository.findAll();
     }
 
-    @RequestMapping(value = "/findById/{id}", method = RequestMethod.GET)
+    /**
+     * retrieve user by id
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public User findUserById(@PathVariable int id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    @RequestMapping(value = "/findByName", method = RequestMethod.GET)
-    public List<User> findUserByName(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
-        return userRepository.findUserByName(firstName, lastName);
+    /**
+     * retrieve user by name
+     * @param name
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET)
+    public List<User> findUserByName(@RequestParam("name") String name) {
+        String[] names = name.split(" ");
+        return userRepository.findUserByName(names[0], names[1]);
     }
 
-    @RequestMapping(value = "/findByCredential", method = RequestMethod.POST)
+    /**
+     * user authentication: retrieve user by credential
+     * @param user
+     * @return
+     */
+    @RequestMapping(value = "/auth", method = RequestMethod.POST)
     public User findUserByCredential(@RequestBody User user) {
         return userRepository.findUserByCredential(user.getUsername(), user.getPassword());
     }
 
-    @RequestMapping(value = "/deleteById/{id}", method = RequestMethod.DELETE)
+    /**
+     * delete user by id
+     * @param id
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteUserById(@PathVariable("id") int id) {
         userRepository.deleteById(id);
     }
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
-    @ResponseBody
+    /**
+     * update user by id
+     * @param id
+     * @param newUser
+     * @return
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public User updateUserById(@PathVariable("id") int id, @RequestBody User newUser) {
         User user = findUserById(id);
         user.set(newUser);
