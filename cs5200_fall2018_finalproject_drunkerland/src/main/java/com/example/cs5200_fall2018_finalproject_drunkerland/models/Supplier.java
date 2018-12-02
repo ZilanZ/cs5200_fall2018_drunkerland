@@ -11,7 +11,7 @@ public class Supplier extends User{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String location;
-	private String graspType;
+	private String grapeType;
 	private String history;
 	@Column(name = "supplier_qualified")
 	private Boolean qualified;
@@ -23,7 +23,7 @@ public class Supplier extends User{
 					String graspType, String history, Boolean qualified) {
 		super(username, password, lastname, firstname);
 		this.location = location;
-		this.graspType = graspType;
+		this.grapeType = graspType;
 		this.history = history;
 		this.qualified = qualified;
 	}
@@ -31,7 +31,7 @@ public class Supplier extends User{
 					String email, Date dob, String location, String graspType, String history, Boolean qualified) {
 		super(username, password, lastname, firstname, gender, phone, email, dob);
 		this.location = location;
-		this.graspType = graspType;
+		this.grapeType = graspType;
 		this.history = history;
 		this.qualified = qualified;
 	}
@@ -42,10 +42,10 @@ public class Supplier extends User{
 		this.location = location;
 	}
 	public String getGraspType() {
-		return graspType;
+		return grapeType;
 	}
 	public void setGraspType(String graspType) {
-		this.graspType = graspType;
+		this.grapeType = graspType;
 	}
 	public String getHistory() {
 		return history;

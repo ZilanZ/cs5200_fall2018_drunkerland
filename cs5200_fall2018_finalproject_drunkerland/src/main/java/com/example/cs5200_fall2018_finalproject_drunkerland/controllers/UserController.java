@@ -25,6 +25,7 @@ public class UserController {
         return (List<User>) userRepository.findAll();
     }
 
+
     @RequestMapping(value = "/findById/{id}", method = RequestMethod.GET)
     public User findUserById(@PathVariable int id) {
         return userRepository.findById(id).orElse(null);
