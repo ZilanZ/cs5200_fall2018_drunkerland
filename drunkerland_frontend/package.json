@@ -1,0 +1,22 @@
+{
+  "name": "edu.northeastern.cs5200_fall2018_finalproject_drunkerland",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZilanZ/cs5200_fall2018_drunkerland.git"
+  },
+  "author": "Zilan Zhang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZilanZ/cs5200_fall2018_drunkerland/issues"
+  },
+  "homepage": "https://github.com/ZilanZ/cs5200_fall2018_drunkerland#readme",
+  "dependencies": {
+    "angular": "^1.7.5"
+  }
+}
