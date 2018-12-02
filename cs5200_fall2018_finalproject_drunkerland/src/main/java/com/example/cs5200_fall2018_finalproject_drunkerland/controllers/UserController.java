@@ -42,5 +42,15 @@ public class UserController {
         return userRepository.findUserByCredential(username, password);
     }
 
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public  void deleteUserById(@PathVariable("id") int id) {
+        userRepository.deleteById(id);
+    }
 
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    public User updateUserById(@PathVariable("id") int id, @RequestBody User newUser) {
+        User user = findUserById(id);
+        user.set(newUser);
+        return userRepository.save(user);
+    }
 }

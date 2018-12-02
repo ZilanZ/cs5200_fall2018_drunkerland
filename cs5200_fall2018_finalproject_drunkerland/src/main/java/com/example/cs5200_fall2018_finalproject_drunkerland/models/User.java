@@ -137,4 +137,15 @@ public class User {
 		this.addresses.remove(address);
 	}
 
+	public void set (User newUser){
+		this.username = newUser.username;
+		this.password = newUser.password;
+		this.firstName = newUser.firstName;
+		this.lastName = newUser.lastName;
+		this.gender = newUser.gender;
+		this.phone = newUser.phone;
+		this.email = newUser.email;
+		this.dob = newUser.dob;
+	}
+
 }
