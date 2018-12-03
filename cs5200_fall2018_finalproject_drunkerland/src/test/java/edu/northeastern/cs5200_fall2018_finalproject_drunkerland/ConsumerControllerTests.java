@@ -49,7 +49,7 @@ public class ConsumerControllerTests extends DemoApplicationTests {
     }
 
     @AfterClass
-    public static void deleteConsymerById() {
+    public static void deleteConsumerById() {
         int id = 59;
         consumerController.deleteConsumerById(id);
     }

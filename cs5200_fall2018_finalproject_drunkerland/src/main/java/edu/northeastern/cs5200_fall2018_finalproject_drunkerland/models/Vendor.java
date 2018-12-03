@@ -43,4 +43,9 @@ public class Vendor extends User {
 	public void removeStock(Stock stock){
 		this.stocks.remove(stock);
 	}
+
+	public void setVendor(Vendor newVendor) {
+		this.set(newVendor);
+		this.qualified = newVendor.qualified;
+	}
 }

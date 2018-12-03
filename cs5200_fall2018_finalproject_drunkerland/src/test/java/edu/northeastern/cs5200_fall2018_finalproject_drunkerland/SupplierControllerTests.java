@@ -18,39 +18,39 @@ public class SupplierControllerTests extends DemoApplicationTests {
 //        supplierController.createSupplier(supplier);
 //    }
 
-//    @Test
-//    public void findSupplierByName() {
-//        supplierController.findSupplierByName("danlin jia");
-//    }
-//
-//    @Test
-//    public void findSupplierById(){
-//        int id = 67;
-//        supplierController.findSupplierById(id);
-//    }
-//
-//
-//    @Test
-//    public void findAllSupplier() {
-//        supplierController.findAllSuppliers();
-//    }
-//
-//    @Test
-//    public void findSupplierByCredential() {
-//        Supplier newSupplier = new Supplier("supplier","supplier","danlin","jia","china","red","nohistory",true);
-//        supplierController.findSupplierByCredential(newSupplier);
-//    }
-//
-//    @Test
-//    public void updateSupplierById() {
-//        int id = 67;
-//        Supplier newSupplier = new Supplier("supplier","supplier","danlin","jia","china","red","nohistory",false);
-//        supplierController.updateSupplierById(id, newSupplier);
-//    }
+    @Test
+    public void findSupplierByName() {
+        supplierController.findSupplierByName("danlin jia");
+    }
 
     @Test
-    public void deleteConsymerById() {
+    public void findSupplierById(){
         int id = 67;
-        supplierController.deleteSupplierById(id);
+        supplierController.findSupplierById(id);
     }
+
+
+    @Test
+    public void findAllSupplier() {
+        supplierController.findAllSuppliers();
+    }
+
+    @Test
+    public void findSupplierByCredential() {
+        Supplier newSupplier = new Supplier("supplier","supplier","danlin","jia","china","red","nohistory",true);
+        supplierController.findSupplierByCredential(newSupplier);
+    }
+
+    @Test
+    public void updateSupplierById() {
+        int id = 67;
+        Supplier newSupplier = new Supplier("supplier","supplier","danlin","jia","china","red","nohistory",false);
+        supplierController.updateSupplierById(id, newSupplier);
+    }
+
+//    @Test
+//    public void deleteConsumerById() {
+//        int id = 67;
+//        supplierController.deleteSupplierById(id);
+//    }
 }
