@@ -8,9 +8,6 @@ import javax.persistence.*;
 
 @Entity
 public class Reviewer extends User {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
 	public enum ReviewerLevel{
 		BEGINNER,
 		INTERMEDIATE,

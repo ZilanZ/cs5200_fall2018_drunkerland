@@ -3,21 +3,14 @@ package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Consumer extends User{
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
 	private String taste;
-	@OneToMany(mappedBy="consumer")
+	@OneToMany(mappedBy="consumer", cascade = CascadeType.MERGE)
 	private List<Order> orders;
-	@OneToMany(mappedBy="consumer")
+	@OneToMany(mappedBy="consumer", cascade = CascadeType.MERGE)
 	private List<Follow> follows;
 
 	public Consumer() {
@@ -84,5 +77,10 @@ public class Consumer extends User{
 
 	public void removeFollow(Follow follow) {
 		this.follows.remove(follow);
+	}
+
+	public void setConsumer(Consumer newConsumer) {
+		 set(newConsumer);
+		 this.taste = newConsumer.taste;
 	}
 }

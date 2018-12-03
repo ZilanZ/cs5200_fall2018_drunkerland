@@ -7,9 +7,6 @@ import javax.persistence.*;
 
 @Entity
 public class Supplier extends User{
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
 	private String location;
 	private String grapeType;
 	private String history;

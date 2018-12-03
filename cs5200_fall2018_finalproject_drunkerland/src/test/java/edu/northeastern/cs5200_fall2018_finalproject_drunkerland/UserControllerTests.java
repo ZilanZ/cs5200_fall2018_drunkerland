@@ -41,7 +41,7 @@ public class UserControllerTests extends DemoApplicationTests {
         userController.deleteUserById(id);
     }
 
-    @Test
+    //@Test
     public void testUpdateUserById() {
         int id = 37;
         User test = new User("danlin", "danlin", "danlin", "jia");

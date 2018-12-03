@@ -7,9 +7,6 @@ import javax.persistence.*;
 
 @Entity
 public class Vendor extends User {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
 	@Column(name = "vendor_qualified")
 	private Boolean qualified;
 	@OneToMany(mappedBy = "vendor")
