@@ -34,7 +34,7 @@ public class Reviewer extends User {
 	public List<Mark> getMarks() {
 		return marks;
 	}
-
+	public Reviewer(){};
 	public Reviewer(String username, String password, String lastname, String firstname, ReviewerLevel level) {
 		super(username, password, lastname, firstname);
 		this.level = level;

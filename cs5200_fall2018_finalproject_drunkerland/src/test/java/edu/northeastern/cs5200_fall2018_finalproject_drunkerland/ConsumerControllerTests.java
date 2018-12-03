@@ -3,9 +3,7 @@ package edu.northeastern.cs5200_fall2018_finalproject_drunkerland;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.ConsumerController;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Consumer;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ConsumerRepository;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -13,17 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class ConsumerControllerTests extends DemoApplicationTests {
     @Autowired
-    ConsumerController consumerController;
+    static ConsumerController consumerController;
 
-    @Before
-    public void createConsumerTest(){
+    @BeforeClass
+    public static void createConsumerTest(){
         Consumer consumer = new Consumer("jia", "jia", "danlin", "jia", "notaste");
         consumerController.createConsumer(consumer);
     }
 
     @Test
     public void findConsumerById(){
-        int id = 0;
+        int id = 66;
         consumerController.findConsumerById(id);
     }
 
@@ -45,13 +43,13 @@ public class ConsumerControllerTests extends DemoApplicationTests {
 
     @Test
     public void updateConsumerById() {
-        int id = 59;
+        int id = 66;
         Consumer newConsumer = new Consumer("jia", "jia", "danlin", "jia", "sometaste");
         consumerController.updateConsumerById(id, newConsumer);
     }
 
-    @After
-    public  void deleteConsymerById() {
+    @AfterClass
+    public static void deleteConsymerById() {
         int id = 59;
         consumerController.deleteConsumerById(id);
     }

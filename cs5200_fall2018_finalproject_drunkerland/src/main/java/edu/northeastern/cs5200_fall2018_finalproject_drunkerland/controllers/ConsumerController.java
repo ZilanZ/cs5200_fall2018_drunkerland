@@ -3,7 +3,6 @@ package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api.ConsumerApi;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Consumer;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ConsumerRepository;
-import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,8 +13,7 @@ public class ConsumerController implements ConsumerApi {
 
     @Autowired
     ConsumerRepository consumerRepository;
-    @Autowired
-    UserRepository userRepository;
+
 
     public Consumer createConsumer(Consumer consumer) {
         return consumerRepository.save(consumer);
@@ -31,11 +29,11 @@ public class ConsumerController implements ConsumerApi {
 
     public List<Consumer> findConsumerByName(String name) {
         String[] names = name.split(" ");
-        return (List<Consumer>) userRepository.findUserByCredential(names[0], names[1]);
+        return  consumerRepository.findConsumerByName(names[0], names[1]);
     }
 
     public Consumer findConsumerByCredential(Consumer consumer) {
-        return (Consumer) userRepository.findUserByCredential(consumer.getUsername(), consumer.getPassword());
+        return (Consumer) consumerRepository.findConsumerByCredential(consumer.getUsername(), consumer.getPassword());
     }
 
     public void deleteConsumerById(int id) {

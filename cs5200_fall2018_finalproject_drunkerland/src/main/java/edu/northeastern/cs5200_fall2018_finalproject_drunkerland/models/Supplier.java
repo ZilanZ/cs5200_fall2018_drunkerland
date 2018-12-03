@@ -16,9 +16,10 @@ public class Supplier extends User{
 	private List<Wine> wines;
 	@OneToMany(mappedBy="supplier")
 	private List<Sponsorship> sponsers;
-	public Supplier(String username, String password, String lastname, String firstname, String location,
+	public Supplier(){}
+	public Supplier(String username, String password, String lastName, String firstName, String location,
 					String graspType, String history, Boolean qualified) {
-		super(username, password, lastname, firstname);
+		super(username, password, lastName, firstName);
 		this.location = location;
 		this.grapeType = graspType;
 		this.history = history;
@@ -81,5 +82,10 @@ public class Supplier extends User{
 			sponser.setSupplier(this);
 		}
 	}
-	
+	public void setSupplier(Supplier newSupplier) {
+		this.set(newSupplier);
+		this.location = newSupplier.location;
+		this.history = newSupplier.history;
+		this.grapeType = newSupplier.grapeType;
+	}
 }

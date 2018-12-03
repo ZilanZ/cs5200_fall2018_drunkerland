@@ -11,6 +11,7 @@ public class Vendor extends User {
 	private Boolean qualified;
 	@OneToMany(mappedBy = "vendor")
 	private List<Stock> stocks;
+	public Vendor(){}
 	public Vendor(String username, String password, String lastname, String firstname, Boolean qualified) {
 		super(username, password, lastname, firstname);
 		this.qualified = qualified;
