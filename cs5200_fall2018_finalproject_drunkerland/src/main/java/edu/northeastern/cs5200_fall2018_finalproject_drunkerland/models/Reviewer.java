@@ -88,4 +88,9 @@ public class Reviewer extends User {
 	public void removeMark(Mark mark) {
 		this.marks.remove(mark);
 	}
+
+	public void setReviewer(Reviewer newReviewer) {
+		this.set(newReviewer);
+		this.level = newReviewer.level;
+	}
 }
