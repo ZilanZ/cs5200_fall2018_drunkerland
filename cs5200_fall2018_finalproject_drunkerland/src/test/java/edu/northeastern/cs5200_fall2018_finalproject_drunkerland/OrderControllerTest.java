@@ -20,7 +20,7 @@ public class OrderControllerTest extends DemoApplicationTests{
 	@Autowired
     UserController userController;
 	
-	@Before
+	//@Before
 	public void setup()
 	{
 		 Consumer alice = new Consumer("alice", "password", "Alice", "Wonderland");
@@ -34,7 +34,7 @@ public class OrderControllerTest extends DemoApplicationTests{
 	     Order order123 = new Order(Order.OrderStatus.BASKET, (float)123.5, (Consumer)alice, items );
 	     orderController.createOrder(order123);
 	}
-	@Test
+	//@Test
     public void testCreateOrder() {
 		
         
