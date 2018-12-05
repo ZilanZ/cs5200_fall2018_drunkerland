@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -24,8 +24,14 @@ public class Article {
 	private Reviewer reviewer;
 	@OneToMany(mappedBy="articleRelationship")
 	private List<WineReviewerRelationship> wineReviewerRelationships;
+	public Article(){};
+	public Article(String title) {
+		this.title = title;
+		this.created = null;
+		this.updated = null;
+		this.views = 0;
+	}
 	public Article(String title, Date created, Date updated, int views) {
-		super();
 		this.title = title;
 		this.created = created;
 		this.updated = updated;
@@ -78,5 +84,12 @@ public class Article {
 	}
 	public  void  removeRelationship(WineReviewerRelationship relationship){
 		this.wineReviewerRelationships.remove(relationship);
+	}
+	public void set(Article newArticle) {
+		this.title = newArticle.title;
+		// this.created = created; created will be fixed once it's created.
+		java.util.Date utilDate = new java.util.Date();
+		this.updated = new java.sql.Date(utilDate.getTime());
+		// the number of views keep same;
 	}
 }

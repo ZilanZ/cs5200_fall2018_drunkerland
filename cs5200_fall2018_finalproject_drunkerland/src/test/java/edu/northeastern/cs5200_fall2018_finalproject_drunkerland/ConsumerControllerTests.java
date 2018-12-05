@@ -11,13 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class ConsumerControllerTests extends DemoApplicationTests {
     @Autowired
-    static ConsumerController consumerController;
+     ConsumerController consumerController;
 
-    @BeforeClass
-    public static void createConsumerTest(){
-        Consumer consumer = new Consumer("jia", "jia", "danlin", "jia", "notaste");
-        consumerController.createConsumer(consumer);
-    }
+//    @Test
+//    public  void createConsumerTest(){
+//        Consumer consumer = new Consumer("jia", "jia", "danlin", "jia", "notaste");
+//        consumerController.createConsumer(consumer);
+//    }
 
     @Test
     public void findConsumerById(){
@@ -48,9 +48,9 @@ public class ConsumerControllerTests extends DemoApplicationTests {
         consumerController.updateConsumerById(id, newConsumer);
     }
 
-    @AfterClass
-    public static void deleteConsumerById() {
-        int id = 59;
-        consumerController.deleteConsumerById(id);
-    }
+//    @Test
+//    public  void deleteConsumerById() {
+//        int id = 59;
+//        consumerController.deleteConsumerById(id);
+//    }
 }

@@ -1,5 +1,6 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland;
 
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.ArticleController;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.SupplierController;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Supplier;
 import org.junit.*;
@@ -11,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class SupplierControllerTests extends DemoApplicationTests {
     @Autowired
      SupplierController supplierController;
-
+//
 //    @Test
 //    public  void createSupplierTest(){
 //        Supplier supplier = new Supplier("supplier","supplier","danlin","jia","china","red","nohistory",true);
@@ -49,8 +50,10 @@ public class SupplierControllerTests extends DemoApplicationTests {
     }
 
 //    @Test
-//    public void deleteConsumerById() {
+//    public void deleteSupplierById() {
 //        int id = 67;
 //        supplierController.deleteSupplierById(id);
 //    }
+
+
 }

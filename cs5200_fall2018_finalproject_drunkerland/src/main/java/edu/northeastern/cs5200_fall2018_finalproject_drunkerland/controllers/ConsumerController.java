@@ -1,6 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers;
 
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api.ConsumerApi;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Article;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Consumer;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ConsumerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +46,5 @@ public class ConsumerController implements ConsumerApi {
         consumer.setConsumer(newConsumer);
         return consumerRepository.save(consumer);
     }
+
 }

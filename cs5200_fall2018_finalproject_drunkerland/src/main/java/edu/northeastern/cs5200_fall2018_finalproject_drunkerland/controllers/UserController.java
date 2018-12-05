@@ -15,7 +15,10 @@ public class UserController implements UserApi {
     UserRepository userRepository;
 
     public User createUser(User user) {
-        return userRepository.save(user);
+        if(this.findUserByUsername(user.getUsername())==null){
+            return userRepository.save(user);
+        }
+        return null;
     }
 
     public List<User> findAllUsers() {
@@ -33,6 +36,10 @@ public class UserController implements UserApi {
 
     public User findUserByCredential(User user) {
         return userRepository.findUserByCredential(user.getUsername(), user.getPassword());
+    }
+
+    public User findUserByUsername(String username) {
+        return userRepository.findUserByUsername(username);
     }
 
     public void deleteUserById(int id) {

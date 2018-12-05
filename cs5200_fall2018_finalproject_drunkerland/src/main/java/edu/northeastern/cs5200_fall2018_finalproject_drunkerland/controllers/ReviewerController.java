@@ -1,7 +1,9 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers;
 
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api.ReviewerApi;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Article;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Reviewer;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ArticleRepository;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ReviewerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +15,8 @@ public class ReviewerController implements ReviewerApi {
 
     @Autowired
     ReviewerRepository reviewerRepository;
+    @Autowired
+    ArticleRepository articleRepository;
 
     public Reviewer createReviewer(Reviewer reviewer) {
         return reviewerRepository.save(reviewer);
@@ -35,6 +39,7 @@ public class ReviewerController implements ReviewerApi {
         return reviewerRepository.findReviewerByCredential(reviewer.getUsername(), reviewer.getPassword());
     }
 
+
     public void deleteReviewerById(int id) {
         reviewerRepository.deleteById(id);
     }
@@ -43,5 +48,22 @@ public class ReviewerController implements ReviewerApi {
         Reviewer reviewer = findReviewerById(id);
         reviewer.setReviewer(newReviewer);
         return reviewerRepository.save(reviewer);
+    }
+
+    public List<Article> findArticleForReviewer(int rId) {
+        Reviewer reviewer = findReviewerById(rId);
+        return reviewer.getArticles();
+    }
+
+    public boolean addArticleToReviewer(int rId, int aId) {
+        Article article = articleRepository.findById(aId).orElse(null);
+        Reviewer reviewer = this.findReviewerById(rId);
+        if (article!=null && reviewer!=null){
+            reviewer.addArticle(article);
+            Reviewer reviewer1 = reviewerRepository.save(reviewer);
+            //updateReviewerById(rId, reviewer);
+            return true;
+        }
+        return false;
     }
 }

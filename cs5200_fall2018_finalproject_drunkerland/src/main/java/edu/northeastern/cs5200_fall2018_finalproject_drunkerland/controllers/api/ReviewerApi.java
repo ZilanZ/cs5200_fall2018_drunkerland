@@ -1,6 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api;
 
 
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Article;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Reviewer;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,6 +58,14 @@ public interface ReviewerApi {
     Reviewer findReviewerByCredential(@RequestBody Reviewer reviewer);
 
     /**
+     * find all articles writes for one reviewer
+     * @param rId
+     * @return
+     */
+    @RequestMapping(value = "/{rId}/articles", method = RequestMethod.GET)
+    List<Article> findArticleForReviewer(@PathVariable("rId") int rId);
+
+    /**
      * delete reviewer by id
      * @param id
      */
@@ -72,4 +81,13 @@ public interface ReviewerApi {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     Reviewer updateReviewerById(@PathVariable("id") int id, @RequestBody Reviewer newReviewer);
 
+    /**
+     * add an article to a reviewer
+     * To use it, construct a new article first.
+     * @param rId
+     * @param aId
+     * @return
+     */
+    @RequestMapping(value = "/{rId}/article/{aId}", method = RequestMethod.PUT)
+    boolean addArticleToReviewer(@PathVariable("rId") int rId, @PathVariable("aId") int aId);
 }

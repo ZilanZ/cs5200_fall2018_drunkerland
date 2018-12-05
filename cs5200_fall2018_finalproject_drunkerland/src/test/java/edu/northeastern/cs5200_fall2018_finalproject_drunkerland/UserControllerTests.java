@@ -15,36 +15,36 @@ public class UserControllerTests extends DemoApplicationTests {
 
     //@Test
     public void testCreateUser() {
-        User alice = new User("alice", "password", "Dan", "Jones");
-        userController.createUser(alice);
+        User alice = new User("jia", "jia", "Dan", "Jones");
+        assert (userController.createUser(alice)==null);
     }
 
-    @Test
-    public void testFindAllUsers() {
-        userController.findAllUsers();
-    }
-
-    @Test
-    public void testFindUserByName() {
-        userController.findUserByName("Dan Jones");
-    }
-
-    @Test
-    public void testFindUsersByCredential() {
-        User test = new User("dan", "password", null, null);
-        userController.findUserByCredential(test);
-    }
-
-   // @Test
-    public void testDeleteUserById() {
-        int id = 38;
-        userController.deleteUserById(id);
-    }
-
-    //@Test
-    public void testUpdateUserById() {
-        int id = 37;
-        User test = new User("danlin", "danlin", "danlin", "jia");
-        userController.updateUserById(id, test);
-    }
+//    @Test
+//    public void testFindAllUsers() {
+//        userController.findAllUsers();
+//    }
+//
+//    @Test
+//    public void testFindUserByName() {
+//        userController.findUserByName("Dan Jones");
+//    }
+//
+//    @Test
+//    public void testFindUsersByCredential() {
+//        User test = new User("dan", "password", null, null);
+//        userController.findUserByCredential(test);
+//    }
+//
+//   // @Test
+//    public void testDeleteUserById() {
+//        int id = 38;
+//        userController.deleteUserById(id);
+//    }
+//
+//    //@Test
+//    public void testUpdateUserById() {
+//        int id = 37;
+//        User test = new User("danlin", "danlin", "danlin", "jia");
+//        userController.updateUserById(id, test);
+//    }
 }

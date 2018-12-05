@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.*;
 
+import java.util.*;
+
 /**
  * Created by danlinjia on 12/2/18.
  */
@@ -41,15 +43,43 @@ public class ReviewerControllerTests extends DemoApplicationTests {
     }
 
     @Test
+    public void testFindArticlesForReviewer() {
+        int rId = 72;
+        reviewerController.findArticleForReviewer(rId);
+    }
+
+    @Test
     public void updateReviewerById() {
-        int id = 69;
+        int id = 72;
         Reviewer newReviewer = new Reviewer("reviewer","reviewer","danlin","jia",Reviewer.ReviewerLevel.INTERMEDIATE);
         reviewerController.updateReviewerById(id, newReviewer);
     }
 
+//    @Test
+//    public void deleteReviewerById() {
+//        int id = 69;
+//        reviewerController.deleteReviewerById(id);
+//    }
+
+
     @Test
-    public void deleteReviewerById() {
-        int id = 69;
-        reviewerController.deleteReviewerById(id);
+    public void testFindArticleForReviewer(){
+        int rId = 72;
+        reviewerController.findArticleForReviewer(rId);
+    }
+
+    @Test
+    public void addArticleToReviewer() {
+        int rId = 72;
+        int aId = 1;
+        Boolean r = reviewerController.addArticleToReviewer(rId, aId);
+        assert (r==true);
+    }
+
+    @Test
+    public void test1(){
+        List<Reviewer> integers = new ArrayList<>();;
+        integers.add(new Reviewer("a","b",null,null,null));
+        System.out.print(integers.size());
     }
 }

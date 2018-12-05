@@ -6,9 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-
+@Transactional
 public interface ReviewerRepository extends CrudRepository<Reviewer, Integer>{
     @Query("select u from Reviewer u where u.firstName=:firstName and u.lastName=:lastName and dtype=Reviewer")
     List<Reviewer> findReviewerByName(@Param("firstName") String firstName, @Param("lastName") String lastName);

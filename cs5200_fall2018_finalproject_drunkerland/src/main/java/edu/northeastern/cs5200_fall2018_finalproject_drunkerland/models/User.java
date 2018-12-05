@@ -3,6 +3,7 @@ package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.*;
 
