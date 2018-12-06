@@ -72,14 +72,6 @@ public class ReviewerControllerTests extends DemoApplicationTests {
     public void addArticleToReviewer() {
         int rId = 72;
         int aId = 1;
-        Boolean r = reviewerController.addArticleToReviewer(rId, aId);
-        assert (r==true);
-    }
-
-    @Test
-    public void test1(){
-        List<Reviewer> integers = new ArrayList<>();;
-        integers.add(new Reviewer("a","b",null,null,null));
-        System.out.print(integers.size());
+        Reviewer r = reviewerController.addArticleToReviewer(rId, aId);
     }
 }

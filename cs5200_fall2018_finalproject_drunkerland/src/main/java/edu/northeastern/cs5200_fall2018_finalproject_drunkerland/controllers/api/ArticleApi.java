@@ -2,6 +2,7 @@ package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.ap
 
 
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Article;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Reviewer;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -65,5 +66,11 @@ public interface ArticleApi {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     Article updateArticleById(@PathVariable("id") int id, @RequestBody Article newArticle);
 
-
+    /**
+     * Find the reviewer who writes the article
+     * @param aId
+     * @return
+     */
+    @RequestMapping(value = "/{aId}/reviewer", method = RequestMethod.GET)
+    Reviewer findReviewerForArticle(@PathVariable("aId") int aId);
 }

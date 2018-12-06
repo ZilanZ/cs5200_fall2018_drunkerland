@@ -13,10 +13,11 @@ public class ArticleControllerTests extends DemoApplicationTests {
     @Autowired
     ArticleController articleController;
 
-//    @Test
-//    public void testCreateArticle() {
-//        Article alice = new Article("Article 1", null, null, 0);
-//    }
+    @Test
+    public void testCreateArticle() {
+        Article article = new Article("Article 1", null, null, 0);
+        articleController.createArticle(article);
+    }
 
     @Test
     public void testFindAllArticles() {
@@ -43,9 +44,15 @@ public class ArticleControllerTests extends DemoApplicationTests {
         articleController.updateArticleById(id, test);
     }
 
-//     @Test
-//    public void testDeleteArticleById() {
-//        int id = 1;
-//        articleController.deleteArticleById(id);
-//    }
+     @Test
+    public void testDeleteArticleById() {
+        int id = 1;
+        articleController.deleteArticleById(id);
+    }
+
+    @Test
+    public  void testFindReviewerForArticle() {
+        int id = 2;
+        articleController.findReviewerForArticle(id);
+    }
 }

@@ -89,5 +89,5 @@ public interface ReviewerApi {
      * @return
      */
     @RequestMapping(value = "/{rId}/article/{aId}", method = RequestMethod.PUT)
-    boolean addArticleToReviewer(@PathVariable("rId") int rId, @PathVariable("aId") int aId);
+    Reviewer addArticleToReviewer(@PathVariable("rId") int rId, @PathVariable("aId") int aId);
 }

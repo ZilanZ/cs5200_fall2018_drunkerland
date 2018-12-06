@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -21,6 +23,7 @@ public class Article {
 	private Date updated;
 	private int views;
 	@ManyToOne
+	@JsonIgnore
 	private Reviewer reviewer;
 	@OneToMany(mappedBy="articleRelationship")
 	private List<WineReviewerRelationship> wineReviewerRelationships;
