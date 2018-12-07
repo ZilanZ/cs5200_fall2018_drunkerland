@@ -5,6 +5,7 @@ import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Wine;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Supplier;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 
 
@@ -55,7 +56,7 @@ public interface WineApi {
      * @return
      */
     @RequestMapping(value = "/vintage", method = RequestMethod.GET)
-    Wine findWineByVintage(@RequestParam("vintage") String vintage);
+    List<Wine> findWineByVintage(@RequestParam("vintage") String vintage);
 
     /**
      * retrieve wine by color
@@ -63,7 +64,7 @@ public interface WineApi {
      * @return
      */
     @RequestMapping(value = "/color", method = RequestMethod.GET)
-    Wine findWineByColor(@RequestParam("color") String color);
+    List<Wine> findWineByColor(@RequestParam("color") String color);
 
     /**
      * retrieve wine by region
@@ -71,7 +72,7 @@ public interface WineApi {
      * @return
      */
     @RequestMapping(value = "/region", method = RequestMethod.GET)
-    Wine findWineByRegion(@RequestParam("region") String region);
+    List<Wine> findWineByRegion(@RequestParam("region") String region);
 
     /**
      * retrieve wine by appellation
@@ -79,7 +80,7 @@ public interface WineApi {
      * @return
      */
     @RequestMapping(value = "/appellation", method = RequestMethod.GET)
-    Wine findWineByAppellation(@RequestParam("appellation") String appellation);
+    List<Wine> findWineByAppellation(@RequestParam("appellation") String appellation);
 
     /**
      * retrieve wine by country
@@ -87,16 +88,15 @@ public interface WineApi {
      * @return
      */
     @RequestMapping(value = "/country", method = RequestMethod.GET)
-    Wine findWineByCountry(@RequestParam("country") String country);
-
+    List<Wine> findWineByCountry(@RequestParam("country") String country);
 
     /**
      * retrieve wine by score
-     * @param score
+     * @param scoreScope
      * @return
      */
     @RequestMapping(value = "/score", method = RequestMethod.GET)
-    Wine findWineByScore(@RequestParam("score") String score);
+    List<Wine> findWineBetweenScore(@RequestParam("score") String scoreScope);
 
     /**
      * retrieve wine by date
@@ -104,7 +104,7 @@ public interface WineApi {
      * @return
      */
     @RequestMapping(value = "/date", method = RequestMethod.GET)
-    Wine findWineByDate(@RequestParam("date") String date);
+    List<Wine> findWineByDate(@RequestParam("date") Date date);
 
     /**
      * delete wine by id

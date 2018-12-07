@@ -1,51 +1,51 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers;
 
-import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api.WineApi;
-import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Wine;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api.ArticleApi;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Article;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Reviewer;
-import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.WineRepository;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-public class WineController implements WineApi {
+public class ArticleController implements ArticleApi {
 
     @Autowired
-    WineRepository articleRepository;
+    ArticleRepository articleRepository;
 
-    public Wine createWine(Wine article) {
+    public Article createArticle(Article article) {
         java.util.Date utilDate = new java.util.Date();
         article.setCreated(new java.sql.Date(utilDate.getTime()));
         article.setViews(0);
         return articleRepository.save(article);
     }
 
-    public List<Wine> findAllWines() {
-        return (List<Wine>) articleRepository.findAll();
+    public List<Article> findAllArticles() {
+        return (List<Article>) articleRepository.findAll();
     }
 
-    public Wine findWineById(int id) {
+    public Article findArticleById(int id) {
         return articleRepository.findById(id).orElse(null);
     }
 
-    public Wine findWineByTitle(String title) {
-        return articleRepository.findWineByTitle(title);
+    public Article findArticleByTitle(String title) {
+        return articleRepository.findArticleByTitle(title);
     }
 
-    public void deleteWineById(int id) {
+    public void deleteArticleById(int id) {
         articleRepository.deleteById(id);
     }
 
-    public Wine updateWineById(int id, Wine newWine) {
-        Wine article = findWineById(id);
-        article.set(newWine);
+    public Article updateArticleById(int id, Article newArticle) {
+        Article article = findArticleById(id);
+        article.set(newArticle);
         return articleRepository.save(article);
     }
 
-    public Reviewer findReviewerForWine(int aId) {
-        Wine article = findWineById(aId);
+    public Reviewer findReviewerForArticle(int aId) {
+        Article article = findArticleById(aId);
         return article.getReviewer();
     }
 }

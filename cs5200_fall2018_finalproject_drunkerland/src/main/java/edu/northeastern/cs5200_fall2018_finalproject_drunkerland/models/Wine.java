@@ -157,5 +157,20 @@ public class Wine {
 	public void removeMark(Mark mark){
 		this.marks.remove(mark);
 	}
+
+	public void set(Wine newWine) {
+		this.name = newWine.name;
+		this.appellation = newWine.appellation;
+		this.color = newWine.color;
+		this.region = newWine.region;
+		this.country = newWine.country;
+		this.vintage = newWine.vintage;
+		this.date = newWine.date;
+		this.primeurs = newWine.primeurs;
+		this.score = newWine.score;
+		this.stocks = newWine.stocks;
+		this.marks = newWine.marks;
+		this.wineReviewerRelationships = newWine.wineReviewerRelationships;
+	}
 }
 
