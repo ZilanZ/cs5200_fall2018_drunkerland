@@ -26,7 +26,8 @@ public class WineController implements WineApi {
     }
 
     public List<Wine> findAllWines() {
-        return (List<Wine>) wineRepository.findAll();
+        List<Wine> result = (List<Wine>) wineRepository.findAll();
+        return result;
     }
 
     public  Wine findWineById(int id) {

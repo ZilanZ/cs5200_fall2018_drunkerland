@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -8,7 +10,8 @@ import javax.persistence.*;
 @Entity
 public class Wine {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@JsonProperty(value = "id")
 	private int id;
 	private String name;
 	private String appellation;
@@ -27,6 +30,10 @@ public class Wine {
 	private List<Stock> stocks;
 	@OneToMany(mappedBy="wine")
 	private List<Mark> marks;
+
+	public Wine() {
+	}
+
 	public Wine(String name, String appellation, String color, String region, String country, String vintage, Date date,
 				Boolean primeurs, float score) {
 		super();
