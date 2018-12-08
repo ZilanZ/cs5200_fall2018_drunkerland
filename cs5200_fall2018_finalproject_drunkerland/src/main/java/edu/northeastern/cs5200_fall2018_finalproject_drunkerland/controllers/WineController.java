@@ -17,6 +17,7 @@ import java.util.List;
  */
 @RestController
 public class WineController implements WineApi {
+
     @Autowired
     WineRepository wineRepository;
 
