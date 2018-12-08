@@ -156,6 +156,13 @@ public class Order {
 		items = new ArrayList<>();
 	}
 	
-	
+	public void set(Order newOrder)
+	{
+		this.destination = newOrder.destination;
+		this.status = newOrder.status;
+		this.items = newOrder.items;
+		this.totalPrice = newOrder.totalPrice;
+
+	}
 
 }

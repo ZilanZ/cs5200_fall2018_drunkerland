@@ -31,7 +31,7 @@ public class OrderControllerTest extends DemoApplicationTests{
 	     List<Item> items = new ArrayList<>();
 	     items.add(apple);
 	     
-	     Order order123 = new Order(Order.OrderStatus.BASKET, (float)123.5, (Consumer)alice, items );
+	     Order order123 = new Order(Order.OrderStatus.BASKET, (float)123.5, alice, items );
 	     orderController.createOrder(order123);
 	}
 	//@Test
