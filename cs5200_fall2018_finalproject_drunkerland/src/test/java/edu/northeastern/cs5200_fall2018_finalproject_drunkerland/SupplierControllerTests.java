@@ -12,12 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class SupplierControllerTests extends DemoApplicationTests {
     @Autowired
      SupplierController supplierController;
-//
-//    @Test
-//    public  void createSupplierTest(){
-//        Supplier supplier = new Supplier("supplier","supplier","danlin","jia","china","red","nohistory",true);
-//        supplierController.createSupplier(supplier);
-//    }
+
+    @Test
+    public  void createSupplierTest(){
+        Supplier supplier = new Supplier("supplier","supplier","danlin","jia","china","red","nohistory",true);
+        supplierController.createSupplier(supplier);
+    }
 
     @Test
     public void findSupplierByName() {
@@ -54,6 +54,11 @@ public class SupplierControllerTests extends DemoApplicationTests {
 //        int id = 67;
 //        supplierController.deleteSupplierById(id);
 //    }
+
+    @Test
+    public void testAddWinesForSupplier() {
+        supplierController.addWinesForSupplier(1,1);
+    }
 
 
 }

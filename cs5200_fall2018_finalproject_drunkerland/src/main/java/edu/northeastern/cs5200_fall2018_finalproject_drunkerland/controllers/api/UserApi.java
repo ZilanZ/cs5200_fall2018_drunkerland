@@ -58,12 +58,12 @@ public interface UserApi {
     User findUserByCredential(@RequestBody User user);
 
     /**
-     * user authentication: retrieve user by credential
+     * Find user by username
      * @param username
      * @return
      */
     @RequestMapping(value = "/username", method = RequestMethod.POST)
-    User findUserByUsername(@PathVariable String username);
+    User findUserByUsername(@RequestParam("username") String username);
 
     /**
      * delete user by id

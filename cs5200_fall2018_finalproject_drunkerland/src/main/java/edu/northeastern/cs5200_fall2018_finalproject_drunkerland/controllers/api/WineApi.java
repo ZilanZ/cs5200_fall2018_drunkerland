@@ -47,48 +47,41 @@ public interface WineApi {
      * @param name
      * @return
      */
-    @RequestMapping(value = "/name", method = RequestMethod.GET)
-    Wine findWineByName(@RequestParam("name") String name);
+    @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
+    Wine findWineByName(@PathVariable("name") String name);
 
     /**
      * retrieve wine by vintage
      * @param vintage
      * @return
      */
-    @RequestMapping(value = "/vintage", method = RequestMethod.GET)
-    List<Wine> findWineByVintage(@RequestParam("vintage") String vintage);
+    @RequestMapping( value = "/vintage/{vintage}", method = RequestMethod.GET)
+    List<Wine> findWineByVintage(@PathVariable("vintage") String vintage);
 
     /**
      * retrieve wine by color
      * @param color
      * @return
      */
-    @RequestMapping(value = "/color", method = RequestMethod.GET)
-    List<Wine> findWineByColor(@RequestParam("color") String color);
+    @RequestMapping(value = "/color/{color}", method = RequestMethod.GET)
+    List<Wine> findWineByColor(@PathVariable("color") String color);
 
-    /**
-     * retrieve wine by region
-     * @param region
-     * @return
-     */
-    @RequestMapping(value = "/region", method = RequestMethod.GET)
-    List<Wine> findWineByRegion(@RequestParam("region") String region);
 
     /**
      * retrieve wine by appellation
      * @param appellation
      * @return
      */
-    @RequestMapping(value = "/appellation", method = RequestMethod.GET)
-    List<Wine> findWineByAppellation(@RequestParam("appellation") String appellation);
+    @RequestMapping(value = "/appellation/{appellation}", method = RequestMethod.GET)
+    List<Wine> findWineByAppellation(@PathVariable("appellation") String appellation);
 
     /**
      * retrieve wine by country
      * @param country
      * @return
      */
-    @RequestMapping(value = "/country", method = RequestMethod.GET)
-    List<Wine> findWineByCountry(@RequestParam("country") String country);
+    @RequestMapping(value = "/country/{country}", method = RequestMethod.GET)
+    List<Wine> findWineByCountry(@PathVariable("country") String country);
 
     /**
      * retrieve wine by score

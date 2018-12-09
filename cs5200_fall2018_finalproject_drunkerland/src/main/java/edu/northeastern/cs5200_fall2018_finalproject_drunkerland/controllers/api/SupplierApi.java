@@ -72,4 +72,12 @@ public interface SupplierApi {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     Supplier updateSupplierById(@PathVariable("id") int id, @RequestBody Supplier newSupplier);
 
+    /**
+     * add a wine to a supplier
+     * @param sId
+     * @param wId
+     * @return
+     */
+    @RequestMapping(value = "/{sId}/wine/{wId}", method = RequestMethod.PUT)
+    Supplier addWinesForSupplier(@PathVariable("sId") int sId, @PathVariable("wId") int wId);
 }

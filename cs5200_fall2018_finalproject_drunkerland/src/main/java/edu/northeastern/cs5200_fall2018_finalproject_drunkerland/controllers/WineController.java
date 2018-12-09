@@ -21,6 +21,11 @@ public class WineController implements WineApi {
     @Autowired
     WineRepository wineRepository;
 
+    public void save(List<Wine> wines) {
+        for (Wine wine: wines)
+            wineRepository.save(wine);
+    }
+
     public Wine createWine(@RequestBody Wine wine){
         return wineRepository.save(wine);
     }
@@ -44,10 +49,6 @@ public class WineController implements WineApi {
 
     public List<Wine> findWineByColor( String color) {
         return wineRepository.findWineByColor(color);
-    }
-
-    public List<Wine> findWineByRegion(String region) {
-        return wineRepository.findWineByRegion(region);
     }
 
     public List<Wine> findWineByAppellation(String appellation){
