@@ -93,11 +93,12 @@ public interface WineApi {
 
     /**
      * retrieve wine by date
-     * @param date
+     * @param startDate
+     * @param endDate
      * @return
      */
     @RequestMapping(value = "/date", method = RequestMethod.GET)
-    List<Wine> findWineByDate(@RequestParam("date") Date date);
+    List<Wine> findWineByDate(@RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate);
 
     /**
      * delete wine by id

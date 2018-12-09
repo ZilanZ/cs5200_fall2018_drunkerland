@@ -64,8 +64,8 @@ public class WineController implements WineApi {
         return wineRepository.findWineBetweenScores(Float.parseFloat(scores[0]), Float.parseFloat(scores[1]));
     }
 
-    public List<Wine> findWineByDate( Date date) {
-        return wineRepository.findWineByDate(date);
+    public List<Wine> findWineByDate(Date startDate, Date endDate) {
+        return wineRepository.findWineByDate(startDate, endDate);
     }
 
     public void deleteWineById(int id) {
