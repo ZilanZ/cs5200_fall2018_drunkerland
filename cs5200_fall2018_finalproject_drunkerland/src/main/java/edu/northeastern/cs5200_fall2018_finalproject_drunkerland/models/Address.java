@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,7 @@ public class Address {
     private Boolean primaryAdd;
 
     @ManyToOne()
+    @JsonIgnore
     private User user;
 
     public Address() {
@@ -120,4 +123,19 @@ public class Address {
         if (!user.getAddresses().contains(this))
             user.getAddresses().add(this);
     }
+    
+    
+    public void set(Address newAddress)
+    {
+    	this.street1 = newAddress.street1;
+        this.street2 = newAddress.street2;
+        this.zipcode = newAddress.zipcode;
+        this.city = newAddress.city;
+        this.state = newAddress.state;
+        this.country = newAddress.country;
+        this.primaryAdd = newAddress.primaryAdd;
+    }
+    
+    
+    
 }

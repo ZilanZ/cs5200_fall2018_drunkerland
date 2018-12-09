@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,9 +20,11 @@ public class Mark {
 	private int points;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private Reviewer reviewer;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private Wine wine;
 
 	
@@ -78,7 +82,12 @@ public class Mark {
 	}
 	
 	
-	
+	public void set(Mark newMark)
+	{
+		this.points = newMark.points;
+		this.reviewer = newMark.reviewer;
+		this.wine = newMark.wine;
+	}
 	
 
 }

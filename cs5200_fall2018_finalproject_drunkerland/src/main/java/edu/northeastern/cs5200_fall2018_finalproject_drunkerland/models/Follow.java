@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +18,11 @@ public class Follow {
 	private int id;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private Consumer consumer;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private Reviewer reviewer;
 
 	public int getId() {
@@ -64,5 +68,10 @@ public class Follow {
 	}
 	
 	
+	public void set(Follow newFollow)
+	{
+		this.consumer = newFollow.consumer;
+		this.reviewer = newFollow.reviewer;
+	}
 
 }

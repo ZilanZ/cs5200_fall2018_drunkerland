@@ -1,6 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -8,9 +9,6 @@ import javax.persistence.*;
 
 @Entity
 public class Reviewer extends User {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
 	public enum ReviewerLevel{
 		BEGINNER,
 		INTERMEDIATE,
@@ -19,9 +17,11 @@ public class Reviewer extends User {
 	@Enumerated(EnumType.STRING)
 	private ReviewerLevel level;
 	@OneToMany(mappedBy="reviewer")
-	private List<Article> articles;
+	private List<Article> articles = new ArrayList<>();
 	@OneToMany(mappedBy="reviewer")
-	private List<Mark> marks;
+	private List<Mark> marks = new ArrayList<>();
+	@OneToMany(mappedBy="reviewer", fetch= FetchType.EAGER)
+	private List<Follow> follows;
 	public ReviewerLevel getLevel() {
 		return level;
 	}
@@ -38,6 +38,7 @@ public class Reviewer extends User {
 		return marks;
 	}
 
+	public Reviewer(){};
 	public Reviewer(String username, String password, String lastname, String firstname, ReviewerLevel level) {
 		super(username, password, lastname, firstname);
 		this.level = level;
@@ -47,8 +48,6 @@ public class Reviewer extends User {
 		super(username, password, lastname, firstname, gender, phone, email, dob);
 		this.level = level;
 	}
-	@OneToMany(mappedBy="reviewer", fetch= FetchType.EAGER)
-	private List<Follow> follows;
 
 	public void addFollow(Follow follow)
 	{
@@ -56,12 +55,10 @@ public class Reviewer extends User {
 		if(follow.getReviewer()!=this)
 			follow.setReviewer(this);
 	}
-
 	public void removeFollow(Follow follow)
 	{
 		this.follows.remove(follow);
 	}
-
 	public List<Follow> getFollows() {
 		return follows;
 	}
@@ -90,5 +87,12 @@ public class Reviewer extends User {
 
 	public void removeMark(Mark mark) {
 		this.marks.remove(mark);
+	}
+
+	public void setReviewer(Reviewer newReviewer) {
+		this.set(newReviewer);
+		this.level = newReviewer.level;
+		this.articles = newReviewer.articles;
+		this.marks = newReviewer.marks;
 	}
 }

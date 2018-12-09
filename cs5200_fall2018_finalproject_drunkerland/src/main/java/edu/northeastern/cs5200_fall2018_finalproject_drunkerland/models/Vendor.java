@@ -7,13 +7,11 @@ import javax.persistence.*;
 
 @Entity
 public class Vendor extends User {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
 	@Column(name = "vendor_qualified")
 	private Boolean qualified;
 	@OneToMany(mappedBy = "vendor")
 	private List<Stock> stocks;
+	public Vendor(){}
 	public Vendor(String username, String password, String lastname, String firstname, Boolean qualified) {
 		super(username, password, lastname, firstname);
 		this.qualified = qualified;
@@ -44,5 +42,10 @@ public class Vendor extends User {
 	}
 	public void removeStock(Stock stock){
 		this.stocks.remove(stock);
+	}
+
+	public void setVendor(Vendor newVendor) {
+		this.set(newVendor);
+		this.qualified = newVendor.qualified;
 	}
 }

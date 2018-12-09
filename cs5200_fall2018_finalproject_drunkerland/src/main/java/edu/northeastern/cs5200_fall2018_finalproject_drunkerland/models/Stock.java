@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +26,14 @@ public class Stock {
 	private int amount;
 	private float purchasingPrice;
 	private float sellingPrice;
-	private boolean available;
+	private Boolean available;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private Vendor vendor;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private Wine wine;
 	
 	@OneToMany(mappedBy = "stock", fetch = FetchType.LAZY)
@@ -80,11 +84,11 @@ public class Stock {
 		this.sellingPrice = sellingPrice;
 	}
 
-	public boolean isAvailable() {
+	public Boolean isAvailable() {
 		return available;
 	}
 
-	public void setAvailable(boolean available) {
+	public void setAvailable(Boolean available) {
 		this.available = available;
 	}
 
@@ -128,7 +132,7 @@ public class Stock {
 	}
 
 
-	public Stock(int id, int amount, float purchasingPrice, float sellingPrice, boolean available, Vendor vendor,
+	public Stock(int id, int amount, float purchasingPrice, float sellingPrice, Boolean available, Vendor vendor,
 			Wine wine, List<Item> itemsInStock) {
 		
 		this.id = id;
@@ -143,7 +147,16 @@ public class Stock {
 	}
 	
 	
-	
+	public void set(Stock newStock)
+	{
+		this.amount = newStock.amount;
+		this.purchasingPrice = newStock.purchasingPrice;
+		this.sellingPrice = newStock.sellingPrice;
+		this.available = newStock.available;
+		this.vendor = newStock.vendor;
+		this.wine = newStock.wine;
+		this.itemsInStock = newStock.itemsInStock;
+	}
 	
 
 }

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Package;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,9 +27,11 @@ public class Item {
 	private int quantity;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private Stock stock;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private Order order;
 	
 	@OneToMany(mappedBy="item", fetch=FetchType.LAZY)
@@ -109,11 +112,20 @@ public class Item {
 		itemsInPackage =new ArrayList<>();
 	}
 	
-public Item(int quantity) {
+    public Item(int quantity) {
 		
 		this.quantity = quantity;
 
 	}
+
+	public void set(Item newItem) {
+		
+		this.quantity = newItem.quantity;
+		this.stock = newItem.stock;
+	}
+    
+    
+    
 	
 
 }

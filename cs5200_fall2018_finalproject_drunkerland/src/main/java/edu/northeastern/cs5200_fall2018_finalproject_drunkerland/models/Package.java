@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,12 +29,10 @@ public class Package {
 	private PackageStatus status;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private Item item;
 
-	public Package(String trackingNumber, PackageStatus status) {
-		this.trackingNumber = trackingNumber;
-		this.status = status;
-	}
+	
 	
 	
 	//
@@ -45,6 +45,10 @@ public class Package {
 		this.item = item;
 	}
 
+	public Package(String trackingNumber, PackageStatus status) {
+		this.trackingNumber = trackingNumber;
+		this.status = status;
+	}
 	
 	public Package() {
 
@@ -86,6 +90,12 @@ public class Package {
 		if(!item.getItemsInPackage().contains(this))
 			item.getItemsInPackage().add(this);
 			
+	}
+	
+	public void set(Package newPackage)
+	{
+		this.status = newPackage.status;
+		this.trackingNumber = newPackage.trackingNumber;
 	}
 
 

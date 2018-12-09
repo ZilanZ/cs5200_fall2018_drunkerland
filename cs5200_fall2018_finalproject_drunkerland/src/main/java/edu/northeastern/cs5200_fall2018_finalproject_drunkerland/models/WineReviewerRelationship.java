@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,10 +17,12 @@ public class WineReviewerRelationship {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@ManyToOne
+	@JsonIgnore
 	private Article articleRelationship;
 	@OneToMany(mappedBy="sponsorRelationship")
 	private List<Sponsorship> sponsorships;
 	@ManyToOne
+	@JsonIgnore
 	private Wine wineRelationship;
 	public Article getArticleRelation() {
 		return articleRelationship;
@@ -57,8 +61,8 @@ public class WineReviewerRelationship {
 	}
 	public void setWine(Wine wine){
 		this.setWineRelationship(wine);
-		if(!wine.getWineReviewerRelationship().contains(this)) {
-			wine.getWineReviewerRelationship().add(this);
+		if(!wine.getWineReviewerRelationships().contains(this)) {
+			wine.getWineReviewerRelationships().add(this);
 		}
 	}
 }

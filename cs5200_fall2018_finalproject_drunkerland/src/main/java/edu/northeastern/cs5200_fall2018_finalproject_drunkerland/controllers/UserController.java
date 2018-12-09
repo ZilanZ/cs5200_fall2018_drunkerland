@@ -1,5 +1,6 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers;
 
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api.UserApi;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.User;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,53 +8,45 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * @PathVariable passing by URL eg. /{id}
- * @RequestParam passing by URL eg. ?key1=value1&key2=value2
- * @RequestBody passing by body [type: (default) json]
- *
- * we use @RestController here, @ResponseBody is not required. default: Json
- */
 @RestController
-@RequestMapping("api/user")
-public class UserController {
+public class UserController implements UserApi {
 
     @Autowired
     UserRepository userRepository;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public User createUser(@RequestBody User user) {
-        return userRepository.save(user);
+    public User createUser(User user) {
+        if(this.findUserByUsername(user.getUsername())==null){
+            return userRepository.save(user);
+        }
+        return null;
     }
 
-    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     public List<User> findAllUsers() {
         return (List<User>) userRepository.findAll();
     }
 
-    @RequestMapping(value = "/findById/{id}", method = RequestMethod.GET)
-    public User findUserById(@PathVariable int id) {
+    public User findUserById(int id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    @RequestMapping(value = "/findByName", method = RequestMethod.GET)
-    public List<User> findUserByName(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
-        return userRepository.findUserByName(firstName, lastName);
+    public List<User> findUserByName(String name) {
+        String[] names = name.split(" ");
+        return userRepository.findUserByName(names[0], names[1]);
     }
 
-    @RequestMapping(value = "/findByCredential", method = RequestMethod.POST)
-    public User findUserByCredential(@RequestBody User user) {
+    public User findUserByCredential(User user) {
         return userRepository.findUserByCredential(user.getUsername(), user.getPassword());
     }
 
-    @RequestMapping(value = "/deleteById/{id}", method = RequestMethod.DELETE)
-    public void deleteUserById(@PathVariable("id") int id) {
+    public User findUserByUsername(String username) {
+        return userRepository.findUserByUsername(username);
+    }
+
+    public void deleteUserById(int id) {
         userRepository.deleteById(id);
     }
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
-    @ResponseBody
-    public User updateUserById(@PathVariable("id") int id, @RequestBody User newUser) {
+    public User updateUserById(int id, User newUser) {
         User user = findUserById(id);
         user.set(newUser);
         return userRepository.save(user);

@@ -14,7 +14,7 @@ public class RepositoryTests extends DemoApplicationTests {
     @Autowired
     UserRepository userRepository;
 
-    @Test
+    //@Test
     public void insertPackage() {
         Package pkg = new Package("00000234", Package.PackageStatus.INTRANSIT);
         packageRepository.save(pkg);

@@ -3,6 +3,7 @@ package edu.northeastern.cs5200_fall2018_finalproject_drunkerland;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class DemoApplication {
 
