@@ -1,6 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api;
 
 
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Consumer;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Order;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,7 @@ import java.util.List;
 public interface OrderApi {
 
     /**
+     * create order
      * @param order
      * @return
      */
@@ -48,8 +50,8 @@ public interface OrderApi {
      * @param cId
      * @return
      */
-    @RequestMapping(value = "/{cId}/orders", method = RequestMethod.GET)
-    List<Order> findOrdersForConsumer(@PathVariable int cId);
+    @RequestMapping(value = "/consumer", method = RequestMethod.POST)
+    List<Order> findOrdersForConsumer(@RequestBody Consumer consumer);
 
 
     /**
@@ -57,8 +59,8 @@ public interface OrderApi {
      * @param status
      * @return
      */
-    @RequestMapping(value = "/{status}", method = RequestMethod.GET)
-    List<Order> findOrdersByStatus(@PathVariable Order.OrderStatus status);
+    @RequestMapping(value = "/status", method = RequestMethod.GET)
+    List<Order> findOrdersByStatus(@RequestParam("status") Order.OrderStatus status);
 
 
     /**
@@ -67,8 +69,8 @@ public interface OrderApi {
      * @return
      */
 
-    @RequestMapping(value = "/{created}", method = RequestMethod.GET)
-    List<Order> findOrdersByCreated(@PathVariable("created") Date created);
+    @RequestMapping(value = "/created", method = RequestMethod.GET)
+    List<Order> findOrdersByCreated(@RequestParam("created") Date created);
 
 
     /**

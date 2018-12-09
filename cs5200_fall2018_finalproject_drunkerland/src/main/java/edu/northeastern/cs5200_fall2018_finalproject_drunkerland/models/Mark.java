@@ -78,7 +78,12 @@ public class Mark {
 	}
 	
 	
-	
+	public void set(Mark newMark)
+	{
+		this.points = newMark.points;
+		this.reviewer = newMark.reviewer;
+		this.wine = newMark.wine;
+	}
 	
 
 }

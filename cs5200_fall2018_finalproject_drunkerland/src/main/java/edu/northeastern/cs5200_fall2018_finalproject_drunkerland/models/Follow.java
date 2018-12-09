@@ -64,5 +64,10 @@ public class Follow {
 	}
 	
 	
+	public void set(Follow newFollow)
+	{
+		this.consumer = newFollow.consumer;
+		this.reviewer = newFollow.reviewer;
+	}
 
 }

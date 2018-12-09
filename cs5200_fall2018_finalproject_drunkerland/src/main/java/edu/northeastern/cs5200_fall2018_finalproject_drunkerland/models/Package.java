@@ -29,10 +29,7 @@ public class Package {
 	@ManyToOne()
 	private Item item;
 
-	public Package(String trackingNumber, PackageStatus status) {
-		this.trackingNumber = trackingNumber;
-		this.status = status;
-	}
+	
 	
 	
 	//
@@ -45,6 +42,10 @@ public class Package {
 		this.item = item;
 	}
 
+	public Package(String trackingNumber, PackageStatus status) {
+		this.trackingNumber = trackingNumber;
+		this.status = status;
+	}
 	
 	public Package() {
 
@@ -86,6 +87,12 @@ public class Package {
 		if(!item.getItemsInPackage().contains(this))
 			item.getItemsInPackage().add(this);
 			
+	}
+	
+	public void set(Package newPackage)
+	{
+		this.status = newPackage.status;
+		this.trackingNumber = newPackage.trackingNumber;
 	}
 
 

@@ -9,7 +9,6 @@ import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Consumer;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Order;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.OrderRepository;
-import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ConsumerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +22,6 @@ public class OrderController implements OrderApi {
 	@Autowired
     OrderRepository orderRepository;
 
-	@Autowired
-	ConsumerRepository consumerRepository;
 
 	public Order createOrder(Order order) {
 		return orderRepository.save(order);
@@ -42,9 +39,8 @@ public class OrderController implements OrderApi {
 	}
 
 
-	public List<Order> findOrdersForConsumer(int cId)
+	public List<Order> findOrdersForConsumer(Consumer consumer)
 	{
-		Consumer consumer = consumerRepository.findById(cId).orElse(null);
 		return orderRepository.findOrdersForConsumer(consumer);
 	}
 
@@ -68,7 +64,7 @@ public class OrderController implements OrderApi {
 
 	public Order updateOrderById(int id, Order newOrder)
 	{
-		Order order = orderRepository.findById(id).orElse(null);
+		Order order = findOrderById(id);
 		order.set(newOrder);
         return orderRepository.save(order);
 	}
