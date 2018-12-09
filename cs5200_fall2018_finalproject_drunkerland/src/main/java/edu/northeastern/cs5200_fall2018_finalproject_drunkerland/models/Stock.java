@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,9 +29,11 @@ public class Stock {
 	private Boolean available;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private Vendor vendor;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private Wine wine;
 	
 	@OneToMany(mappedBy = "stock", fetch = FetchType.LAZY)

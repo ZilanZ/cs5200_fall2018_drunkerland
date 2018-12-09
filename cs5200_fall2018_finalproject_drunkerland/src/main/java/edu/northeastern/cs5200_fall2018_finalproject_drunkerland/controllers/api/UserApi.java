@@ -62,7 +62,7 @@ public interface UserApi {
      * @param username
      * @return
      */
-    @RequestMapping(value = "/username", method = RequestMethod.POST)
+    @RequestMapping(value = "/username", method = RequestMethod.GET)
     User findUserByUsername(@RequestParam("username") String username);
 
     /**

@@ -89,7 +89,7 @@ public interface WineApi {
      * @return
      */
     @RequestMapping(value = "/score", method = RequestMethod.GET)
-    List<Wine> findWineBetweenScore(@RequestParam("score") String scoreScope);
+    List<Wine> findWineBetweenScore(@RequestParam("scoreScope") String scoreScope);
 
     /**
      * retrieve wine by date

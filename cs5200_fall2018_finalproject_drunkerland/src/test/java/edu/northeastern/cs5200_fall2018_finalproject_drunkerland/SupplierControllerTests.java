@@ -15,7 +15,7 @@ public class SupplierControllerTests extends DemoApplicationTests {
 
     @Test
     public  void createSupplierTest(){
-        Supplier supplier = new Supplier("supplier","supplier","danlin","jia","china","red","nohistory",true);
+        Supplier supplier = new Supplier("supplier1","supplier1","danlin","jia","china","red","nohistory",true);
         supplierController.createSupplier(supplier);
     }
 

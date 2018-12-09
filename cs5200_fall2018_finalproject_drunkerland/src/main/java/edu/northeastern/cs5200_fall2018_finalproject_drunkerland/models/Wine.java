@@ -1,5 +1,6 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Date;
@@ -25,6 +26,7 @@ public class Wine {
 	private float score;
 
 	@ManyToOne
+	@JsonIgnore
 	private Supplier supplier;
 
 	@OneToMany(mappedBy="wineRelationship")

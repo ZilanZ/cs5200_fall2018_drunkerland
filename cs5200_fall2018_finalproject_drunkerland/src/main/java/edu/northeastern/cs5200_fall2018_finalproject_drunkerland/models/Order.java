@@ -1,5 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +40,7 @@ public class Order {
 	private Date created;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private Consumer consumer;
 	
 	@OneToMany(mappedBy="order", fetch=FetchType.LAZY)
