@@ -29,6 +29,6 @@ public interface WineRepository  extends CrudRepository<Wine, Integer>{
     @Query("select w from Wine w where w.score between :least and :greatest")
     List<Wine> findWineBetweenScores(@Param("least") float least, @Param("greatest") float greatest);
 
-    @Query("select w from Wine w where w.date=:date")
-    List<Wine> findWineByDate(@Param("date") Date date);
+    @Query("select w from Wine w where w.date between :startDate and :endDate")
+    List<Wine> findWineByDate(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 }

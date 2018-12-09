@@ -57,8 +57,8 @@ public class WineReviewerRelationship {
 	}
 	public void setWine(Wine wine){
 		this.setWineRelationship(wine);
-		if(!wine.getWineReviewerRelationship().contains(this)) {
-			wine.getWineReviewerRelationship().add(this);
+		if(!wine.getWineReviewerRelationships().contains(this)) {
+			wine.getWineReviewerRelationships().add(this);
 		}
 	}
 }
