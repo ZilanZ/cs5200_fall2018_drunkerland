@@ -1,7 +1,9 @@
 <mat-card-actions>
   <mat-card class="wine-card" *ngIf="wine">
     <mat-card-header>
-      <mat-card-title>{{wine.name}}</mat-card-title>
+      <mat-card-title>
+        <a target="_blank" href="https://www.globalwinescore.com/wine-score/{{wine.nameUrl}}/{{wine.vintage}}/">{{wine.name}}</a>
+      </mat-card-title>
       <mat-card-subtitle class="body-1">
         <span>Global Score:</span>{{wine.score}}
       </mat-card-subtitle>

@@ -20,6 +20,8 @@ export class HeaderComponent implements OnInit {
   progressBarMode: string;
   currentLang: string;
 
+  userRole: string;
+
   constructor(@Inject(APP_CONFIG) appConfig: any,
               private progressBarService: ProgressBarService,
               private translateService: TranslateService) {
@@ -34,17 +36,17 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  changeLanguage(language: string): void {
-    this.translateService.use(language).subscribe(() => {
-      this.loadMenus();
-      this.language = language;
-    });
-  }
+  // changeLanguage(language: string): void {
+  //   this.translateService.use(language).subscribe(() => {
+  //     this.loadMenus();
+  //     this.language = language;
+  //   });
+  // }
 
   private loadMenus(): void {
     this.menuItems = [
       {link: '/', name: _('home')},
-      {link: '/' + AppConfig.routes.wines, name: _('wineesList')}
+      {link: '/' + AppConfig.routes.wines, name: _('winesList')}
     ];
   }
 }
