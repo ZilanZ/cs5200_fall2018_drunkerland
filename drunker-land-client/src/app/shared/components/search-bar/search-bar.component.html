@@ -1,0 +1,12 @@
+<mat-form-field id="search-input">
+  <input matInput placeholder="{{ 'findWine' | translate }}!"
+         [matAutocomplete]="wineesAutocomplete" [formControl]="wineFormControl">
+</mat-form-field>
+
+<mat-autocomplete #wineesAutocomplete="matAutocomplete">
+  <mat-option *ngFor="let wine of filteredWines"
+              (onSelectionChange)="searchWine(wine)"
+              [value]="wine.name">
+    {{wine.name}}
+  </mat-option>
+</mat-autocomplete>

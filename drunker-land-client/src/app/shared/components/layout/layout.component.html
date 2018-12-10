@@ -1,0 +1,11 @@
+<div class="header">
+  <app-main-nav (wines) = "onSearch($event)"></app-main-nav>
+</div>
+<div class="container-fluid">
+  <h2>Search Results</h2>
+  <ul class="list-group">
+    <li *ngFor="let wine of result" class="list-group-item">
+      {{wine.name}}
+    </li>
+  </ul>
+</div>

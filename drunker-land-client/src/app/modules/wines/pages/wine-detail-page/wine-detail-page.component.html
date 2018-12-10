@@ -1,0 +1,21 @@
+<h1 class="header__title">{{'wineDetail' | translate}}</h1>
+<div class="container" *ngIf="!wine">
+  <app-wine-loading></app-wine-loading>
+</div>
+<div class="container" *ngIf="wine" [@fadeInOut]>
+  <ng-container>
+    <app-wine-card [wine]="wine"></app-wine-card>
+    <div id="wine-json">
+      <pre>{{wine | json}}</pre>
+    </div>
+  </ng-container>
+</div>
+<button mat-raised-button type="button" (click)="dynamicImport()">
+  {{'snapshot' | translate | uppercase}}
+</button>
+<button mat-raised-button type="button" (click)="goBack()">
+  {{'goBack' | translate | uppercase}}
+</button>
+<button *ngIf="wine" mat-raised-button type="button" (click)="goToTheAnchor()">
+  {{'anchorToWine' | translate | uppercase}}
+</button>

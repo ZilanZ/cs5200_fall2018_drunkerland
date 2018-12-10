@@ -1,0 +1,97 @@
+<div id="left">
+  <h2 class="header__title">{{ 'wineesList' | translate }}</h2>
+  <div>
+    <mat-list id="loading-list" *ngIf="!wines">
+      <mat-list-item *ngFor="let i of [1,2,3,4,5,6,7,8]">
+        <img mat-list-avatar src="assets/images/wines/default.svg">
+        <h3 mat-line>
+          <app-loading-placeholder [width]="'150px'" [height]="'0.9rem'"></app-loading-placeholder>
+        </h3>
+        <p mat-line>
+          <app-loading-placeholder [width]="'100px'" [height]="'0.9rem'"></app-loading-placeholder>
+        </p>
+        <div class="wine-actions">
+          <app-loading-placeholder [width]="'30px'" [height]="'0.9rem'"></app-loading-placeholder>
+
+          <mat-icon class="icon__like--grey">favorite</mat-icon>
+        </div>
+      </mat-list-item>
+    </mat-list>
+    <mat-list>
+      <mat-list-item *ngFor="let wine of wines" [@fadeInOut]>
+        <img *ngIf="wine.default" class="cp"
+             (click)="seeWineDetails(wine);" mat-list-avatar
+             src="assets/images/wines/default.svg">
+        <img *ngIf="!wine.default"
+             (click)="seeWineDetails(wine);" mat-list-avatar src="assets/images/wines/default.svg">
+        <h3 mat-line [class.cp]="wine.default" (click)="seeWineDetails(wine);"> {{wine.name}} </h3>
+        <p mat-line [class.cp]="wine.default" (click)="seeWineDetails(wine);">
+          <span>{{wine.alterEgo}}</span>
+        </p>
+        <div class="wine-actions">
+          {{wine.likes | number:'.0'}}
+          <mat-icon matTooltip="{{(canVote ? 'canVote' : 'cannotVote') | translate}}"
+                    [matTooltipPosition]="'above'"
+                    class="icon__like--red" (click)="like(wine)">
+            favorite
+          </mat-icon>
+          <mat-icon class="icon__remove" *ngIf="!wine.default"
+                    (click)="deleteWine(wine);">
+            delete
+          </mat-icon>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
+<div id="right" [@fadeInOut]>
+  <!-- <h2 class="header__title">{{ 'createWine' | translate }}</h2>
+  <div id="form-loading" *ngIf="!wines">
+    <form>
+      <div class="input-container">
+        <app-loading-placeholder [height]="'2rem'"></app-loading-placeholder>
+      </div>
+      <div class="input-container">
+        <app-loading-placeholder [height]="'2rem'"></app-loading-placeholder>
+      </div>
+
+      <button mat-raised-button [disabled]="true">
+        {{'create' | translate}}
+      </button>
+    </form>
+  </div>
+  <div *ngIf="wines">
+    <form [formGroup]="newWineForm" #form="ngForm" ngxScrollToFirstInvalid
+          (ngSubmit)="createNewWine(newWineForm.value)" autocomplete="on">
+      <mat-form-field class="input-container">
+        <input matInput name="hname" type="text"
+               placeholder="{{'nameWithPalindrome' | translate}}"
+               formControlName="name">
+        <mat-error *ngIf="!newWineForm.controls.name.valid && form.submitted">
+          {{'nameRequired' | translate}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input-container">
+        <input matInput type="text" name="rname"
+               placeholder="{{'realName' | translate}}"
+               formControlName="alterEgo">
+        <mat-error *ngIf="!newWineForm.controls.alterEgo.valid && form.submitted">
+          {{'realNameRequired' | translate}}
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button type="submit" [disabled]="form.submitted && !newWineForm.valid">
+        {{'create' | translate}}
+      </button>
+      <div *ngIf="error">{{error | translate}}</div>
+    </form>
+  </div> -->
+
+  <div id="wines-json">
+    <h2 class="header__title">{{ 'firstTwoWinesById' | translate }}</h2>
+    <pre *ngIf="!wines">
+      <app-loading-placeholder [height]="'300px'"></app-loading-placeholder>
+    </pre>
+    <pre *ngIf="wines">{{wines | slice:0:2 | json}}</pre>
+  </div>
+</div>
+<div class="clear"></div>

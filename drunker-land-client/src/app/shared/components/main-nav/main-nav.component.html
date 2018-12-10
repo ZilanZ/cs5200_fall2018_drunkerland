@@ -1,0 +1,20 @@
+<div class="search">
+  <mat-form-field>
+    <mat-select [(value)]="key">
+      <mat-option value="" disabled>Select One</mat-option>
+      <mat-option *ngFor="let condition of conditions" [value]="condition.name">
+        {{condition.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Quick search here" [(ngModel)]="inputValue">
+    <button mat-button *ngIf="inputValue" matSuffix mat-icon-button aria-label="Clear" (click)="inputValue=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="search(key)" type="submit">
+    Search
+  </button>
+</div>

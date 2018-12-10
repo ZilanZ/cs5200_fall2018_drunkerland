@@ -1,0 +1,53 @@
+[
+  {
+    "name": "Caiarossa, Toscana",
+    "nameUrl": "caiarossa-toscana",
+    "appellation": "Toscana",
+    "color": "Red",
+    "region": "Tuscany",
+    "country": "Italy",
+    "vintage": "2015",
+    "date": "1900-01-20",
+    "score": 91.98,
+    "supplier": null,
+    "wineReviewerRelationships": [],
+    "stocks": [],
+    "marks": [],
+    "primeurs": true,
+    "id": 23246
+  },
+  {
+    "name": "Casa Lapostolle, Clos Apalta, Valle De Colchagua",
+    "nameUrl": "casa-lapostolle-clos-apalta-valle-de-colchagua",
+    "appellation": "Valle De Colchagua",
+    "color": "Red",
+    "region": "Chile",
+    "country": "Chile",
+    "vintage": "2014",
+    "date": "1900-01-20",
+    "score": 94.78,
+    "supplier": null,
+    "wineReviewerRelationships": [],
+    "stocks": [],
+    "marks": [],
+    "primeurs": true,
+    "id": 26866
+  },
+  {
+    "name": "Catena Alamos, Cabernet Sauvignon, Mendoza",
+    "nameUrl": "catena-alamos-cabernet-sauvignon-mendoza",
+    "appellation": "Mendoza",
+    "color": "Red",
+    "region": "Mendoza",
+    "country": "Argentina",
+    "vintage": "2016",
+    "date": "1900-01-20",
+    "score": 82.09,
+    "supplier": null,
+    "wineReviewerRelationships": [],
+    "stocks": [],
+    "marks": [],
+    "primeurs": true,
+    "id": 28733
+  }
+]

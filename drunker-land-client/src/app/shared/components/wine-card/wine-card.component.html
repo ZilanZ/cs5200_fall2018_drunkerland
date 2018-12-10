@@ -1,0 +1,40 @@
+<mat-card-actions>
+  <mat-card class="wine-card" *ngIf="wine">
+    <mat-card-header>
+      <mat-card-title>{{wine.name}}</mat-card-title>
+      <mat-card-subtitle class="body-1">
+        <span>Global Score:</span>{{wine.score}}
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+      </mat-card-subtitle>
+      <div class="flex-spacer"></div>
+      <!--<div class="wine-actions">-->
+        <!--{{wine.likes}}-->
+        <!--<mat-icon matTooltip="{{(canVote ? 'canVote' : 'cannotVote') | translate}}" [matTooltipPosition]="'above'" class="icon__like&#45;&#45;red"-->
+          <!--(click)="like(wine)">favorite-->
+        <!--</mat-icon>-->
+      <!--</div>-->
+    </mat-card-header>
+    <!-- <img (click)="seeWineDetails(wine)" mat-card-image src="{{wine.avatarUrl}}"> -->
+    <mat-card-content>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            More Details
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <p *ngFor="let item of wine | keyvalue">
+            {{item.key}}: {{item.value}}
+          </p>
+        </ng-template>
+      </mat-expansion-panel>
+    </mat-card-content>
+    <mat-form-field>
+      <mat-select [(value)]="selectedNum">
+        <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button (click)="addToCart(selectedNum)">ADD</button>
+  </mat-card>
+</mat-card-actions>
