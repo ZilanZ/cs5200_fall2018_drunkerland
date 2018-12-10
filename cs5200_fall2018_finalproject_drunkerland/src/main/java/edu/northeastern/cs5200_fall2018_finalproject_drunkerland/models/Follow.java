@@ -68,6 +68,12 @@ public class Follow {
 	}
 	
 	
+	public Follow(Consumer consumer, Reviewer reviewer) {
+		super();
+		this.consumer = consumer;
+		this.reviewer = reviewer;
+	}
+
 	public void set(Follow newFollow)
 	{
 		this.consumer = newFollow.consumer;
