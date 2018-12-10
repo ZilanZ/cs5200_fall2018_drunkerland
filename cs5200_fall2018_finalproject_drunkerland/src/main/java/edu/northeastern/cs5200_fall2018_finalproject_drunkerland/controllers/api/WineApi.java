@@ -49,7 +49,7 @@ public interface WineApi {
      * @return
      */
     @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
-    Wine findWineByName(@PathVariable("name") String name);
+    List<Wine> findWineByName(@PathVariable("name") String name);
 
     /**
      * retrieve wine by vintage
