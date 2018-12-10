@@ -11,12 +11,11 @@ import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Order;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/order")
 public class OrderController implements OrderApi {
 	
 	@Autowired

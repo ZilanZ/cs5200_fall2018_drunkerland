@@ -147,6 +147,18 @@ public class Stock {
 	}
 	
 	
+	public Stock(int amount, float purchasingPrice, float sellingPrice, Boolean available, 
+			Vendor vendor, Wine wine) {
+		
+		this.amount = amount;
+		this.purchasingPrice = purchasingPrice;
+		this.sellingPrice = sellingPrice;
+		this.available = available;
+		this.vendor = vendor;
+		this.wine = wine;
+	}
+
+
 	public void set(Stock newStock)
 	{
 		this.amount = newStock.amount;

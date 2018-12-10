@@ -137,7 +137,7 @@ public class OrderControllerTest {
 	
 	
 	@Test
-  public void testUpdateOrderById() throws ParseException {
+    public void testUpdateOrderById() throws ParseException {
 		
 		Consumer bob = consumerController.findConsumerById(9);
 		

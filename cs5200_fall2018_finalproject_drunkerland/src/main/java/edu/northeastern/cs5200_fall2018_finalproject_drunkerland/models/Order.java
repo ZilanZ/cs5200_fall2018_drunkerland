@@ -6,13 +6,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.*;
 
 @Entity
@@ -43,7 +36,7 @@ public class Order {
 	@JsonIgnore
 	private Consumer consumer;
 	
-	@OneToMany(mappedBy="order", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="order", fetch=FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<Item> items;
 	
 	public void addItem(Item item)
