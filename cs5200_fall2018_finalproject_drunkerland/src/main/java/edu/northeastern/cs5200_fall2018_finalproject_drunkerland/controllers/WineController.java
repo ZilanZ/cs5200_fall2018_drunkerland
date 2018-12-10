@@ -39,7 +39,8 @@ public class WineController implements WineApi {
         return wineRepository.findById(id).orElse(null);
     }
 
-    public Wine findWineByName(String name) {
+    public List<Wine> findWineByName(String name) {
+        name = '%' + name + '%';
         return wineRepository.findWineByName(name);
     }
 
@@ -91,7 +92,10 @@ public class WineController implements WineApi {
         List<String> searchFields = new ArrayList<>();
         List<Wine> wines = new ArrayList<>();
         if(wineQueryDto.getName()!=null){
-            wines.add(this.findWineByName(wineQueryDto.getName()));
+            List<Wine> wineByName = this.findWineByName(wineQueryDto.getName());
+            for (Wine wine : wineByName) {
+                wines.add(wine);
+            }
             return wines;
         }
         if (wineQueryDto.getAppellation()!=null)

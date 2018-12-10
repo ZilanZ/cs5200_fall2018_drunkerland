@@ -8,8 +8,8 @@ import java.util.List;
 import java.sql.Date;
 
 public interface WineRepository  extends CrudRepository<Wine, Integer>{
-    @Query("select w from Wine w where w.name=:name")
-    Wine findWineByName(@Param("name") String name);
+    @Query("select w from Wine w where w.name like :name")
+    List<Wine> findWineByName(@Param("name") String name);
 
     @Query("select w from Wine w where w.vintage=:vintage")
     List<Wine> findWineByVintage(@Param("vintage") String vintage);
