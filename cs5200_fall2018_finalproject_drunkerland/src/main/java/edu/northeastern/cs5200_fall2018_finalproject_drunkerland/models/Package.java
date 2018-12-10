@@ -50,6 +50,13 @@ public class Package {
 		this.status = status;
 	}
 	
+	
+	public Package(String trackingNumber, PackageStatus status, Item item) {
+		this.trackingNumber = trackingNumber;
+		this.status = status;
+		this.item = item;
+	}
+
 	public Package() {
 
 	}
