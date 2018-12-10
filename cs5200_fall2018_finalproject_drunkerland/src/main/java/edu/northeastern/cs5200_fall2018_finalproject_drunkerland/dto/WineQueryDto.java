@@ -1,4 +1,4 @@
-package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models;
+package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.dto;
 
 import java.sql.Date;
 

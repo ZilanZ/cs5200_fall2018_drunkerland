@@ -3,7 +3,7 @@ package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.ap
 
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Wine;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Supplier;
-import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.WineQueryDto;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.dto.WineQueryDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
