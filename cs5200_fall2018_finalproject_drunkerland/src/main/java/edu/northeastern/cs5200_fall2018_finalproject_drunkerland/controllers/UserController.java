@@ -34,8 +34,20 @@ public class UserController implements UserApi {
         return userRepository.findUserByName(names[0], names[1]);
     }
 
-    public User findUserByCredential(User user) {
-        return userRepository.findUserByCredential(user.getUsername(), user.getPassword());
+    public User findUserByCredential(String[] loginInfo) {
+        String username = loginInfo[0];
+        String password = loginInfo[1];
+        User curtUser = userRepository.findUserByUsername(username);
+        System.out.println(curtUser);
+        if (curtUser != null) {
+            if (curtUser.getPassword().equals(password)) {
+                return curtUser;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
     }
 
     public User findUserByUsername(String username) {

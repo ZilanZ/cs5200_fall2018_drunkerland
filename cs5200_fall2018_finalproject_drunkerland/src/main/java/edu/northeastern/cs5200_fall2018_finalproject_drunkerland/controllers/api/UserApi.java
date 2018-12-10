@@ -51,11 +51,11 @@ public interface UserApi {
 
     /**
      * user authentication: retrieve user by credential
-     * @param user
+//     * @param user
      * @return
      */
     @RequestMapping(value = "/auth", method = RequestMethod.POST)
-    User findUserByCredential(@RequestBody User user);
+    User findUserByCredential(@RequestBody String[] loginInfo);
 
     /**
      * Find user by username
