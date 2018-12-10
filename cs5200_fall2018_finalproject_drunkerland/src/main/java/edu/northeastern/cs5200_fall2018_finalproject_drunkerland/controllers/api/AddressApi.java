@@ -49,7 +49,7 @@ public interface AddressApi {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/user", method = RequestMethod.POST)
 	List<Address> findAddressesByUser(@RequestBody User user);
 	
 	

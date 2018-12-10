@@ -56,7 +56,7 @@ public interface StockApi {
 	  * @param vendor
 	  * @return
 	  */
-	 @RequestMapping(value = "/vendor", method = RequestMethod.GET)
+	 @RequestMapping(value = "/vendor", method = RequestMethod.POST)
 	 List<Stock> findStocksByVendor(@RequestBody Vendor vendor);
 	 
 	 
@@ -65,7 +65,7 @@ public interface StockApi {
 	  * @param wine
 	  * @return
 	  */
-	 @RequestMapping(value = "/wine", method = RequestMethod.GET)
+	 @RequestMapping(value = "/wine", method = RequestMethod.POST)
 	 List<Stock> findStocksByWine(@RequestBody Wine wine);
 	 
 	 
