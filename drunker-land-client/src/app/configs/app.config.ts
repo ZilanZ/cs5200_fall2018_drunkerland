@@ -4,6 +4,7 @@ export let APP_CONFIG = new InjectionToken('app.config');
 
 export const AppConfig: any = {
   routes: {
+    filter: 'filter',
     wines: 'wines',
     error404: '404'
   },

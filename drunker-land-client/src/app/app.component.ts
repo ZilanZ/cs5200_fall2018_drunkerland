@@ -60,6 +60,13 @@ export class AppComponent implements OnInit {
               content: 'List of super-wines'
             });
             break;
+          case '/' + AppConfig.routes.filter:
+            this.title.setTitle('Union Search');
+            this.meta.updateTag({
+              name: 'description',
+              content: 'Union search of wines'
+            });
+            break;
         }
       }
     });

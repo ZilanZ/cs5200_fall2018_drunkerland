@@ -14,7 +14,7 @@ import { HttpClient } from '../../../../../node_modules/@angular/common/http';
   providedIn: 'root'
 })
 export class WineService {
-  private wineesCollection: AngularFirestoreCollection<Wine>;
+  private winesCollection: AngularFirestoreCollection<Wine>;
 
   static checkIfUserCanVote(): boolean {
     return Number(localStorage.getItem('votes')) < AppConfig.votesLimit;
@@ -24,7 +24,7 @@ export class WineService {
               private translateService: TranslateService,
               private snackBar: MatSnackBar,
               private http: HttpClient) {
-    this.wineesCollection = this.afs.collection<Wine>(AppConfig.routes.wines, (wine) => {
+    this.winesCollection = this.afs.collection<Wine>(AppConfig.routes.wines, (wine) => {
       return wine.orderBy('default', 'desc').orderBy('likes', 'desc');
     });
   }
@@ -68,7 +68,7 @@ export class WineService {
   }
 
   createWine(wine: Wine): Promise<DocumentReference> {
-    return this.wineesCollection.add(JSON.parse(JSON.stringify(wine))).then((document: DocumentReference) => {
+    return this.winesCollection.add(JSON.parse(JSON.stringify(wine))).then((document: DocumentReference) => {
       LoggerService.log(`added wine w/ id=${document.id}`);
       this.showSnackBar('wineCreated');
       return document;

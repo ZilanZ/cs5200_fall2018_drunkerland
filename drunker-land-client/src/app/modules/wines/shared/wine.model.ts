@@ -4,7 +4,7 @@ export class Wine implements Deserializable {
   id: string;
   name: string;
   alterEgo: string;
-  likes: number;
+  // likes: number;
   default: boolean;
   avatarUrl: string;
   avatarThumbnailUrl: string;
@@ -20,7 +20,6 @@ export class Wine implements Deserializable {
   score: Number;
   supplier: String;
   stocks: string[];
-  marks: string[];
   wineReviewerRelationship: string[];
 
   constructor(wine: any = {}) {
@@ -28,7 +27,7 @@ export class Wine implements Deserializable {
     this.name = wine.name || '';
     this.nameUrl = wine.nameUrl || '';
     this.alterEgo = wine.alterEgo || '';
-    this.likes = wine.likes || 0;
+    // this.likes = wine.likes || 0;
     this.default = wine.default || false;
     this.avatarUrl = wine.avatarUrl || '';
     this.avatarThumbnailUrl = wine.avatarThumbnailUrl || '';
@@ -42,14 +41,13 @@ export class Wine implements Deserializable {
     this.score = wine.score || -1;
     this.supplier = wine.supplier || '';
     this.stocks = wine.stocks || [];
-    this.marks = wine.marks || [];
     this.wineReviewerRelationship = wine.wineReviewerRelationship || [];
   }
 
-  like() {
-    this.likes += 1;
-    localStorage.setItem('votes', '' + (Number(localStorage.getItem('votes')) + 1));
-  }
+  // like() {
+  //   this.likes += 1;
+  //   localStorage.setItem('votes', '' + (Number(localStorage.getItem('votes')) + 1));
+  // }
 
   deserialize(input: any) {
     Object.assign(this, input);

@@ -44,9 +44,12 @@ export class HeaderComponent implements OnInit {
   // }
 
   private loadMenus(): void {
-    this.menuItems = [
-      {link: '/', name: _('home')},
-      {link: '/' + AppConfig.routes.wines, name: _('winesList')}
-    ];
+    switch (this.userRole) {
+      default: this.menuItems = [
+        {link: '/', name: _('home')},
+        // {link: '/' + AppConfig.routes.wines, name: _('filter')}
+      ];
+      break;
+    }
   }
 }
