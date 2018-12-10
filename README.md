@@ -1,5 +1,5 @@
 # cs5200_fall2018_drunkerland
-Online wine transaction system
+DrunkerLand, a wine website for searching, posting, selling, purchasing and commenting wine.
 ## Wiki page
 ### Project
 This page includes basic design ideas of our project.
