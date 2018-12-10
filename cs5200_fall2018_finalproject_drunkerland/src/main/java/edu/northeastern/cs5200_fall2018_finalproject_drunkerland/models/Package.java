@@ -102,7 +102,7 @@ public class Package {
 	public void set(Package newPackage)
 	{
 		this.status = newPackage.status;
-		this.trackingNumber = newPackage.trackingNumber;
+		//this.trackingNumber = newPackage.trackingNumber;
 	}
 
 

@@ -43,7 +43,7 @@ public interface ItemApi {
 	
 	
 	/**
-	 * retrieve items by order id
+	 * retrieve items by order 
 	 * @param oId
 	 * @return
 	 */
@@ -53,7 +53,7 @@ public interface ItemApi {
 	
 	
 	/**
-	 * retrieve items by stock id
+	 * retrieve items by stock 
 	 * @param sId
 	 * @return
 	 */

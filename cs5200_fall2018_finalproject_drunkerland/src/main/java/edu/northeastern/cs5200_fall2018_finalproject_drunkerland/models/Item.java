@@ -36,7 +36,7 @@ public class Item {
 	@JsonIgnore
 	private Order order;
 	
-	@OneToMany(mappedBy="item", fetch=FetchType.LAZY, cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy="item", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Package> itemsInPackage;
 	
 	public void addPackage(Package pack)

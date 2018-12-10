@@ -36,7 +36,7 @@ public class Order {
 	@JsonIgnore
 	private Consumer consumer;
 	
-	@OneToMany(mappedBy="order", fetch=FetchType.LAZY, cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy="order", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Item> items;
 	
 	public void addItem(Item item)
