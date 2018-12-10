@@ -2,6 +2,8 @@ package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers;
 
 import java.util.List;
 
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Item;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,9 +19,12 @@ public class StockController implements StockApi{
 	@Autowired
 	StockRepository stockRepository;
 
+	@Autowired
+	ItemController itemController;
+
 	@Override
 	public Stock createStock(Stock stock) {
-		
+
 		return stockRepository.save(stock);
 	}
 
@@ -63,6 +68,13 @@ public class StockController implements StockApi{
 	public Stock updateStockById(int id, Stock newStock) {
 		Stock stock = findStockById(id);
 		stock.set(newStock);
+		return stockRepository.save(stock);
+	}
+
+	public Stock addItemToStock( int sId, int iId){
+		Stock stock = findStockById(sId);
+		Item item = itemController.findItemById(iId);
+		stock.addItem(item);
 		return stockRepository.save(stock);
 	}
 

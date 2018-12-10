@@ -150,10 +150,9 @@ public class OrderControllerTest {
 	     List<Item> items = new ArrayList<>();
 	     
 	     items.add(peach);
-	     Order newOrder = new Order(Order.OrderStatus.PAID, "Boston", (float)323.5,
-					new Date(da.getTime()), bob, items);
+	     // Order newOrder = new Order(Order.OrderStatus.PAID, "Boston", (float)323.5, new Date(da.getTime()), bob, items);
 
-         orderController.updateOrderById(22, newOrder);
+         //orderController.updateOrderById(22, newOrder);
   
       	//System.out.println(newOrder.getStatus());
       

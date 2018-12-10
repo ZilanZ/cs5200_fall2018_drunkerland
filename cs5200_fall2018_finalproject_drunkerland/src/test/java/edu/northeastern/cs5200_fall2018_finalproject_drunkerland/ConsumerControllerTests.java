@@ -1,6 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland;
 
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.ConsumerController;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.UserController;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Consumer;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ConsumerRepository;
 import org.junit.*;
@@ -13,11 +14,14 @@ public class ConsumerControllerTests extends DemoApplicationTests {
     @Autowired
      ConsumerController consumerController;
 
-//    @Test
-//    public  void createConsumerTest(){
-//        Consumer consumer = new Consumer("jia", "jia", "danlin", "jia", "notaste");
-//        consumerController.createConsumer(consumer);
-//    }
+    @Autowired
+    UserController userController;
+
+    @Test
+    public  void createConsumerTest(){
+        Consumer consumer = new Consumer("jia", "jia", "danlin", "jia", "notaste");
+        consumerController.createConsumer(consumer);
+    }
 
     @Test
     public void findConsumerById(){
@@ -53,4 +57,14 @@ public class ConsumerControllerTests extends DemoApplicationTests {
 //        int id = 59;
 //        consumerController.deleteConsumerById(id);
 //    }
+
+    @Test
+    public void testInitializeConsumer(){
+        consumerController.createInitialShippingCartForConsumer(21);
+    }
+
+    @Test
+    public void addAddressToUser(){
+        userController.addAddressToUser(21, 1);
+    }
 }

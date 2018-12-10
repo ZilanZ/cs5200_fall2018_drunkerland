@@ -1,6 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api;
 
 
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Address;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.User;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -81,4 +82,20 @@ public interface UserApi {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     User updateUserById(@PathVariable("id") int id, @RequestBody User newUser);
 
+    /**
+     * find primary address of an user
+     * @param userId
+     * @return
+     */
+    @RequestMapping (value = "/{uId}/primaryAddress", method = RequestMethod.GET)
+    Address findPrimaryAddressForUser(int userId);
+
+    /**
+     * add an address to an user
+     * @param uId
+     * @param aId
+     * @return
+     */
+    @RequestMapping(value = "/{uId}/address/{aId}", method = RequestMethod.POST)
+    User addAddressToUser(@PathVariable("uId") int uId, @PathVariable("aId") int aId);
 }
