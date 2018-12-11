@@ -6,6 +6,7 @@ import {AppConfig} from './configs/app.config';
 
 const routes: Routes = [
   {path: '', component: HomePageComponent, pathMatch: 'full'},
+  {path: AppConfig.routes.login, loadChildren: './modules/login/login.module#LoginModule'},
   {path: AppConfig.routes.wines, loadChildren: './modules/wines/wines.module#WinesModule'},
   {path: AppConfig.routes.error404, component: Error404PageComponent},
 

@@ -4,7 +4,7 @@ import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from '../environments/environment';
 import { WebpackTranslateLoader } from './webpack-translate-loader';
@@ -14,6 +14,8 @@ import { NgxExampleLibraryModule } from '@ismaestro/ngx-example-library';
 import { FirebaseModule } from './shared/modules/firebase.module';
 import { SentryErrorHandler } from './core/sentry.errorhandler';
 import {WineServiceClient} from '../services/wine.service.client';
+import {ErrorInterceptor, JwtInterceptor} from './modules/login/_helpers';
+import {AlertService, AuthenticationService, UserService} from './modules/login/_services';
 
 @NgModule({
   imports: [
@@ -41,6 +43,11 @@ import {WineServiceClient} from '../services/wine.service.client';
   ],
   providers: [
     WineServiceClient,
+    UserService,
+    AuthenticationService,
+    AlertService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: APP_CONFIG, useValue: AppConfig },
     { provide: ErrorHandler, useClass: SentryErrorHandler }
   ],

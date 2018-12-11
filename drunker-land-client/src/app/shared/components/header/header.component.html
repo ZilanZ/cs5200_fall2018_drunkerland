@@ -16,10 +16,10 @@
         <!--<button mat-icon-button [matMenuTriggerFor]="matmenu">-->
           <!--<mat-icon>public</mat-icon>-->
         <!--</button>-->
-        <a *ngIf="!log" mat-raised-button routerLink="'/' + {{loginUrl}}">
+        <a *ngIf="!log" mat-raised-button routerLink="{{loginUrl}}">
           LOGIN
         </a>
-        <a *ngIf="!log" mat-raised-button routerLink="'/' + {{registerUrl}}">
+        <a *ngIf="!log" mat-raised-button routerLink="{{registerUrl}}">
           REGISTER
         </a>
 
