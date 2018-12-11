@@ -88,8 +88,6 @@ public class WineController implements WineApi {
         return  wine.getSupplier();
     }
 
-
-
     public List<Wine> multipleSearch( WineQueryDto wineQueryDto){
         List<String> searchFields = new ArrayList<>();
         List<Wine> wines = new ArrayList<>();
