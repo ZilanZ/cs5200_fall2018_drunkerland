@@ -1,5 +1,6 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories;
 
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Supplier;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Wine;
@@ -32,4 +33,7 @@ public interface WineRepository  extends CrudRepository<Wine, Integer>{
 
     @Query("select w from Wine w where w.date between :startDate and :endDate")
     List<Wine> findWineByDate(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+
+    @Query("select w from Wine w where w.supplier =: supplier")
+    List<Wine> findWinesBySupplier(@Param("supplier") Supplier supplier);
 }
