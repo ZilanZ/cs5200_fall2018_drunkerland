@@ -4,6 +4,7 @@ import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Supplier;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Wine;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.dto.WineQueryDto;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.SupplierRepository;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.WineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,9 @@ public class WineController implements WineApi {
 
     @Autowired
     WineRepository wineRepository;
+    
+    @Autowired
+    SupplierController supplierController;
 
     public void save(List<Wine> wines) {
         for (Wine wine: wines)
@@ -142,4 +146,21 @@ public class WineController implements WineApi {
             return null;
         return  wines;
     }
+
+	@Override
+	public List<Wine> findWinesBySupplier(Supplier supplier) {
+		
+		return supplier.getWines();
+		//return wineRepository.findWinesBySupplier(supplier);
+	}
+
+	@Override
+	public Wine setSupplier(int wId, int sId) {
+		
+		Wine wine = findWineById(wId);
+		Supplier supplier = supplierController.findSupplierById(sId);
+		wine.setSupplier(supplier);
+		supplier.addWine(wine);
+		return wineRepository.save(wine);
+	}
 }

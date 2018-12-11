@@ -3,6 +3,8 @@ package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api.SupplierApi;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Supplier;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Wine;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ItemRepository;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.StockRepository;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.SupplierRepository;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.WineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +17,18 @@ public class SupplierController implements SupplierApi {
 
     @Autowired
     SupplierRepository supplierRepository;
+    @Autowired
+    WineRepository wineRepository;
+    @Autowired
+    StockRepository stockRepository;
+    @Autowired
+    ItemRepository itemRepository;
 
     @Autowired
     WineController wineController;
 
     public Supplier createSupplier(Supplier supplier) {
-        return supplierRepository.save(supplier);
+         return supplierRepository.save(supplier);   
     }
 
     public List<Supplier> findAllSuppliers() {
@@ -55,6 +63,8 @@ public class SupplierController implements SupplierApi {
         Supplier supplier = findSupplierById(sId);
         Wine wine = wineController.findWineById(wId);
         supplier.addWine(wine);
+        wine.setSupplier(supplier);
+        wineRepository.save(wine);
         return supplierRepository.save(supplier);
     }
 }
