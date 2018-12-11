@@ -73,7 +73,13 @@ public interface VendorApi {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     Vendor updateVendorById(@PathVariable("id") int id, @RequestBody Vendor newVendor);
-    
+
+    /**
+     * add stock for vendor and set stock foreign key vendor_id = vendor.id
+     * @param vId
+     * @param stId
+     * @return
+     */
     @RequestMapping(value ="/{vId}/stock/{stId}", method = RequestMethod.PUT)
     Vendor addStockForVendor(@PathVariable("vId") int vId, @PathVariable("stId") int stId);
 

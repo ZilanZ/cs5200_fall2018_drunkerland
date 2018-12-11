@@ -73,7 +73,7 @@ public interface SupplierApi {
     Supplier updateSupplierById(@PathVariable("id") int id, @RequestBody Supplier newSupplier);
 
     /**
-     * add a wine to a supplier
+     * add a wine to a supplier and set wine's foreign key supplier_id = supplier.id
      * @param sId
      * @param wId
      * @return

@@ -88,13 +88,13 @@ public interface StockApi {
 	 Stock updateStockById(@PathVariable("id") int id, @RequestBody Stock newStock);
 
 	/**
-	 * add item to a stock
+	 * add item to a stock and set item's foreign key stock_id = stock.id
 	 * @param sId
 	 * @param iId
 	 * @return
 	 */
-	 @RequestMapping(value = "{sId}/item/{iId}", method = RequestMethod.POST)
-	 Stock addItemToStock(@PathVariable("sId") int sId, @PathVariable("iId") int iId);
+	 @RequestMapping(value = "{stId}/item/{iId}", method = RequestMethod.PUT)
+	 Stock addItemToStock(@PathVariable("stId") int stId, @PathVariable("iId") int iId);
 
 
 }
