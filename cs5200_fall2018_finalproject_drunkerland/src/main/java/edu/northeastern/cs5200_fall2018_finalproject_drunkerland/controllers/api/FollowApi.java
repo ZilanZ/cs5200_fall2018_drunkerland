@@ -11,7 +11,7 @@ import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Consumer
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Follow;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Reviewer;
 
-@RequestMapping("rest/api/follow")
+@RequestMapping("rest/api/follows")
 public interface FollowApi {
 	
 	
