@@ -14,12 +14,19 @@ import { NgxExampleLibraryModule } from '@ismaestro/ngx-example-library';
 import { FirebaseModule } from './shared/modules/firebase.module';
 import { SentryErrorHandler } from './core/sentry.errorhandler';
 import {WineServiceClient} from '../services/wine.service.client';
-import {ErrorInterceptor, JwtInterceptor} from './modules/login/_helpers';
-import {AlertService, AuthenticationService, UserService} from './modules/login/_services';
+import {LoginComponent} from './login/login.component';
+import {AlertComponent} from './alert/alert.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material';
+import {ErrorInterceptor, JwtInterceptor} from './_helpers';
 
 @NgModule({
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
     FirebaseModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     TranslateModule.forRoot({
@@ -39,16 +46,15 @@ import {AlertService, AuthenticationService, UserService} from './modules/login/
     HttpClientModule,
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    AlertComponent
   ],
   providers: [
     WineServiceClient,
-    UserService,
-    AuthenticationService,
-    AlertService,
+    { provide: APP_CONFIG, useValue: AppConfig },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    { provide: APP_CONFIG, useValue: AppConfig },
     { provide: ErrorHandler, useClass: SentryErrorHandler }
   ],
   bootstrap: [AppComponent]
