@@ -79,6 +79,13 @@ public interface ItemApi {
     Item updateItemById(@PathVariable("id") int id, @RequestBody Item newItem);
 
 	 
-	 
+	/**
+	 * add a package to an item and set package's foreign key item_id = item.id
+	 * @param iId
+	 * @param pId
+	 * @return
+	 */
+	@RequestMapping(value = "/{iId}/package/{pId}", method = RequestMethod.PUT)
+    Item addPackageToItem(@PathVariable("iId") int iId, @PathVariable("pId") int pId);
 
 }
