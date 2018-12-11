@@ -20,6 +20,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material';
 import {ErrorInterceptor, JwtInterceptor} from './_helpers';
+import {RegisterComponent} from './register/register.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import {ErrorInterceptor, JwtInterceptor} from './_helpers';
   declarations: [
     AppComponent,
     LoginComponent,
+    RegisterComponent,
     AlertComponent
   ],
   providers: [
