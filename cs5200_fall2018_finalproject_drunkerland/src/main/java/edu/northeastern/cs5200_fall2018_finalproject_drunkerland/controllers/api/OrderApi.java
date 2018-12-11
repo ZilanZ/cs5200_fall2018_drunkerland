@@ -92,14 +92,20 @@ public interface OrderApi {
     Order updateOrderById(@PathVariable("id") int id, @RequestBody Order newOrder);
 
     /**
-     * add item to an order
+     * add item to an order and set item's foreign key order_id = order.id
      * @param oId
      * @param iId
      * @return
      */
-    @RequestMapping(value = "{oId}/item/{iId}", method = RequestMethod.POST)
+    @RequestMapping(value = "{oId}/item/{iId}", method = RequestMethod.PUT)
     Order addItemToOrder(@PathVariable("oId") int oId, @PathVariable("iId") int iId);
 
+    /**
+     * change order's status
+     * @param id
+     * @param status
+     * @return
+     */
     @RequestMapping(value = "/{id}/changeStatus/{status}", method = RequestMethod.PUT)
     Order changeOrderStatus(@PathVariable("id") int id, @PathVariable("status") Order.OrderStatus status);
 }
