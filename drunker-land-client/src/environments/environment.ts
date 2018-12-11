@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
+  apiUrl: 'http://localhost:8080',
   firebase: {
     apiKey: 'AIzaSyDcJjIjQHmI2owftgdhejJhu9HB4Vf4xIY',
     authDomain: 'drunker-land.firebaseapp.com',

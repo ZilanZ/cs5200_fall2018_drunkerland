@@ -23,8 +23,8 @@ export class HeaderComponent implements OnInit {
   log: boolean;
   userRole: string;
 
-  loginUrl: string = AppConfig.routes.login;
-  registerUrl: string = AppConfig.routes.register;
+  loginUrl: string = '/' + AppConfig.routes.login;
+  registerUrl: string = '/' + AppConfig.routes.register;
 
   constructor(@Inject(APP_CONFIG) appConfig: any,
               private progressBarService: ProgressBarService,
@@ -51,6 +51,7 @@ export class HeaderComponent implements OnInit {
 
   private loadMenus(): void {
     switch (this.userRole) {
+      //
       default: this.menuItems = [
         {link: '/', name: _('home')},
         {link: '/' + AppConfig.routes.wines, name: _('filter')}

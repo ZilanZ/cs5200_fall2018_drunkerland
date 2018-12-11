@@ -18,10 +18,10 @@ public class Supplier extends User{
 	private List<Sponsorship> sponsers;
 	public Supplier(){}
 	public Supplier(String username, String password, String lastName, String firstName, String location,
-					String graspType, String history, Boolean qualified) {
+					String grapeType, String history, Boolean qualified) {
 		super(username, password, lastName, firstName);
 		this.location = location;
-		this.grapeType = graspType;
+		this.grapeType = grapeType;
 		this.history = history;
 		this.qualified = qualified;
 	}
