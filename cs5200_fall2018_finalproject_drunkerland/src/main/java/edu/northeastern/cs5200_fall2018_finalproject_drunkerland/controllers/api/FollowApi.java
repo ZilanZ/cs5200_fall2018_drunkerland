@@ -11,7 +11,7 @@ import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Consumer
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Follow;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Reviewer;
 
-@RequestMapping("rest/api/follow")
+@RequestMapping("rest/api/follows")
 public interface FollowApi {
 	
 	
@@ -46,7 +46,7 @@ public interface FollowApi {
 	 * @param consumer
 	 * @return
 	 */
-	@RequestMapping(value = "/consumer", method = RequestMethod.GET)
+	@RequestMapping(value = "/consumer", method = RequestMethod.POST)
 	List<Follow> findFollowsByConsumer(@RequestBody Consumer consumer);
 	
 	
@@ -55,7 +55,7 @@ public interface FollowApi {
 	 * @param reviewer
 	 * @return
 	 */
-	@RequestMapping(value = "/reviewer", method = RequestMethod.GET)
+	@RequestMapping(value = "/reviewer", method = RequestMethod.POST)
 	List<Follow> findFollowsByReviewer(@RequestBody Reviewer reviewer);
 	
 	
