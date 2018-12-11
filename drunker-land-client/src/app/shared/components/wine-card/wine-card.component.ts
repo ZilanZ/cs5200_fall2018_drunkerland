@@ -31,13 +31,13 @@ export class WineCardComponent implements OnInit {
     this.selectedNum = 1;
     this.options = Array.from(new Array(30), (_, index) => index + 1);
   }
-
-  like(wine: Wine): Promise<void> {
-    if (this.canVote) {
-      wine.like();
-      return this.wineService.updateWine(wine);
-    }
-  }
+  //
+  // like(wine: Wine): Promise<void> {
+  //   if (this.canVote) {
+  //     wine.like();
+  //     return this.wineService.updateWine(wine);
+  //   }
+  // }
 
   seeWineDetails(wine: Wine): void {
     if (wine.default) {
@@ -46,7 +46,7 @@ export class WineCardComponent implements OnInit {
   }
 
   addToCart(num: number) {
-    //TODO: pass to the user's cart
+    // TODO: pass to the user's cart
     console.log(num);
   }
 

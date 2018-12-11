@@ -20,12 +20,18 @@ export class HeaderComponent implements OnInit {
   progressBarMode: string;
   currentLang: string;
 
+  log: boolean;
   userRole: string;
+
+  loginUrl: string = AppConfig.routes.login;
+  registerUrl: string = AppConfig.routes.register;
 
   constructor(@Inject(APP_CONFIG) appConfig: any,
               private progressBarService: ProgressBarService,
               private translateService: TranslateService) {
     this.appConfig = appConfig;
+    this.log = false;
+    this.userRole = null;
   }
 
   ngOnInit() {
@@ -47,7 +53,7 @@ export class HeaderComponent implements OnInit {
     switch (this.userRole) {
       default: this.menuItems = [
         {link: '/', name: _('home')},
-        // {link: '/' + AppConfig.routes.wines, name: _('filter')}
+        {link: '/' + AppConfig.routes.wines, name: _('filter')}
       ];
       break;
     }

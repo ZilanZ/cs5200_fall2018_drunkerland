@@ -7,7 +7,6 @@ import {_} from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 import {AppConfig} from './configs/app.config';
 import {LocalStorage} from 'ngx-store';
 import {UtilsHelperService} from './core/services/utils-helper.service';
-import {WineServiceClient} from '../services/wine.service.client';
 
 declare const require;
 declare const Modernizr;
@@ -58,13 +57,6 @@ export class AppComponent implements OnInit {
             this.meta.updateTag({
               name: 'description',
               content: 'List of super-wines'
-            });
-            break;
-          case '/' + AppConfig.routes.filter:
-            this.title.setTitle('Union Search');
-            this.meta.updateTag({
-              name: 'description',
-              content: 'Union search of wines'
             });
             break;
         }

@@ -56,14 +56,14 @@ export class WinesListPageComponent implements OnInit {
       });
     }
   }
-
-  like(wine: Wine) {
-    this.canVote = WineService.checkIfUserCanVote();
-    if (this.canVote) {
-      wine.like();
-      this.wineService.updateWine(wine);
-    }
-  }
+  //
+  // like(wine: Wine) {
+  //   this.canVote = WineService.checkIfUserCanVote();
+  //   if (this.canVote) {
+  //     wine.like();
+  //     this.wineService.updateWine(wine);
+  //   }
+  // }
 
   deleteWine(wine: Wine) {
     const dialogRef = this.dialog.open(WineRemoveComponent);
