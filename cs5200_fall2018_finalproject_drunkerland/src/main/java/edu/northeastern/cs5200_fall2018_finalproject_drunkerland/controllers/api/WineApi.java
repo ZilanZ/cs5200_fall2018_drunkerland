@@ -152,4 +152,8 @@ public interface WineApi {
     
     @RequestMapping(value ="/{wId}/supplier/{sId}", method = RequestMethod.PUT)
     Wine setSupplier(@PathVariable("wId") int wId, @PathVariable("sId") int sId);
+    
+    
+    @RequestMapping(value ="/{wId}/stock/{stId}", method = RequestMethod.PUT)
+    Wine addStockForWine(@PathVariable("wId") int wId, @PathVariable("stId") int stId);
 }
