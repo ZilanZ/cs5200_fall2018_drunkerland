@@ -75,7 +75,7 @@ public interface VendorApi {
     Vendor updateVendorById(@PathVariable("id") int id, @RequestBody Vendor newVendor);
 
     /**
-     * add stock for vendor and set stock foreign key vendor_id = vendor.id
+     * add a stock for a vendor and set stock's foreign key vendor_id = vendor.id
      * @param vId
      * @param stId
      * @return

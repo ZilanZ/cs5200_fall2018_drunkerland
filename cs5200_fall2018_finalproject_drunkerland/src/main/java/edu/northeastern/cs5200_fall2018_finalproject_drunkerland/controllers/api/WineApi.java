@@ -161,7 +161,7 @@ public interface WineApi {
 
 
     /**
-     * add stock for wine and set stock's foreign key wine_id = wine.id
+     * add a stock for a wine and set stock's foreign key wine_id = wine.id
      * @param wId
      * @param stId
      * @return
