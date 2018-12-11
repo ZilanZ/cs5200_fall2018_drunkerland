@@ -8,8 +8,8 @@ import java.util.List;
 import java.sql.Date;
 
 public interface WineRepository  extends CrudRepository<Wine, Integer>{
-    @Query("select w from Wine w where w.name=:name")
-    Wine findWineByName(@Param("name") String name);
+    @Query("select w from Wine w where w.name like :name")
+    List<Wine> findWineByName(@Param("name") String name);
 
     @Query("select w from Wine w where w.vintage=:vintage")
     List<Wine> findWineByVintage(@Param("vintage") String vintage);
@@ -22,6 +22,10 @@ public interface WineRepository  extends CrudRepository<Wine, Integer>{
 
     @Query("select w from Wine w where w.country=:country")
     List<Wine> findWineByCountry(@Param("country") String country);
+
+
+    @Query("select w from Wine w where w.region=:region")
+    List<Wine> findWineByRegion(@Param("region") String region);
 
     @Query("select w from Wine w where w.score>=:least and w.score<=:greatest")
     List<Wine> findWineBetweenScores(@Param("least") float least, @Param("greatest") float greatest);

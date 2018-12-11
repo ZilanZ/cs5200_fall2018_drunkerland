@@ -1,6 +1,7 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api;
 
 
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Address;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Consumer;
 import org.springframework.web.bind.annotation.*;
 
@@ -71,5 +72,14 @@ public interface ConsumerApi {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     Consumer updateConsumerById(@PathVariable("id") int id, @RequestBody Consumer newConsumer);
+
+    /**
+     * Add an order for a consumer
+     * @param cId
+     * @param oId
+     * @return
+     */
+    @RequestMapping(value = "/{cId}/order/{oId}", method = RequestMethod.PUT)
+    Consumer addOrderForConsumer(@PathVariable("cId") int cId, @PathVariable("oId") int oId);
 
 }

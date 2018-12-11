@@ -3,6 +3,7 @@ package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.ap
 
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Wine;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Supplier;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.dto.WineQueryDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -48,7 +49,7 @@ public interface WineApi {
      * @return
      */
     @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
-    Wine findWineByName(@PathVariable("name") String name);
+    List<Wine> findWineByName(@PathVariable("name") String name);
 
     /**
      * retrieve wine by vintage
@@ -82,6 +83,14 @@ public interface WineApi {
      */
     @RequestMapping(value = "/country/{country}", method = RequestMethod.GET)
     List<Wine> findWineByCountry(@PathVariable("country") String country);
+
+    /**
+     * retrieve wine by region
+     * @param region
+     * @return
+     */
+    @RequestMapping(value = "/region/{region}", method = RequestMethod.GET)
+    List<Wine> findWineByRegion(@PathVariable("region") String region);
 
     /**
      * retrieve wine by score
@@ -123,4 +132,12 @@ public interface WineApi {
      */
     @RequestMapping(value = "/{wId}/supplier", method = RequestMethod.GET)
     Supplier findSupplierForWine(@PathVariable("wId") int wId);
+
+    /**
+     * Retrieve wine with multiple search fields
+     * @param wineQueryDto
+     * @return
+     */
+    @RequestMapping(value = "/multipleSearch", method = RequestMethod.POST)
+    List<Wine> multipleSearch(@RequestBody WineQueryDto wineQueryDto);
 }

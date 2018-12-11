@@ -47,7 +47,7 @@ public interface MarkApi {
 	  * @param reviewer
 	  * @return
 	  */
-	 @RequestMapping(value = "/reviewer", method = RequestMethod.GET)
+	 @RequestMapping(value = "/reviewer", method = RequestMethod.POST)
 	 List<Mark> findMarksByReviewer(@RequestBody Reviewer reviewer);
 	 
 	 
@@ -57,7 +57,7 @@ public interface MarkApi {
 	  * @param wine
 	  * @return
 	  */
-	 @RequestMapping(value = "/wine", method = RequestMethod.GET)
+	 @RequestMapping(value = "/wine", method = RequestMethod.POST)
 	 List<Mark> findMarksByWine(@RequestBody Wine wine);
 	 
 	 

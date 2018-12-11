@@ -6,13 +6,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.*;
 
 @Entity
@@ -43,7 +36,7 @@ public class Order {
 	@JsonIgnore
 	private Consumer consumer;
 	
-	@OneToMany(mappedBy="order", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="order", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Item> items;
 	
 	public void addItem(Item item)
@@ -122,29 +115,21 @@ public class Order {
 
 	}
 
-	public Order(int id, OrderStatus status, String destination, float totalPrice, Date created, 
-			Consumer consumer,
-			List<Item> items) {
-		
+	public Order(int id, OrderStatus status, String destination, float totalPrice, Date created) {
+
 		this.id = id;
 		this.status = status;
 		this.destination = destination;
 		this.totalPrice = totalPrice;
 		this.created = created;
-		this.consumer = consumer;
-		this.items = items;
-		items = new ArrayList<>();
 	}
 	
-	public Order(OrderStatus status, String destination, float totalPrice, Date created, 
-			Consumer consumer, List<Item> items) 
+	public Order(OrderStatus status, String destination, float totalPrice, Date created)
 	{
 		this.status = status;
 		this.destination = destination;
 		this.totalPrice = totalPrice;
 		this.created = created;
-		this.consumer = consumer;
-		this.items = items;
 		items = new ArrayList<>();
 	}
 	
@@ -156,7 +141,6 @@ public class Order {
 		this.totalPrice = totalPrice;
 		this.consumer = consumer;
 		this.items = items;
-		items = new ArrayList<>();
 	}
 	
 	public void set(Order newOrder)

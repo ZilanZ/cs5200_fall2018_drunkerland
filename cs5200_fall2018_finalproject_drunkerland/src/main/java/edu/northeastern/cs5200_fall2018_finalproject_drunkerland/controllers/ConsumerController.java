@@ -1,13 +1,14 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers;
 
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api.ConsumerApi;
-import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Article;
-import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Consumer;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.*;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ConsumerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Date;
 import java.util.List;
+import java.util.StringJoiner;
 
 @RestController
 public class ConsumerController implements ConsumerApi {
@@ -15,6 +16,11 @@ public class ConsumerController implements ConsumerApi {
     @Autowired
     ConsumerRepository consumerRepository;
 
+    @Autowired
+    OrderController orderController;
+
+    @Autowired
+    UserController userController;
 
     public Consumer createConsumer(Consumer consumer) {
         return consumerRepository.save(consumer);
@@ -45,6 +51,28 @@ public class ConsumerController implements ConsumerApi {
         Consumer consumer = findConsumerById(id);
         consumer.setConsumer(newConsumer);
         return consumerRepository.save(consumer);
+    }
+
+    public Consumer addOrderForConsumer(int cId, int oId){
+        Consumer consumer = findConsumerById(cId);
+        Order order = orderController.findOrderById(oId);
+        consumer.addOrder(order);
+        return consumerRepository.save(consumer);
+    }
+
+    public void createInitialShippingCartForConsumer(int consumerId) {
+        java.util.Date utilDate = new java.util.Date();
+        Date createDate = new java.sql.Date(utilDate.getTime());
+        Address address = userController.findPrimaryAddressForUser(consumerId);
+        if (address==null) {
+            System.out.println("Error: user has not set primary address");
+            return;
+        }
+        String destination = address.getStreet1()+", "+address.getStreet2()+", "+address.getCity()+", "
+                +address.getState()+", "+ address.getZipcode() + ", " + address.getCountry();
+        Order order = new Order( Order.OrderStatus.BASKET, destination,0 , createDate);
+        orderController.createOrder(order);
+        this.addOrderForConsumer(consumerId, order.getId());
     }
 
 }

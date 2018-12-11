@@ -2,6 +2,7 @@ package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.ap
 
 import java.util.List;
 
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ReviewerRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -85,5 +86,15 @@ public interface StockApi {
 	  */
 	 @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	 Stock updateStockById(@PathVariable("id") int id, @RequestBody Stock newStock);
+
+	/**
+	 * add item to a stock
+	 * @param sId
+	 * @param iId
+	 * @return
+	 */
+	 @RequestMapping(value = "{sId}/item/{iId}", method = RequestMethod.POST)
+	 Stock addItemToStock(@PathVariable("sId") int sId, @PathVariable("iId") int iId);
+
 
 }

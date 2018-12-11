@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Package;
 
-@RequestMapping("rest/api/package")
+@RequestMapping("rest/api/packages")
 public interface PackageApi {
 	
 	
@@ -20,7 +20,7 @@ public interface PackageApi {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	Package createPackage(Package pack);
+	Package createPackage(@RequestBody Package pack);
 	
 	/**
 	 * retrieve all packages
@@ -44,8 +44,8 @@ public interface PackageApi {
 	 * @param trackingNumber
 	 * @return
 	 */
-	@RequestMapping(value = "/tracking", method = RequestMethod.GET)
-	Package findPackageByTrackingNum(@RequestParam("tracking") String trackingNumber);
+	@RequestMapping(value = "/trackingNumber", method = RequestMethod.GET)
+	Package findPackageByTrackingNum(@RequestParam("trackingNumber") String trackingNumber);
 	
 	
 	/**

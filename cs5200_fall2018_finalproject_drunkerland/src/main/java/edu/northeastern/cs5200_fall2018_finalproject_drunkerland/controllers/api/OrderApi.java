@@ -91,5 +91,15 @@ public interface OrderApi {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     Order updateOrderById(@PathVariable("id") int id, @RequestBody Order newOrder);
 
+    /**
+     * add item to an order
+     * @param oId
+     * @param iId
+     * @return
+     */
+    @RequestMapping(value = "{oId}/item/{iId}", method = RequestMethod.POST)
+    Order addItemToOrder(@PathVariable("oId") int oId, @PathVariable("iId") int iId);
 
+    @RequestMapping(value = "/{id}/changeStatus/{status}", method = RequestMethod.PUT)
+    Order changeOrderStatus(@PathVariable("id") int id, @PathVariable("status") Order.OrderStatus status);
 }
