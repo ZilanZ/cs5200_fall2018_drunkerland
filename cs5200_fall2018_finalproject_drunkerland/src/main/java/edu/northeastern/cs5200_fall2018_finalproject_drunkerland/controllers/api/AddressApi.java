@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Address;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.User;
 
-@RequestMapping("rest/api/address")
+@RequestMapping("rest/api/addresses")
 public interface AddressApi {
 
 	
@@ -49,7 +49,7 @@ public interface AddressApi {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/user", method = RequestMethod.POST)
 	List<Address> findAddressesByUser(@RequestBody User user);
 	
 	

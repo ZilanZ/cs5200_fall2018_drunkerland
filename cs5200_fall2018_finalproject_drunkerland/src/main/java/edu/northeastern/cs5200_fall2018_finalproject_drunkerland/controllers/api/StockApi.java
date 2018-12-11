@@ -12,7 +12,7 @@ import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Stock;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Vendor;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Wine;
 
-@RequestMapping("rest/api/stock")
+@RequestMapping("rest/api/stocks")
 public interface StockApi {
 	
 	
@@ -56,7 +56,7 @@ public interface StockApi {
 	  * @param vendor
 	  * @return
 	  */
-	 @RequestMapping(value = "/vendor", method = RequestMethod.GET)
+	 @RequestMapping(value = "/vendor", method = RequestMethod.POST)
 	 List<Stock> findStocksByVendor(@RequestBody Vendor vendor);
 	 
 	 
@@ -65,7 +65,7 @@ public interface StockApi {
 	  * @param wine
 	  * @return
 	  */
-	 @RequestMapping(value = "/wine", method = RequestMethod.GET)
+	 @RequestMapping(value = "/wine", method = RequestMethod.POST)
 	 List<Stock> findStocksByWine(@RequestBody Wine wine);
 	 
 	 
