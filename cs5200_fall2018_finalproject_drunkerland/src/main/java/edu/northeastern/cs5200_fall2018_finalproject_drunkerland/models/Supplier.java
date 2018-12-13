@@ -15,7 +15,7 @@ public class Supplier extends User{
 	@OneToMany(mappedBy="supplier")
 	private List<Wine> wines;
 	@OneToMany(mappedBy="supplier")
-	private List<Sponsorship> sponsers;
+	private List<Sponsorship> sponsorships;
 	public Supplier(){}
 	public Supplier(String username, String password, String lastName, String firstName, String location,
 					String grapeType, String history, Boolean qualified) {
@@ -26,10 +26,10 @@ public class Supplier extends User{
 		this.qualified = qualified;
 	}
 	public Supplier(String username, String password, String lastname, String firstname, String gender, String phone,
-					String email, Date dob, String location, String graspType, String history, Boolean qualified) {
+					String email, Date dob, String location, String grapeType, String history, Boolean qualified) {
 		super(username, password, lastname, firstname, gender, phone, email, dob);
 		this.location = location;
-		this.grapeType = graspType;
+		this.grapeType = grapeType;
 		this.history = history;
 		this.qualified = qualified;
 	}
@@ -64,11 +64,11 @@ public class Supplier extends User{
 	public void setWines(List<Wine> wines) {
 		this.wines = wines;
 	}
-	public List<Sponsorship> getSponsers() {
-		return sponsers;
+	public List<Sponsorship> getSponsorships() {
+		return sponsorships;
 	}
-	public void setSponsers(List<Sponsorship> sponsers) {
-		this.sponsers = sponsers;
+	public void setSponsorships(List<Sponsorship> sponsorships) {
+		this.sponsorships = sponsorships;
 	}
 	public void addWine(Wine wine) {
 		this.wines.add(wine);
@@ -77,7 +77,7 @@ public class Supplier extends User{
 		}
 	}
 	public void addSponser(Sponsorship sponser) {
-		this.sponsers.add(sponser);
+		this.sponsorships.add(sponser);
 		if (sponser.getSupplier()!=this) {
 			sponser.setSupplier(this);
 		}

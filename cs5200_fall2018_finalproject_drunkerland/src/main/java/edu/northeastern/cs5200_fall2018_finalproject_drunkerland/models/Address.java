@@ -13,40 +13,39 @@ public class Address {
 
     private String street1;
     private String street2;
-    private String zipcode;
+    private String zipCode;
     private String city;
     private String state;
     private String country;
-    private Boolean primaryAdd;
+    private Boolean isPrimary;
 
     @ManyToOne()
-    @JsonIgnore
     private User user;
 
     public Address() {
     }
 
-    public Address(String street1, String zipcode, String city, String state, 
-    		String country, Boolean primaryAdd) {
+    public Address(String street1, String zipCode, String city, String state,
+    		String country, Boolean isPrimary) {
         this.street1 = street1;
-        this.zipcode = zipcode;
+        this.zipCode = zipCode;
         this.city = city;
         this.state = state;
         this.country = country;
-        this.primaryAdd = primaryAdd;
+        this.isPrimary = isPrimary;
     }
 
-    public Address(String street1, String street2, String zipcode,
+    public Address(String street1, String street2, String zipCode,
                    String city, String state, String country,
-                   Boolean primaryAdd)
+                   Boolean isPrimary)
     {
         this.street1 = street1;
         this.street2 = street2;
-        this.zipcode = zipcode;
+        this.zipCode = zipCode;
         this.city = city;
         this.state = state;
         this.country = country;
-        this.primaryAdd = primaryAdd;
+        this.isPrimary = isPrimary;
     }
 
     public int getId() {
@@ -73,12 +72,12 @@ public class Address {
         this.street2 = street2;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     public String getCity() {
@@ -106,12 +105,12 @@ public class Address {
     }
 
 
-    public Boolean isPrimaryAdd() {
-        return primaryAdd;
+    public Boolean getIsPrimary() {
+        return isPrimary;
     }
 
-    public void setPrimaryAdd(Boolean primaryAdd) {
-        this.primaryAdd = primaryAdd;
+    public void setIsPrimary(Boolean isPrimary) {
+        this.isPrimary = isPrimary;
     }
 
     public User getUser() {
@@ -129,11 +128,11 @@ public class Address {
     {
     	this.street1 = newAddress.street1;
         this.street2 = newAddress.street2;
-        this.zipcode = newAddress.zipcode;
+        this.zipCode = newAddress.zipCode;
         this.city = newAddress.city;
         this.state = newAddress.state;
         this.country = newAddress.country;
-        this.primaryAdd = newAddress.primaryAdd;
+        this.isPrimary = newAddress.isPrimary;
     }
     
     

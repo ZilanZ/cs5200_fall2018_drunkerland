@@ -29,7 +29,6 @@ public class Item {
 	private int quantity;
 	
 	@ManyToOne()
-	@JsonIgnore
 	private Stock stock;
 	
 	@ManyToOne()
@@ -38,6 +37,32 @@ public class Item {
 	
 	@OneToMany(mappedBy="item", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Package> packageHasItem;
+
+	public Item() {
+
+	}
+
+	public Item(int id, int quantity, Stock stock, Order order, List<Package> itemsInPackage) {
+
+		this.id = id;
+		this.quantity = quantity;
+		this.stock = stock;
+		this.order = order;
+		this.itemsInPackage = itemsInPackage;
+		itemsInPackage =new ArrayList<>();
+	}
+
+	public Item(int quantity) {
+
+		this.quantity = quantity;
+
+	}
+
+	public Item(int quantity, Stock stock, Order order) {
+		this.quantity = quantity;
+		this.stock = stock;
+		this.order = order;
+	}
 	
 	public void addPackage(Package pack)
 	{
@@ -48,7 +73,7 @@ public class Item {
 	
 	public void removePackage(Package pack)
 	{
-		this.packageHasItem.remove(pack);
+		this.itemsInPackage.remove(pack);
 	}
 
 	public int getId() {
@@ -89,42 +114,12 @@ public class Item {
 			order.getItems().add(this);
 	}
 
-	public List<Package> getPackageHasItem() {
-		return packageHasItem;
+	public List<Package> getItemsInPackage() {
+		return itemsInPackage;
 	}
 
-	public void setPackageHasItem(List<Package> packageHasItem) {
-		this.packageHasItem = packageHasItem;
-	}
-
-	
-	
-	//constructor
-	public Item() {
-
-	}
-
-	public Item(int id, int quantity, Stock stock, Order order, List<Package> packageHasItem) {
-		
-		this.id = id;
-		this.quantity = quantity;
-		this.stock = stock;
-		this.order = order;
-		this.packageHasItem = packageHasItem;
-		packageHasItem =new ArrayList<>();
-	}
-	
-    public Item(int quantity) {
-		
-		this.quantity = quantity;
-
-	}
-    
-
-	public Item(int quantity, Stock stock, Order order) {
-		this.quantity = quantity;
-		this.stock = stock;
-		this.order = order;
+	public void setItemsInPackage(List<Package> itemsInPackage) {
+		this.itemsInPackage = itemsInPackage;
 	}
 
 	public void set(Item newItem) {

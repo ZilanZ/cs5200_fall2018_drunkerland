@@ -75,7 +75,7 @@ public class ConsumerController implements ConsumerApi {
             return;
         }
         String destination = address.getStreet1()+", "+address.getStreet2()+", "+address.getCity()+", "
-                +address.getState()+", "+ address.getZipcode() + ", " + address.getCountry();
+                +address.getState()+", "+ address.getZipCode() + ", " + address.getCountry();
         Order order = new Order( Order.OrderStatus.BASKET, destination,0 , createDate);
         orderController.createOrder(order);
         this.addOrderForConsumer(consumerId, order.getId());

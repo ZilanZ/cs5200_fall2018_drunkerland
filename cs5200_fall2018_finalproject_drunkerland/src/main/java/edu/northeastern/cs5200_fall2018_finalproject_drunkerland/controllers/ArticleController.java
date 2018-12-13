@@ -18,7 +18,6 @@ public class ArticleController implements ArticleApi {
     public Article createArticle(Article article) {
         java.util.Date utilDate = new java.util.Date();
         article.setCreated(new java.sql.Date(utilDate.getTime()));
-        article.setViews(0);
         return articleRepository.save(article);
     }
 

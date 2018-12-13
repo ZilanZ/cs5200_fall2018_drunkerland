@@ -18,12 +18,28 @@ public class Follow {
 	private int id;
 	
 	@ManyToOne()
-	@JsonIgnore
 	private Consumer consumer;
 	
 	@ManyToOne()
-	@JsonIgnore
 	private Reviewer reviewer;
+
+	public Follow() {
+
+	}
+
+	public Follow(int id, Consumer consumer, Reviewer reviewer) {
+
+		this.id = id;
+		this.consumer = consumer;
+		this.reviewer = reviewer;
+	}
+
+
+	public Follow(Consumer consumer, Reviewer reviewer) {
+		super();
+		this.consumer = consumer;
+		this.reviewer = reviewer;
+	}
 
 	public int getId() {
 		return id;
@@ -53,29 +69,7 @@ public class Follow {
 			reviewer.getFollows().add(this);
 	}
 
-	
-	
-	//constructor
-	public Follow() {
-
-	}
-
-	public Follow(int id, Consumer consumer, Reviewer reviewer) {
-		
-		this.id = id;
-		this.consumer = consumer;
-		this.reviewer = reviewer;
-	}
-	
-	
-	public Follow(Consumer consumer, Reviewer reviewer) {
-		super();
-		this.consumer = consumer;
-		this.reviewer = reviewer;
-	}
-
-	public void set(Follow newFollow)
-	{
+	public void set(Follow newFollow) {
 		this.consumer = newFollow.consumer;
 		this.reviewer = newFollow.reviewer;
 	}

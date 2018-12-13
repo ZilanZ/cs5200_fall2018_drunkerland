@@ -7,7 +7,9 @@ import javax.persistence.*;
 
 @Entity
 public class Consumer extends User{
+
 	private String taste;
+
 	@OneToMany(mappedBy="consumer", cascade = CascadeType.MERGE)
 	private List<Order> orders;
 	@OneToMany(mappedBy="consumer", cascade = CascadeType.MERGE)
@@ -32,7 +34,6 @@ public class Consumer extends User{
 		
 	}
 
-
 	public String getTaste() {
 		return taste;
 	}
@@ -49,6 +50,17 @@ public class Consumer extends User{
 		this.orders = orders;
 	}
 
+	public void addOrder(Order order) {
+		orders.add(order);
+		if (order.getConsumer() != this) {
+			order.setConsumer(this);
+		}
+	}
+
+	public void removeOrder(Order order) {
+		this.orders.remove(order);
+	}
+
 	public List<Follow> getFollows() {
 		return follows;
 	}
@@ -56,23 +68,12 @@ public class Consumer extends User{
 	public void setFollows(List<Follow> follows) {
 		this.follows = follows;
 	}
-	
-	public void addOrder(Order order) {
-		orders.add(order);
-		if (order.getConsumer()!=this){
-			order.setConsumer(this);
-		}
-	}
 
 	public void addFollow(Follow follow) {
 		follows.add(follow);
 		if (follow.getConsumer()!=this){
 			follow.setConsumer(this);
 		}
-	}
-
-	public  void removeOrder(Order order) {
-		this.orders.remove(order);
 	}
 
 	public void removeFollow(Follow follow) {

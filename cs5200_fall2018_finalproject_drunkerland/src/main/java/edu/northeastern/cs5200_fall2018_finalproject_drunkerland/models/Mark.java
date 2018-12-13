@@ -20,16 +20,23 @@ public class Mark {
 	private int points;
 	
 	@ManyToOne()
-	@JsonIgnore
 	private Reviewer reviewer;
 	
 	@ManyToOne()
-	@JsonIgnore
 	private Wine wine;
 
-	
+	public Mark() {
 
-	//
+	}
+
+	public Mark(int id, int points, Reviewer reviewer, Wine wine) {
+
+		this.id = id;
+		this.points = points;
+		this.reviewer = reviewer;
+		this.wine = wine;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -66,28 +73,11 @@ public class Mark {
 			wine.getMarks().add(this);
 	}
 
-	
-	
-	//constructor
-	public Mark() {
-
-	}
-
-	public Mark(int id, int points, Reviewer reviewer, Wine wine) {
-		
-		this.id = id;
-		this.points = points;
-		this.reviewer = reviewer;
-		this.wine = wine;
-	}
-	
-	
 	public void set(Mark newMark)
 	{
 		this.points = newMark.points;
 		this.reviewer = newMark.reviewer;
 		this.wine = newMark.wine;
 	}
-	
 
 }

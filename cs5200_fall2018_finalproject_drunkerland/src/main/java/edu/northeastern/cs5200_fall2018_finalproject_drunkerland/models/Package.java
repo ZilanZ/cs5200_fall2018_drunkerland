@@ -32,11 +32,6 @@ public class Package {
 	@JsonIgnore
 	private Item item;
 
-	
-	
-	
-	//
-	
 	public Package(int id, String trackingNumber, PackageStatus status, Item item) {
 		
 		this.id = id;
@@ -60,9 +55,6 @@ public class Package {
 	public Package() {
 
 	}
-
-
-	//
 
 	public int getId() {
 		return id;

@@ -72,7 +72,7 @@ public class UserController implements UserApi {
         User user = findUserById(userId);
         Address primaryAdress = null;
         for(Address address: user.getAddresses()) {
-            if (address.isPrimaryAdd()==true)
+            if (address.getIsPrimary()==true)
                 primaryAdress = address;
         }
         return primaryAdress;

@@ -10,7 +10,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="ORDERS")
-
 public class Order {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -23,6 +22,7 @@ public class Order {
 		CANCELED,
 		REFUNDED
 	}
+
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
 	
@@ -33,14 +33,41 @@ public class Order {
 	private Date created;
 	
 	@ManyToOne()
-	@JsonIgnore
 	private Consumer consumer;
 	
 	@OneToMany(mappedBy="order", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Item> items;
+
+	public Order() {
+
+	}
+
+	public Order(int id, OrderStatus status, String destination, float totalPrice, Date created) {
+
+		this.id = id;
+		this.status = status;
+		this.destination = destination;
+		this.totalPrice = totalPrice;
+		this.created = created;
+	}
+
+	public Order(OrderStatus status, String destination, float totalPrice, Date created) {
+		this.status = status;
+		this.destination = destination;
+		this.totalPrice = totalPrice;
+		this.created = created;
+		items = new ArrayList<>();
+	}
+
+	//constructor for shopping cart
+	public Order(OrderStatus status, float totalPrice, Consumer consumer, List<Item> items) {
+		this.status = status;
+		this.totalPrice = totalPrice;
+		this.consumer = consumer;
+		this.items = items;
+	}
 	
-	public void addItem(Item item)
-	{
+	public void addItem(Item item) {
 		this.items.add(item);
 		if(item.getOrder()!=this)
 			item.setOrder(this);
@@ -109,42 +136,7 @@ public class Order {
 		this.items = items;
 	}
 
-	
-	//constructor
-	public Order() {
-
-	}
-
-	public Order(int id, OrderStatus status, String destination, float totalPrice, Date created) {
-
-		this.id = id;
-		this.status = status;
-		this.destination = destination;
-		this.totalPrice = totalPrice;
-		this.created = created;
-	}
-	
-	public Order(OrderStatus status, String destination, float totalPrice, Date created)
-	{
-		this.status = status;
-		this.destination = destination;
-		this.totalPrice = totalPrice;
-		this.created = created;
-		items = new ArrayList<>();
-	}
-	
-	
-	//constructor for shopping cart
-	public Order(OrderStatus status, float totalPrice, Consumer consumer, List<Item> items) 
-	{
-		this.status = status;
-		this.totalPrice = totalPrice;
-		this.consumer = consumer;
-		this.items = items;
-	}
-	
-	public void set(Order newOrder)
-	{
+	public void set(Order newOrder) {
 		this.destination = newOrder.destination;
 		this.status = newOrder.status;
 		this.items = newOrder.items;
