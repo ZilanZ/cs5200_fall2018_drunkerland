@@ -38,7 +38,7 @@ public class Follow {
 
 
 	public Follow(Consumer consumer, Reviewer reviewer) {
-		super();
+		
 		this.consumer = consumer;
 		this.reviewer = reviewer;
 	}

@@ -25,6 +25,16 @@ public interface FollowApi {
 	
 	
 	/**
+	 * create follow
+	 * @param cId
+	 * @param rId
+	 * @return
+	 */
+	@RequestMapping(value = "/{cId}/follow/{rId}", method = RequestMethod.POST)
+    Follow createFollow2(@PathVariable int cId, @PathVariable int rId);
+	
+	
+	/**
 	 * retrieve all follows
 	 * @return
 	 */

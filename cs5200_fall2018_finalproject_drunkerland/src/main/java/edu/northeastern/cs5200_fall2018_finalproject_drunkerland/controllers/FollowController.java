@@ -16,6 +16,12 @@ public class FollowController implements FollowApi{
 
 	@Autowired
 	FollowRepository followRepository;
+	
+	@Autowired
+	ConsumerController consumerController;
+	@Autowired
+	ReviewerController reviewerController;
+	
 
 	@Override
 	public Follow createFollow(Follow follow) {
@@ -57,6 +63,14 @@ public class FollowController implements FollowApi{
 	public Follow updateFollowById(int id, Follow newFollow) {
 		Follow follow = findFollowById(id);
 		follow.set(newFollow);
+		return followRepository.save(follow);
+	}
+
+	@Override
+	public Follow createFollow2(int cId, int rId) {
+		Consumer consumer = consumerController.findConsumerById(cId);
+		Reviewer reviewer = reviewerController.findReviewerById(rId);
+		Follow follow = new Follow(consumer, reviewer);
 		return followRepository.save(follow);
 	}
 	
