@@ -74,7 +74,7 @@ public interface ConsumerApi {
     Consumer updateConsumerById(@PathVariable("id") int id, @RequestBody Consumer newConsumer);
 
     /**
-     * Add an order for a consumer
+     * Add an order for a consumer and set order's foreign key consumer_id = consumer.id
      * @param cId
      * @param oId
      * @return

@@ -94,8 +94,8 @@ public class Package {
 
 	public void setItem(Item item) {
 		this.item = item;
-		if(!item.getItemsInPackage().contains(this))
-			item.getItemsInPackage().add(this);
+		if(!item.getPackageHasItem().contains(this))
+			item.getPackageHasItem().add(this);
 			
 	}
 	

@@ -18,6 +18,9 @@ public class StockController implements StockApi{
 	
 	@Autowired
 	StockRepository stockRepository;
+	
+	@Autowired
+	ItemRepository itemRepository;
 
 	@Autowired
 	ItemController itemController;
@@ -71,10 +74,13 @@ public class StockController implements StockApi{
 		return stockRepository.save(stock);
 	}
 
-	public Stock addItemToStock( int sId, int iId){
-		Stock stock = findStockById(sId);
+	@Override
+	public Stock addItemToStock( int stId, int iId){
+		Stock stock = findStockById(stId);
 		Item item = itemController.findItemById(iId);
 		stock.addItem(item);
+		item.setStock(stock);
+		itemRepository.save(item);
 		return stockRepository.save(stock);
 	}
 

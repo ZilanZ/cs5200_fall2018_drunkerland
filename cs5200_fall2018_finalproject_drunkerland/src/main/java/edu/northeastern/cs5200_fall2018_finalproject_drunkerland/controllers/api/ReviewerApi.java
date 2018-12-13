@@ -82,7 +82,7 @@ public interface ReviewerApi {
     Reviewer updateReviewerById(@PathVariable("id") int id, @RequestBody Reviewer newReviewer);
 
     /**
-     * add an article to a reviewer
+     * add an article to a reviewer and set article's foreign key reviewer_id = reviewer.id
      * To use it, construct a new article first.
      * @param rId
      * @param aId

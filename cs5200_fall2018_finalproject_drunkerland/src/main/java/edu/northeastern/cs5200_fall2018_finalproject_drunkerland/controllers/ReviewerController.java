@@ -60,6 +60,8 @@ public class ReviewerController implements ReviewerApi {
         Reviewer reviewer = this.findReviewerById(rId);
         if (article!=null && reviewer!=null){
             reviewer.addArticle(article);
+            article.setReviewer(reviewer);
+            articleRepository.save(article);
             return reviewerRepository.save(reviewer);
         }
         return null;
