@@ -3,6 +3,7 @@ package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api.UserApi;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Address;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.User;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.AddressRepository;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,8 @@ public class UserController implements UserApi {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    AddressRepository addressRepository;
 
     @Autowired
     AddressController addressController;
@@ -82,6 +85,8 @@ public class UserController implements UserApi {
         User user = this.findUserById(uId);
         Address address = addressController.findAddressById(aId);
         user.addAddress(address);
+        address.setUser(user);
+        addressRepository.save(address);
         return userRepository.save(user);
     }
 }
