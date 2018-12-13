@@ -8,6 +8,7 @@ import {AppConfig} from './configs/app.config';
 import {LocalStorage} from 'ngx-store';
 import {UtilsHelperService} from './core/services/utils-helper.service';
 import {User} from 'firebase';
+import {AuthenticationService} from './_services';
 
 declare const require;
 declare const Modernizr;

@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
-  @Output() currentUser: EventEmitter<User> = new EventEmitter();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -55,6 +54,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           if (data !== null) {
+            this.authenticationService.log.next(true);
             this.router.navigate([this.returnUrl]);
           } else {
             this.alertService.error("No User Found!");

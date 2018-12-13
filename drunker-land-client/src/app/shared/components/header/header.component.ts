@@ -1,9 +1,11 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {_} from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 import {APP_CONFIG, AppConfig} from '../../../configs/app.config';
 import {ProgressBarService} from '../../../core/services/progress-bar.service';
 import {LocalStorage} from 'ngx-store';
+import {AuthenticationService} from '../../../_services';
+import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Component({
   selector: 'app-header',
@@ -27,10 +29,14 @@ export class HeaderComponent implements OnInit {
   registerUrl: string = '/' + AppConfig.routes.register;
 
   constructor(@Inject(APP_CONFIG) appConfig: any,
+              private authenticationService: AuthenticationService,
               private progressBarService: ProgressBarService,
               private translateService: TranslateService) {
     this.appConfig = appConfig;
-    this.log = false;
+    this.authenticationService.log.subscribe( value => {
+      this.log = value;
+    });
+    console.log(this.log);
     this.userRole = null;
   }
 
