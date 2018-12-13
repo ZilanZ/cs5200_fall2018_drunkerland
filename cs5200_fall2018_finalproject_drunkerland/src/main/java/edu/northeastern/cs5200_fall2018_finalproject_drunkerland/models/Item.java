@@ -36,20 +36,19 @@ public class Item {
 	private Order order;
 	
 	@OneToMany(mappedBy="item", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Package> packageHasItem;
+	private List<Package> packageHasItem = new ArrayList<>();
 
 	public Item() {
 
 	}
 
-	public Item(int id, int quantity, Stock stock, Order order, List<Package> itemsInPackage) {
+	public Item(int id, int quantity, Stock stock, Order order, List<Package> packageHasItem) {
 
 		this.id = id;
 		this.quantity = quantity;
 		this.stock = stock;
 		this.order = order;
-		this.itemsInPackage = itemsInPackage;
-		itemsInPackage =new ArrayList<>();
+		this.packageHasItem = packageHasItem;
 	}
 
 	public Item(int quantity) {
@@ -73,7 +72,7 @@ public class Item {
 	
 	public void removePackage(Package pack)
 	{
-		this.itemsInPackage.remove(pack);
+		this.packageHasItem.remove(pack);
 	}
 
 	public int getId() {
@@ -114,12 +113,12 @@ public class Item {
 			order.getItems().add(this);
 	}
 
-	public List<Package> getItemsInPackage() {
-		return itemsInPackage;
+	public List<Package> getPackageHasItem() {
+		return packageHasItem;
 	}
 
-	public void setItemsInPackage(List<Package> itemsInPackage) {
-		this.itemsInPackage = itemsInPackage;
+	public void setPackageHasItem(List<Package> itemsInPackage) {
+		this.packageHasItem = itemsInPackage;
 	}
 
 	public void set(Item newItem) {
@@ -127,9 +126,5 @@ public class Item {
 		this.quantity = newItem.quantity;
 		this.stock = newItem.stock;
 	}
-    
-    
-    
-	
 
 }
