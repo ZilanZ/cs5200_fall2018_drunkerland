@@ -23,7 +23,7 @@
           REGISTER
         </a>
 
-        <a *ngIf="log" mat-raised-button routerLink="">
+        <a *ngIf="log" mat-raised-button (click)="logout()">
           LOG OUT
         </a>
         <!--<a class="icon__image" href="{{appConfig.repositoryURL}}" target="_blank">-->

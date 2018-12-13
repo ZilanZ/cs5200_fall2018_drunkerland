@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
     this.authenticationService.log.subscribe( value => {
       this.log = value;
     });
-    console.log(this.log);
+    // console.log(this.log);
     this.userRole = null;
   }
 
@@ -54,6 +54,10 @@ export class HeaderComponent implements OnInit {
   //     this.language = language;
   //   });
   // }
+  private logout(): void {
+    this.authenticationService.logout();
+    this.authenticationService.log.next(false);
+  }
 
   private loadMenus(): void {
     switch (this.userRole) {
