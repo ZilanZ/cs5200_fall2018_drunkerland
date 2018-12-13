@@ -4,6 +4,7 @@ import { WineService } from '../../../modules/wines/shared/wine.service';
 import { Wine } from '../../../modules/wines/shared/wine.model';
 import { Router } from '@angular/router';
 import { validateBasis } from '../../../../../node_modules/@angular/flex-layout';
+import {AuthenticationService} from '../../../_services';
 
 @Component({
   selector: 'app-wine-card',
@@ -20,11 +21,18 @@ export class WineCardComponent implements OnInit {
   selectedNum: number;
   options: number[];
 
+  log: boolean;
+  userRole: string;
+
   constructor(private wineService: WineService,
+              private authenticationService: AuthenticationService,
               private router: Router,
               @Inject(APP_CONFIG) appConfig: any) {
     this.canVote = WineService.checkIfUserCanVote();
     this.appConfig = appConfig;
+    this.authenticationService.log.subscribe( value => {
+      this.log = value;
+    });
   }
 
   ngOnInit() {
