@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api.ItemApi;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Item;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Order;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Package;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Stock;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ItemRepository;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.PackageRepository;
 
 
 @RestController
@@ -17,6 +19,13 @@ public class ItemController implements ItemApi{
 	
 	@Autowired
 	ItemRepository itemRepository;
+	
+	@Autowired
+	PackageRepository packageRepository;
+	
+	@Autowired
+	PackageController packageController;
+	
 	
 	@Override
 	public Item createItem(Item item) {
@@ -58,6 +67,16 @@ public class ItemController implements ItemApi{
 	public Item updateItemById(int id, Item newItem) {
 		Item item = findItemById(id);
 		item.set(newItem);
+		return itemRepository.save(item);
+	}
+
+	@Override
+	public Item addPackageToItem(int iId, int pId) {
+		Item item = findItemById(iId);
+		Package pack = packageController.findPackageById(pId);
+		item.addPackage(pack);
+		pack.setItem(item);
+		packageRepository.save(pack);
 		return itemRepository.save(item);
 	}
 	

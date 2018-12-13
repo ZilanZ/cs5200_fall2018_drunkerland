@@ -140,4 +140,32 @@ public interface WineApi {
      */
     @RequestMapping(value = "/multipleSearch", method = RequestMethod.POST)
     List<Wine> multipleSearch(@RequestBody WineQueryDto wineQueryDto);
+
+    /**
+     * retrieve wines by supplier
+     * @param supplier
+     * @return
+     */
+    @RequestMapping(value = "/supplier", method = RequestMethod.POST)
+    List<Wine> findWinesBySupplier(@RequestBody Supplier supplier);
+
+
+    /**
+     * set supplier for wine and add wine for supplier
+     * @param wId
+     * @param sId
+     * @return
+     */
+    @RequestMapping(value ="/{wId}/supplier/{sId}", method = RequestMethod.PUT)
+    Wine setSupplier(@PathVariable("wId") int wId, @PathVariable("sId") int sId);
+
+
+    /**
+     * add a stock for a wine and set stock's foreign key wine_id = wine.id
+     * @param wId
+     * @param stId
+     * @return
+     */
+    @RequestMapping(value ="/{wId}/stock/{stId}", method = RequestMethod.PUT)
+    Wine addStockForWine(@PathVariable("wId") int wId, @PathVariable("stId") int stId);
 }

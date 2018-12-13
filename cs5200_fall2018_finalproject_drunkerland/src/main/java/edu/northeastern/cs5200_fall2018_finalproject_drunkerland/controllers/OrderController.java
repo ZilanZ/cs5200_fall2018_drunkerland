@@ -9,6 +9,7 @@ import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Consumer;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Item;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Order;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ItemRepository;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.OrderRepository;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class OrderController implements OrderApi {
 	
 	@Autowired
     OrderRepository orderRepository;
+	@Autowired
+    ItemRepository itemRepository;
+
 
 	@Autowired
 	ItemController itemController;
@@ -77,6 +81,8 @@ public class OrderController implements OrderApi {
 		Order order = findOrderById(oId);
 		Item item = itemController.findItemById(iId);
 		order.addItem(item);
+		item.setOrder(order);
+		itemRepository.save(item);
 		return orderRepository.save(order);
 	}
 

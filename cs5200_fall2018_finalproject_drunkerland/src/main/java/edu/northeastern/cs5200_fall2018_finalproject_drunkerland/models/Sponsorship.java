@@ -25,8 +25,8 @@ public class Sponsorship {
 	}
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
-		if (!supplier.getSponsers().contains(this)) {
-		    supplier.getSponsers().add(this);
+		if (!supplier.getSponsorships().contains(this)) {
+		    supplier.getSponsorships().add(this);
         }
 	}
 	public WineReviewerRelationship getSponsorRelationship() {

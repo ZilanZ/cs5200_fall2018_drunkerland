@@ -32,11 +32,6 @@ public class Package {
 	@JsonIgnore
 	private Item item;
 
-	
-	
-	
-	//
-	
 	public Package(int id, String trackingNumber, PackageStatus status, Item item) {
 		
 		this.id = id;
@@ -60,9 +55,6 @@ public class Package {
 	public Package() {
 
 	}
-
-
-	//
 
 	public int getId() {
 		return id;
@@ -94,8 +86,8 @@ public class Package {
 
 	public void setItem(Item item) {
 		this.item = item;
-		if(!item.getItemsInPackage().contains(this))
-			item.getItemsInPackage().add(this);
+		if(!item.getPackageHasItem().contains(this))
+			item.getPackageHasItem().add(this);
 			
 	}
 	

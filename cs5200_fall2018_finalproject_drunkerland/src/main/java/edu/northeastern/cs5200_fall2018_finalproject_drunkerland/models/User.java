@@ -9,7 +9,7 @@ import java.util.Optional;
 import javax.persistence.*;
 
 @Entity
-public abstract class User {
+public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;

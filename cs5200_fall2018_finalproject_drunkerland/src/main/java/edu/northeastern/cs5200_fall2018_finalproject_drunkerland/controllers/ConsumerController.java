@@ -3,6 +3,8 @@ package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api.ConsumerApi;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.*;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.ConsumerRepository;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.OrderRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +17,8 @@ public class ConsumerController implements ConsumerApi {
 
     @Autowired
     ConsumerRepository consumerRepository;
+    @Autowired
+    OrderRepository orderRepository;
 
     @Autowired
     OrderController orderController;
@@ -57,6 +61,8 @@ public class ConsumerController implements ConsumerApi {
         Consumer consumer = findConsumerById(cId);
         Order order = orderController.findOrderById(oId);
         consumer.addOrder(order);
+        order.setConsumer(consumer);
+        orderRepository.save(order);
         return consumerRepository.save(consumer);
     }
 
@@ -69,7 +75,7 @@ public class ConsumerController implements ConsumerApi {
             return;
         }
         String destination = address.getStreet1()+", "+address.getStreet2()+", "+address.getCity()+", "
-                +address.getState()+", "+ address.getZipcode() + ", " + address.getCountry();
+                +address.getState()+", "+ address.getZipCode() + ", " + address.getCountry();
         Order order = new Order( Order.OrderStatus.BASKET, destination,0 , createDate);
         orderController.createOrder(order);
         this.addOrderForConsumer(consumerId, order.getId());

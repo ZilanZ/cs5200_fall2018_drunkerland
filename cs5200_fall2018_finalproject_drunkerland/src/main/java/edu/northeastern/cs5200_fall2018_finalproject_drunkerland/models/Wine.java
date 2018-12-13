@@ -53,6 +53,24 @@ public class Wine {
 		this.isPrimeurs = isPrimeurs;
 		this.score = score;
 	}
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Boolean getIsPrimeurs() {
+		return isPrimeurs;
+	}
+
+	public void setIsPrimeurs(Boolean isPrimeurs) {
+		this.isPrimeurs = isPrimeurs;
+	}
 
 	public String getName() {
 		return name;

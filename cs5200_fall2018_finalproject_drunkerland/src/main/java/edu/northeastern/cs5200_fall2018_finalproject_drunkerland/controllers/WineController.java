@@ -1,9 +1,12 @@
 package edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers;
 
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.controllers.api.WineApi;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Stock;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Supplier;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.models.Wine;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.dto.WineQueryDto;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.StockRepository;
+import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.SupplierRepository;
 import edu.northeastern.cs5200_fall2018_finalproject_drunkerland.repositories.WineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +23,17 @@ public class WineController implements WineApi {
 
     @Autowired
     WineRepository wineRepository;
+    @Autowired
+    SupplierRepository supplierRepository;
+    
+    @Autowired
+    StockRepository stockRepository;
+    
+    @Autowired
+    SupplierController supplierController;
+    
+    @Autowired
+    StockController stockController;
 
     public void save(List<Wine> wines) {
         for (Wine wine: wines)
@@ -88,8 +102,6 @@ public class WineController implements WineApi {
         return  wine.getSupplier();
     }
 
-
-
     public List<Wine> multipleSearch( WineQueryDto wineQueryDto){
         List<String> searchFields = new ArrayList<>();
         List<Wine> wines = new ArrayList<>();
@@ -144,4 +156,32 @@ public class WineController implements WineApi {
             return null;
         return  wines;
     }
+
+	@Override
+	public List<Wine> findWinesBySupplier(Supplier supplier) {
+		
+		return supplier.getWines();
+		//return wineRepository.findWinesBySupplier(supplier);
+	}
+
+	@Override
+	public Wine setSupplier(int wId, int sId) {
+		
+		Wine wine = findWineById(wId);
+		Supplier supplier = supplierController.findSupplierById(sId);
+		wine.setSupplier(supplier);
+		supplier.addWine(wine);
+		supplierRepository.save(supplier);
+		return wineRepository.save(wine);
+	}
+
+	@Override
+	public Wine addStockForWine(int wId, int stId) {
+		Wine wine = findWineById(wId);
+		Stock stock = stockController.findStockById(stId);
+		wine.addStock(stock);
+		stock.setWine(wine);
+		stockRepository.save(stock);
+		return wineRepository.save(wine);
+	}
 }

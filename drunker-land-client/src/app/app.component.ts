@@ -7,6 +7,8 @@ import {_} from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 import {AppConfig} from './configs/app.config';
 import {LocalStorage} from 'ngx-store';
 import {UtilsHelperService} from './core/services/utils-helper.service';
+import {User} from 'firebase';
+import {AuthenticationService} from './_services';
 
 declare const require;
 declare const Modernizr;
@@ -17,6 +19,8 @@ declare const Modernizr;
 })
 
 export class AppComponent implements OnInit {
+
+  currentUser: User;
 
   @LocalStorage() language = 'en';
   isOnline: boolean;
@@ -46,19 +50,37 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
         switch (event.urlAfterRedirects) {
-          case '/':
+          case '/': {
             this.meta.updateTag({
               name: 'description',
               content: 'Drunker Land'
             });
             break;
-          case '/' + AppConfig.routes.wines:
+          }
+          case '/' + AppConfig.routes.wines: {
             this.title.setTitle('Wines list');
             this.meta.updateTag({
               name: 'description',
               content: 'List of super-wines'
             });
             break;
+          }
+          case '/' + AppConfig.routes.login: {
+            this.title.setTitle('Login');
+            this.meta.updateTag({
+              name: 'description',
+              content: 'User Login'
+            });
+            break;
+          }
+          case '/' + AppConfig.routes.register: {
+            this.title.setTitle('Register');
+            this.meta.updateTag({
+              name: 'description',
+              content: 'Register'
+            });
+            break;
+          }
         }
       }
     });
