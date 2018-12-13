@@ -33,6 +33,7 @@ public class Order {
 	private Date created;
 	
 	@ManyToOne()
+    @JsonIgnore
 	private Consumer consumer;
 	
 	@OneToMany(mappedBy="order", fetch=FetchType.LAZY, cascade = CascadeType.ALL)

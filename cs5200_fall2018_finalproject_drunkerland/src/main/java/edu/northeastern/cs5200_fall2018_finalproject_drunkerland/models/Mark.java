@@ -20,9 +20,11 @@ public class Mark {
 	private int points;
 	
 	@ManyToOne()
+    @JsonIgnore
 	private Reviewer reviewer;
 	
 	@ManyToOne()
+    @JsonIgnore
 	private Wine wine;
 
 	public Mark() {

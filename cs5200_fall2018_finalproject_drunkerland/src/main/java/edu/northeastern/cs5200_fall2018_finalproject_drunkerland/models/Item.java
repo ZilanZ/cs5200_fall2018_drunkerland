@@ -29,6 +29,7 @@ public class Item {
 	private int quantity;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private Stock stock;
 	
 	@ManyToOne()

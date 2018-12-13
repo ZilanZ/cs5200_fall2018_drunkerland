@@ -20,6 +20,7 @@ public class Address {
     private Boolean isPrimary;
 
     @ManyToOne()
+    @JsonIgnore
     private User user;
 
     public Address() {

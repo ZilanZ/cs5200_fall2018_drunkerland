@@ -25,6 +25,7 @@ public class Article {
 //	private int views;
 
 	@ManyToOne
+	@JsonIgnore
 	private Reviewer reviewer;
 
 	@OneToMany(mappedBy="articleRelationship")

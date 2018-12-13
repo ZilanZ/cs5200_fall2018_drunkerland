@@ -18,9 +18,11 @@ public class Follow {
 	private int id;
 	
 	@ManyToOne()
+    @JsonIgnore
 	private Consumer consumer;
 	
 	@ManyToOne()
+    @JsonIgnore
 	private Reviewer reviewer;
 
 	public Follow() {
